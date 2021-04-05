@@ -1,11 +1,15 @@
-import './App.css';
+import React from 'react';
+import EmployeeForm from './components/EmployeeForm/EmployeeForm';
+import Employees from './components/Employees/Employees';
 
-function App() {
+const App = () => {
   return (
     <div>
-      <h1>Hello Team-2</h1>
+      <h1>Telia Project</h1>
+      <EmployeeForm />
+      <Employees />
     </div>
   );
-}
+};
 
 export default App;

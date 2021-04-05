@@ -35,6 +35,5 @@ const EmployeeSchema = mongoose.Schema({
     }
 });
 
-const Employee = mongoose.model('employee', EmployeeSchema);
+module.exports = mongoose.model('employee', EmployeeSchema);
 
-export default Employee;
