@@ -7,14 +7,14 @@ const employeeRoutes = require('./routes/employees');
 
 const app = express();
 
-// to make every empployeeRoute use /employees
-app.use('/employees', employeeRoutes);
 
 // when sending images, make sure to limit the file size
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
-
 app.use(cors());
+
+// to make every empployeeRoute use /employees
+app.use('/employees', employeeRoutes);
 
 const PORT = process.env.PORT || 5000;
 

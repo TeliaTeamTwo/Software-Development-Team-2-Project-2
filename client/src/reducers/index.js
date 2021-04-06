@@ -2,6 +2,6 @@ import { combineReducers } from 'redux';
 
 import employees from './employees';
 
-export default combineReducers({
+export const reducers = combineReducers({
     employees,
 })

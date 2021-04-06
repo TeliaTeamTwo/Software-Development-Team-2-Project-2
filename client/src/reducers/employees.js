@@ -1,9 +1,9 @@
 export default (employees = [], action) => {
     switch (action.type) {
         case 'FETCH_ALL':
-            return employees;
+            return action.payload;
         case 'CREATE':
-            return employees;
+            return [ ...employees, action.payload];
         default:
             return employees
     }
