@@ -155,12 +155,20 @@ router.put(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { title, location, description, skills, contractType } = req.body;
+    const {
+      title,
+      location,
+      description,
+      skills,
+      contractType,
+      minExperience,
+    } = req.body;
 
     const newPosition = {
       title,
       location,
       description,
+      minExperience,
       skills: skills.split(',').map(skill => skill.trim()),
       contractType
     };

@@ -31,6 +31,9 @@ const CompanyProfileSchema = new mongoose.Schema({
       description: {
         type: String,
       },
+      minExperience:{
+          type: Number,
+      },
       skills: {
         type: [String],
         required: true,
