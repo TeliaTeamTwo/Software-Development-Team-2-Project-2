@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const ProfileSchema = new mongoose.Schema({
+const CompanyProfileSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user',
@@ -19,7 +19,7 @@ const ProfileSchema = new mongoose.Schema({
   website: {
     type: String,
   },
-  openPosition: [
+  openPositions: [
     {
       title: {
         type: String,
@@ -43,4 +43,4 @@ const ProfileSchema = new mongoose.Schema({
   ],
 });
 
-module.exports = Profile = mongoose.model('profile', ProfileSchema);
+module.exports = CompanyProfile = mongoose.model('companyProfile', CompanyProfileSchema);
