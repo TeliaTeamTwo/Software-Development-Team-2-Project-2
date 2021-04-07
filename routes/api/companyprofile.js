@@ -135,4 +135,71 @@ router.delete('/', auth, async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+
+// @route    PUT api/companyprofile/openpositions
+// @desc     Add new open position
+// @access   Private
+router.put(
+  '/openpositions',
+  [
+    auth,
+    [
+      check('title', 'Title is required').not().isEmpty(),
+      check('skills', 'Skills are required').not().isEmpty(),
+      check('contractType', 'Contract Type is required').not().isEmpty(),
+    ],
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    const { title, location, description, skills, contractType } = req.body;
+
+    const newPosition = {
+      title,
+      location,
+      description,
+      skills: skills.split(',').map(skill => skill.trim()),
+      contractType
+    };
+
+    try {
+      const companyprofile = await CompanyProfile.findOne({ user: req.user.id });
+
+      companyprofile.openPositions.unshift(newPosition);
+
+      await companyprofile.save();
+
+      res.json(companyprofile);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  }
+);
+
+// @route    DELETE api/companyprofile/openpositions/:position_id
+// @desc     Delete position from profile
+// @access   Private
+router.delete('/openpositions/:position_id', auth, async (req, res) => {
+  try {
+    const companyprofile = await CompanyProfile.findOne({ user: req.user.id });
+
+    // Get remove index
+    const removeIndex = companyprofile.openPositions
+      .map((item) => item.id)
+      .indexOf(req.params.position_id);
+
+    companyprofile.openPositions.splice(removeIndex, 1);
+
+    await companyprofile.save();
+
+    res.json(companyprofile);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 module.exports = router;
