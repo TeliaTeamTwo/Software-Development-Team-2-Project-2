@@ -30,6 +30,7 @@
     "express-validator": "^6.10.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.2",
+    "react-router-dom": "^5.2.0",
     "request": "^2.88.2"
   },
   "devDependencies": {

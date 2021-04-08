@@ -15,12 +15,18 @@ const EmployeeForm = () => {
         e.preventDefault();
 
         dispatch(createEmployee(employeeData));
+        clear();
+    }
+
+    const clear = () => {
+        setEmployeeData({ name: '', about: '', skills: '', typeOfWork: '', image: '', location: '',
+        qualification: '', experience: '' });
     }
 
     return (
         <div>
             <form autoComplete="off" noValidate onSubmit={handleSubmit}>
-            <h2>Employee Form</h2>
+            <h2>Create a profile to find your dream job!</h2>
             <label>Name</label>
             <input value={employeeData.name} onChange={(e) => setEmployeeData({ ...employeeData, name: e.target.value })}></input>
             <label>About</label>
