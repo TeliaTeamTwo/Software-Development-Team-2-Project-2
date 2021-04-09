@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
-const CompoanyProfile = require('../../models/CompanyProfile');
+const CompanyProfile = require('../../models/CompanyProfile');
 const User = require('../../models/User');
 
 // @route    GET api/companyprofile/me
@@ -10,7 +10,7 @@ const User = require('../../models/User');
 // @access   Private
 router.get('/me', auth, async (req, res) => {
   try {
-    const companyProfile = await CompoanyProfile.findOne({
+    const companyProfile = await CompanyProfile.findOne({
       user: req.user.id,
     }).populate('user', 'name');
 
