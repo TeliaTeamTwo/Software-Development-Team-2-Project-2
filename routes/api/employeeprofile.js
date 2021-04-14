@@ -54,7 +54,8 @@ router.post(
     const profileFields = {};
      profileFields.user = req.user.id;
      if (about) profileFields.about = about;
-     if (skills) profileFields.skills = skills;
+     if (skills)
+       profileFields.skills = skills.split(',').map((skill) => skill.trim());
      if (typeOfWork) profileFields.typeOfWork = typeOfWork
      if (image) profileFields.image = image;
      if (location) profileFields.location = location;
