@@ -1,0 +1,38 @@
+{
+  "name": "software-development-team-2-project-2",
+  "version": "1.0.0",
+  "description": "A tinder like app for matching the Employers with suitable candidates ",
+  "main": "server.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "start": "node server",
+    "server": "nodemon server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TeliaTeamTwo/Software-Development-Team-2-Project-2.git"
+  },
+  "author": "BCH-Team-2",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TeliaTeamTwo/Software-Development-Team-2-Project-2/issues"
+  },
+  "homepage": "https://github.com/TeliaTeamTwo/Software-Development-Team-2-Project-2#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.6",
+    "express": "^4.17.1",
+    "express-validator": "^6.10.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.2",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.0",
+    "nodemon": "^2.0.7"
+  }
+}
