@@ -68,4 +68,4 @@ const EmployeeSchema = mongoose.Schema({
   ],
 });
 
-module.exports = mongoose.model('employee', EmployeeSchema);
+module.exports = mongoose.model('employeeProfile', EmployeeSchema);
