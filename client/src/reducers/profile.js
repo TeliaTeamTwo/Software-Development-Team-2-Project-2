@@ -1,4 +1,4 @@
-import { GET_EMPLOYEE_PROFILE, PROFILE_ERROR } from '../actions/types';
+import { GET_EMPLOYEE_PROFILE, PROFILE_ERROR, UPDATE_EMPLOYEE_PROFILE } from '../actions/types';
 
 const initialState = {
   profile: null,
@@ -12,6 +12,7 @@ export default function (state = initialState, action) {
 
   switch (type) {
     case GET_EMPLOYEE_PROFILE:
+    case UPDATE_EMPLOYEE_PROFILE:
       return {
         ...state,
         profile: payload,

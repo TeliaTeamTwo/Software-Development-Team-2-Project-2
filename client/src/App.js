@@ -8,6 +8,8 @@ import Login from './components/Login';
 import Alert from './components/Alert';
 import CreateEmployeeProfile from './components/profile-forms/CreateEmployeeProfile';
 import EditEmployeeProfile from './components/profile-forms/EditEmployeeProfile';
+import AddExperience from './components/profile-forms/AddExperience';
+import AddEducation from './components/profile-forms/AddEducation';
 import Dashboard from './components/dashboard/Dashboard';
 import PrivateRoute from './components/routing/PrivateRoute';
 import { loadUser } from './actions/auth';
@@ -44,6 +46,16 @@ const App = () => {
                 exact
                 path='/edit-employee-profile'
                 component={EditEmployeeProfile}
+              />
+              <PrivateRoute
+                exact
+                path='/add-experience'
+                component={AddExperience}
+              />
+              <PrivateRoute
+                exact
+                path='/add-education'
+                component={AddEducation}
               />
             </Switch>
           </section>

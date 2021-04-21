@@ -42,45 +42,60 @@ const EmployeeSchema = mongoose.Schema({
   },
   qualification: [
     {
-      schoolName: {
+      school: {
         type: String,
         required: true,
       },
-      title: {
+      degree: {
         type: String,
         required: true,
       },
-      location: {
+      fieldofstudy: {
         type: String,
+        required: true,
+      },
+      from: {
+        type: Date,
+        required: true,
+      },
+      to: {
+        type: Date,
+      },
+      current: {
+        type: Boolean,
+        default: false,
       },
       description: {
         type: String,
-      },
-      duration: {
-        type: Number,
-        required: true,
       },
     },
   ],
   experience: [
     {
-      companyName: {
+      title: {
         type: String,
         required: true,
       },
-      title: {
+      company: {
         type: String,
         required: true,
       },
       location: {
         type: String,
       },
+      from: {
+        type: Date,
+        required: true,
+      },
+      to: {
+        type: Date,
+      },
+      current: {
+        type: Boolean,
+        default: false,
+      },
       description: {
         type: String,
-      },
-      duration: {
-        type: Number,
-        required: true,
       },
     },
   ],

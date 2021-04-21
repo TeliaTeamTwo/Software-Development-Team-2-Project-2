@@ -164,10 +164,19 @@ router.put(
   [
     auth,
     [
-      check('schoolName', 'School name is required').not().isEmpty(),
-      check('title', 'Title is required').not().isEmpty(),
-      check('duration', 'Duration is required').not().isEmpty(),
-    ],
+      check('school', 'School is required')
+        .not()
+        .isEmpty(),
+      check('degree', 'Degree is required')
+        .not()
+        .isEmpty(),
+      check('fieldofstudy', 'Field of study is required')
+        .not()
+        .isEmpty(),
+      check('from', 'From date is required')
+        .not()
+        .isEmpty()
+    ]
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -176,19 +185,23 @@ router.put(
     }
 
     const {
-      schoolName,
-      title,
-      location,
-      description,
-      duration
+      school,
+      degree,
+      fieldofstudy,
+      from,
+      to,
+      current,
+      description
     } = req.body;
 
     const newQualification = {
-      schoolName,
-      title,
-      location,
-      description,
-      duration
+      school,
+      degree,
+      fieldofstudy,
+      from,
+      to,
+      current,
+      description
     };
 
     try {
@@ -237,11 +250,17 @@ router.put(
   [
     auth,
     [
-      check('companyName', 'Company name is required').not().isEmpty(),
-      check('title', 'Title is required').not().isEmpty(),
-      check('duration', 'Duration is required').not().isEmpty(),
+      check('title', 'Title is required')
+        .not()
+        .isEmpty(),
+      check('company', 'Company is required')
+        .not()
+        .isEmpty(),
+      check('from', 'From date is required')
+        .not()
+        .isEmpty()
+    ]
     ],
-  ],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -249,19 +268,23 @@ router.put(
     }
 
     const {
-      companyName,
       title,
+      company,
       location,
-      description,
-      duration
+      from,
+      to,
+      current,
+      description
     } = req.body;
 
     const newExperience = {
-      companyName,
       title,
+      company,
       location,
-      description,
-      duration
+      from,
+      to,
+      current,
+      description
     };
 
     try {
