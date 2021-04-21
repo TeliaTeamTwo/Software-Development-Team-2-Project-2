@@ -5,6 +5,10 @@ const EmployeeSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user',
   },
+  status: {
+    type: String,
+    required: true,
+  },
   about: {
     type: String,
   },
@@ -21,6 +25,20 @@ const EmployeeSchema = mongoose.Schema({
   location: {
     type: String,
     required: true,
+  },
+  social: {
+    youtube: {
+      type: String,
+    },
+    linkedin: {
+      type: String,
+    },
+    website: {
+      type: String,
+    },
+    github: {
+      type: String,
+    },
   },
   qualification: [
     {

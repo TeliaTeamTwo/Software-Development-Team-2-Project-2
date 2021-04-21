@@ -6,6 +6,10 @@ import Footer from './components/Footer';
 import Register from './components/Register';
 import Login from './components/Login';
 import Alert from './components/Alert';
+import CreateEmployeeProfile from './components/profile-forms/CreateEmployeeProfile';
+import EditEmployeeProfile from './components/profile-forms/EditEmployeeProfile';
+import Dashboard from './components/dashboard/Dashboard';
+import PrivateRoute from './components/routing/PrivateRoute';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 // Redux
@@ -26,13 +30,24 @@ const App = () => {
         <Fragment>
           <Route exact path='/' component={Landing} />
           <section>
-          <Alert/>
+            <Alert />
             <Switch>
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={Login} />
+              <PrivateRoute exact path='/dashboard' component={Dashboard} />
+              <PrivateRoute
+                exact
+                path='/create-employee-profile'
+                component={CreateEmployeeProfile}
+              />
+              <PrivateRoute
+                exact
+                path='/edit-employee-profile'
+                component={EditEmployeeProfile}
+              />
             </Switch>
           </section>
-          <Footer/>
+          <Footer />
         </Fragment>
       </Router>
     </Provider>
