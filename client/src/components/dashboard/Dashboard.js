@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import DashboardActions from './DashboardActions';
-import { getCurrentEmployeeProfile } from '../../actions/profile';
+import Experience from './Experience';
+import Education from './Education';
+import { getCurrentEmployeeProfile, deleteAccount } from '../../actions/profile';
 
 const Dashboard = ({
   getCurrentEmployeeProfile,
+  deleteAccount,
   auth: { user },
   profile: { profile, loading },
 }) => {
@@ -25,6 +28,13 @@ const Dashboard = ({
       {profile !== null ? (
         <Fragment>
           <DashboardActions />
+          <Experience experience={profile.experience} />
+          <Education education={profile.qualification} />
+          <div className='my-2'>
+            <button className='btn btn-danger' onClick={() => deleteAccount()}>
+              <i className='fas fa-user-minus' /> Delete My Account
+            </button>
+          </div>
         </Fragment>
       ) : (
         <Fragment>
@@ -47,6 +57,6 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getCurrentEmployeeProfile })(
+export default connect(mapStateToProps, { getCurrentEmployeeProfile, deleteAccount })(
   Dashboard
 );
