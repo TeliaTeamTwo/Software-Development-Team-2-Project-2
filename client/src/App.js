@@ -6,7 +6,6 @@ import Footer from './components/Footer';
 import Register from './components/Register';
 import Login from './components/Login';
 import Alert from './components/Alert';
-import Decision from './components/Decision';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 // Redux
