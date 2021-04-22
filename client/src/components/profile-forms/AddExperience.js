@@ -23,8 +23,8 @@ const AddExperience = ({ addExperience, history }) => {
 
   return (
     <Fragment>
-      <h1 class='large text-primary'>Add An Experience</h1>
-      <p class='lead'>
+      <h1 >Add An Experience</h1>
+      <p>
         <i class='fas fa-code-branch' /> Add any developer/programming positions
         that you have had in the past
       </p>
@@ -36,7 +36,7 @@ const AddExperience = ({ addExperience, history }) => {
           addExperience(formData, history);
         }}
       >
-        <div class='form-group'>
+        <div>
           <input
             type='text'
             placeholder='* Job Title'
@@ -46,7 +46,7 @@ const AddExperience = ({ addExperience, history }) => {
             required
           />
         </div>
-        <div class='form-group'>
+        <div>
           <input
             type='text'
             placeholder='* Company'
@@ -56,7 +56,7 @@ const AddExperience = ({ addExperience, history }) => {
             required
           />
         </div>
-        <div class='form-group'>
+        <div>
           <input
             type='text'
             placeholder='Location'
@@ -65,7 +65,7 @@ const AddExperience = ({ addExperience, history }) => {
             onChange={(e) => onChange(e)}
           />
         </div>
-        <div class='form-group'>
+        <div>
           <h4>From Date</h4>
           <input
             type='date'
@@ -74,7 +74,7 @@ const AddExperience = ({ addExperience, history }) => {
             onChange={(e) => onChange(e)}
           />
         </div>
-        <div class='form-group'>
+        <div>
           <p>
             <input
               type='checkbox'
@@ -89,7 +89,7 @@ const AddExperience = ({ addExperience, history }) => {
             Current Job
           </p>
         </div>
-        <div class='form-group'>
+        <div>
           <h4>To Date</h4>
           <input
             type='date'
@@ -99,7 +99,7 @@ const AddExperience = ({ addExperience, history }) => {
             disabled={toDateDisabled ? 'disabled' : ''}
           />
         </div>
-        <div class='form-group'>
+        <div>
           <textarea
             name='description'
             cols='30'
