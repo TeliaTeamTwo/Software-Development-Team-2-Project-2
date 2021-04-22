@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import FileBase from 'react-file-base64';
 import { createEmployeeProfile, getCurrentEmployeeProfile } from '../../actions/profile';
 
 const EditEmployeeProfile = ({
@@ -98,12 +99,11 @@ const EditEmployeeProfile = ({
           <small>What kind of work are you looking for?</small>
         </div>
         <div>
-          <input
-            type='text'
-            placeholder='image'
-            name='image'
-            value={image}
-            onChange={(e) => onChange(e)}
+          <FileBase
+            id='image'
+            type='file'
+            multiple={false}
+            onDone={({ base64 }) => setFormData({ ...formData, image: base64 })}
           />
           <small>Your image</small>
         </div>
