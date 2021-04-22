@@ -73,29 +73,31 @@ const EditEmployeeProfile = ({
       <small>* = required field</small>
       <form onSubmit={(e) => onSubmit(e)}>
         <div>
-          <select name='status' value={status} onChange={(e) => onChange(e)}>
-            <option value='0'>* Select Professional Status</option>
-            <option value='Developer'>Developer</option>
-            <option value='Junior Developer'>Junior Developer</option>
-            <option value='Senior Developer'>Senior Developer</option>
-            <option value='Manager'>Manager</option>
-            <option value='Student or Learning'>Student or Learning</option>
-            <option value='Instructor'>Instructor or Teacher</option>
-            <option value='Intern'>Intern</option>
-            <option value='Other'>Other</option>
-          </select>
+          <input
+            placeholder='Professionl Status'
+            name='status'
+            value={status}
+            onChange={(e) => onChange(e)}
+          />
           <small className='form-text'>
             Give us an idea of where you are at in your career
           </small>
         </div>
         <div>
-          <input
+          <select
             type='text'
-            placeholder='Type of work'
             name='typeOfWork'
             value={typeOfWork}
             onChange={(e) => onChange(e)}
-          />
+          >
+            <option value='0'>Select from the options</option>
+            <option value='Full Time'>Full Time</option>
+            <option value='Part Time'>Part Time</option>
+            <option value='Consultant'>Consultant</option>
+            <option value='Freelance'>Freelance</option>
+            <option value='Internship'>Internship</option>
+            <option value='Other'>Other</option>
+          </select>
           <small>What kind of work are you looking for?</small>
         </div>
         <div>
