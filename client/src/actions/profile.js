@@ -3,8 +3,10 @@ import { setAlert } from './alert';
 
 import {
   GET_EMPLOYEE_PROFILE,
+  GET_COMPANY_PROFILE,
   PROFILE_ERROR,
   UPDATE_EMPLOYEE_PROFILE,
+  UPDATE_COMPANY_PROFILE,
   CLEAR_PROFILE,
   EMPLOYEE_ACCOUNT_DELETED,
 } from './types';
@@ -189,5 +191,59 @@ export const deleteAccount = () => async dispatch => {
         payload: { msg: err.response.statusText, status: err.response.status }
       });
     }
+  }
+};
+
+// Get current company profile
+export const getCurrentCompanyProfile = () => async (dispatch) => {
+  try {
+    const res = await axios.get('api/companyprofile/me');
+
+    dispatch({
+      type: GET_COMPANY_PROFILE,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Create or update comoany profile
+export const createCompanyProfile = (formData, history, edit = false) => async (
+  dispatch
+) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    const res = await axios.post('api/companyprofile', formData, config);
+
+    dispatch({
+      type: GET_COMPANY_PROFILE,
+      payload: res.data,
+    });
+
+    dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created', 'success'));
+
+    if (!edit) {
+      history.push('/dashboard');
+    }
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+    }
+
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
   }
 };

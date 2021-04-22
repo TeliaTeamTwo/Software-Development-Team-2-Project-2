@@ -6,7 +6,8 @@ const app = express();
 // Connect Database
 connectDB();
 
-app.use(express.json({ extended: false }));
+app.use(express.json({ limit: "30mb", extended: true }));
+
 
 app.get('/', (req, res)=> res.send('API is running'));
 

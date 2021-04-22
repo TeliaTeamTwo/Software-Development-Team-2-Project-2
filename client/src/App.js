@@ -7,7 +7,9 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Alert from './components/Alert';
 import CreateEmployeeProfile from './components/profile-forms/CreateEmployeeProfile';
+import CreateCompanyProfile from './components/profile-forms/CreateCompanyProfile';
 import EditEmployeeProfile from './components/profile-forms/EditEmployeeProfile';
+import EditCompanyProfile from './components/profile-forms/EditCompanyProfile';
 import AddExperience from './components/profile-forms/AddExperience';
 import AddEducation from './components/profile-forms/AddEducation';
 import Dashboard from './components/dashboard/Dashboard';
@@ -44,8 +46,18 @@ const App = () => {
               />
               <PrivateRoute
                 exact
+                path='/create-company-profile'
+                component={CreateCompanyProfile}
+              />
+              <PrivateRoute
+                exact
                 path='/edit-employee-profile'
                 component={EditEmployeeProfile}
+              />
+              <PrivateRoute
+                exact
+                path='/edit-company-profile'
+                component={EditCompanyProfile}
               />
               <PrivateRoute
                 exact

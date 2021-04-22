@@ -60,7 +60,7 @@ const EditEmployeeProfile = ({
 
   const onSubmit = (e) => {
     e.preventDefault();
-    createEmployeeProfile(formData, history);
+    createEmployeeProfile(formData, history, true);
   };
 
   return (
