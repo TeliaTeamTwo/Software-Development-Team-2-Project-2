@@ -9,6 +9,7 @@ import {
   UPDATE_COMPANY_PROFILE,
   CLEAR_PROFILE,
   EMPLOYEE_ACCOUNT_DELETED,
+  COMPANY_ACCOUNT_DELETED,
 } from './types';
 
 // Get current employee profile
@@ -85,7 +86,7 @@ export const addExperience = (formData, history) => async dispatch => {
 
     dispatch(setAlert('Experience Added', 'success'));
 
-    history.push('/dashboard');
+    history.push('/employee-dashboard');
   } catch (err) {
     const errors = err.response.data.errors;
 
@@ -176,7 +177,7 @@ export const deleteEducation = id => async dispatch => {
 };
 
 // Delete account & profile
-export const deleteAccount = () => async dispatch => {
+export const deleteEmployeeAccount = () => async dispatch => {
   if (window.confirm('Are you sure? This can NOT be undone!')) {
     try {
       const res = await axios.delete('/api/employeeprofile');
@@ -232,7 +233,7 @@ export const createCompanyProfile = (formData, history, edit = false) => async (
     dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created', 'success'));
 
     if (!edit) {
-      history.push('/dashboard');
+      history.push('/company-dashboard');
     }
   } catch (err) {
     const errors = err.response.data.errors;
@@ -245,5 +246,78 @@ export const createCompanyProfile = (formData, history, edit = false) => async (
       type: PROFILE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
+  }
+};
+//Add open position
+export const addOpenPosition = (formData, history) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    const res = await axios.put(
+      'api/companyprofile/openpositions',
+      formData,
+      config
+    );
+
+    dispatch({
+      type: UPDATE_COMPANY_PROFILE,
+      payload: res.data,
+    });
+
+    dispatch(setAlert('Open Position Added', 'success'));
+
+    history.push('/company-dashboard');
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+    }
+
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Delete open position
+export const deleteOpenPosition = id => async dispatch => {
+  try {
+    const res = await axios.delete(`/api/companyprofile/openpositions/${id}`);
+
+    dispatch({
+      type: UPDATE_COMPANY_PROFILE,
+      payload: res.data,
+    });
+
+    dispatch(setAlert('Open Position Removed', 'success'));
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+// Delete company account & profile
+export const deleteCompanyAccount = () => async dispatch => {
+  if (window.confirm('Are you sure? This can NOT be undone!')) {
+    try {
+   await axios.delete('/api/companyprofile');
+
+      dispatch({ type: CLEAR_PROFILE });
+      dispatch({ type: COMPANY_ACCOUNT_DELETED });
+
+      dispatch(setAlert('Your account has been permanantly deleted'));
+    } catch (err) {
+      dispatch({
+        type: PROFILE_ERROR,
+        payload: { msg: err.response.statusText, status: err.response.status }
+      });
+    }
   }
 };

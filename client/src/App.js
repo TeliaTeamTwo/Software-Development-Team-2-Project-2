@@ -11,8 +11,11 @@ import CreateCompanyProfile from './components/profile-forms/CreateCompanyProfil
 import EditEmployeeProfile from './components/profile-forms/EditEmployeeProfile';
 import EditCompanyProfile from './components/profile-forms/EditCompanyProfile';
 import AddExperience from './components/profile-forms/AddExperience';
+import AddOpenPosition from './components/profile-forms/AddOpenPosition';
 import AddEducation from './components/profile-forms/AddEducation';
-import Dashboard from './components/dashboard/Dashboard';
+import EmployeeDashboard from './components/dashboard/EmployeeDashboard';
+import CompanyDashboard from './components/dashboard/CompanyDashboard';
+import Decision from './components/dashboard/Decision';
 import PrivateRoute from './components/routing/PrivateRoute';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
@@ -38,7 +41,17 @@ const App = () => {
             <Switch>
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={Login} />
-              <PrivateRoute exact path='/dashboard' component={Dashboard} />
+              <PrivateRoute
+                exact
+                path='/employee-dashboard'
+                component={EmployeeDashboard}
+              />
+              <PrivateRoute
+                exact
+                path='/company-dashboard'
+                component={CompanyDashboard}
+              />
+              <PrivateRoute exact path='/decision' component={Decision} />
               <PrivateRoute
                 exact
                 path='/create-employee-profile'
@@ -68,6 +81,11 @@ const App = () => {
                 exact
                 path='/add-education'
                 component={AddEducation}
+              />
+              <PrivateRoute
+                exact
+                path='/add-open-position'
+                component={AddOpenPosition}
               />
             </Switch>
           </section>
