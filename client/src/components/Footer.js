@@ -3,9 +3,31 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../actions/auth';
 
-const Footer = ({ auth: { isAuthenticated, loading }, logout }) => {
-  const authLinks = (
+const Footer = ({ auth: { isAuthenticated, user, loading }, logout }) => {
+  const companyLinks = (
     <ul>
+      <li>
+        <Link to='/employee-profiles'>Employee-Profiles</Link>
+      </li>
+      <li>
+        <Link to='/company-dashboard'>Company dashboard</Link>
+      </li>
+      <li>
+        <a onClick={logout} href='#!'>
+          <i className='fas fa-sign-out-alt' />{' '}
+          <span className='hide-sm'>Logout</span>
+        </a>
+      </li>
+    </ul>
+  );
+  const employeeLinks = (
+    <ul>
+      <li>
+        <Link to='/company-profiles'>Company Profiles</Link>
+      </li>
+      <li>
+        <Link to='/employee-dashboard'>Employee-dashboard</Link>
+      </li>
       <li>
         <a onClick={logout} href='#!'>
           <i className='fas fa-sign-out-alt' />{' '}
@@ -29,7 +51,9 @@ const Footer = ({ auth: { isAuthenticated, loading }, logout }) => {
   return (
     <footer >
       {!loading && (
-        <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
+        <Fragment>{isAuthenticated ? (
+          user.isCompany?(companyLinks):(employeeLinks)
+        ) : guestLinks}</Fragment>
       )}
     </footer>
   );

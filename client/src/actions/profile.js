@@ -4,6 +4,8 @@ import { setAlert } from './alert';
 import {
   GET_EMPLOYEE_PROFILE,
   GET_COMPANY_PROFILE,
+  GET_EMPLOYEE_PROFILES,
+  GET_COMPANY_PROFILES,
   PROFILE_ERROR,
   UPDATE_EMPLOYEE_PROFILE,
   UPDATE_COMPANY_PROFILE,
@@ -25,6 +27,42 @@ export const getCurrentEmployeeProfile = () => async (dispatch) => {
     dispatch({
       type: PROFILE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Get all company profiles
+export const getCompanyProfiles = () => async (dispatch) => {
+  dispatch({ type: CLEAR_PROFILE });
+
+  try {
+    const res = await axios.get('/api/companyprofile');
+
+    dispatch({
+      type: GET_COMPANY_PROFILES,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Get company profile by ID
+export const getCompanyProfileById = userId => async dispatch => {
+  try {
+    const res = await axios.get(`/api/companyprofile/user/${userId}`);
+
+    dispatch({
+      type: GET_COMPANY_PROFILE,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
 };
@@ -212,6 +250,41 @@ export const getCurrentCompanyProfile = () => async (dispatch) => {
   }
 };
 
+// Get all employee profiles
+export const getEmployeeProfiles = () => async dispatch => {
+  dispatch({ type: CLEAR_PROFILE });
+
+  try {
+    const res = await axios.get('/api/employeeprofile');
+
+    dispatch({
+      type: GET_EMPLOYEE_PROFILES,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+// Get profile by ID
+export const getEmployeeProfileById = userId => async dispatch => {
+  try {
+    const res = await axios.get(`/api/employeeprofile/user/${userId}`);
+
+    dispatch({
+      type: GET_EMPLOYEE_PROFILE,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
 // Create or update comoany profile
 export const createCompanyProfile = (formData, history, edit = false) => async (
   dispatch

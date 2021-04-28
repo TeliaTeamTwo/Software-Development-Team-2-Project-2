@@ -8,6 +8,8 @@ import Login from './components/Login';
 import Alert from './components/Alert';
 import CreateEmployeeProfile from './components/profile-forms/CreateEmployeeProfile';
 import CreateCompanyProfile from './components/profile-forms/CreateCompanyProfile';
+import CompanyProfiles from './components/profiles/CompanyProfiles';
+import EmployeeProfiles from './components/profiles/EmployeeProfiles';
 import EditEmployeeProfile from './components/profile-forms/EditEmployeeProfile';
 import EditCompanyProfile from './components/profile-forms/EditCompanyProfile';
 import AddExperience from './components/profile-forms/AddExperience';
@@ -45,6 +47,16 @@ const App = () => {
                 exact
                 path='/employee-dashboard'
                 component={EmployeeDashboard}
+              />
+              <PrivateRoute
+                exact
+                path='/company-profiles'
+                component={CompanyProfiles}
+              />
+              <PrivateRoute
+                exact
+                path='/employee-profiles'
+                component={EmployeeProfiles}
               />
               <PrivateRoute
                 exact
