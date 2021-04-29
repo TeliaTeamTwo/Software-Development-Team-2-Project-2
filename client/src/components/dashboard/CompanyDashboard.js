@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import CompanyDashboardActions from './CompanyDashboardActions';
@@ -41,15 +41,7 @@ const CompanyDashboard = ({
           </div>
         </Fragment>
       ) : (
-        <Fragment>
-          <p>What kind of profile you want to create?</p>
-          <Link to='/create-employee-profile' className='btn btn-primary my-1'>
-            Employee Profile
-          </Link>
-          <Link to='/create-company-profile' className='btn btn-primary my-1'>
-            Company Profile
-          </Link>
-        </Fragment>
+        <Redirect to="create-company-profile"/>
       )}
     </Fragment>
   );

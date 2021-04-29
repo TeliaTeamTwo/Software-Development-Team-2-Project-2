@@ -11,29 +11,30 @@ const CompanyProfiles = ({
   useEffect(() => {
     getCompanyProfiles();
   }, [getCompanyProfiles]);
-  return(
-  <Fragment>
-    {loading ? (
-      <Spinner />
-    ) : (
-      <Fragment>
-        <h1>Company Profiles</h1>
-        <p>
-          <i className='fab fa-connectdevelop' /> Browse and connect with
-          Companies around you
-        </p>
-        <div>
-          {profiles.length > 0 ? (
-            profiles.map((profile) => (
-              <CompanyProfileItem key={profile._id} profile={profile} />
-            ))
-          ) : (
-            <h4>No profiles found...</h4>
-          )}
-        </div>
-      </Fragment>
-    )}
-  </Fragment>);
+  return (
+    <Fragment>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <Fragment>
+          <h1>Company Profiles</h1>
+          <p>
+            <i className='fab fa-connectdevelop' /> Browse and connect with
+            Companies around you
+          </p>
+          <div className='profiles'>
+            {profiles.length > 0 ? (
+              profiles.map((profile) => (
+                <CompanyProfileItem key={profile._id} profile={profile} />
+              ))
+            ) : (
+              <h4>No profiles found...</h4>
+            )}
+          </div>
+        </Fragment>
+      )}
+    </Fragment>
+  );
 };
 
 const mapStateToProps = (state) => ({

@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import EmployeeDashboardActions from './EmployeeDashboardActions';
@@ -9,7 +9,7 @@ import { getCurrentEmployeeProfile, deleteEmployeeAccount } from '../../actions/
 
 const EmployeeDashboard = ({
   getCurrentEmployeeProfile,
-  deleteAccount,
+  deleteEmployeeAccount,
   auth: { user },
   profile: { profile, loading },
 }) => {
@@ -21,7 +21,7 @@ const EmployeeDashboard = ({
     <Spinner />
   ) : (
     <Fragment>
-      <h1 className='large text-primary'>Dashboard</h1>
+      <h1 className='large text-primary'>Employee Dashboard</h1>
       <p className='lead'>
         <i className='fas fa-user' /> Welcome {user && user.name}
       </p>
@@ -40,15 +40,7 @@ const EmployeeDashboard = ({
           </div>
         </Fragment>
       ) : (
-        <Fragment>
-          <p>What kind of profile you want to create?</p>
-          <Link to='/create-employee-profile' className='btn btn-primary my-1'>
-            Employee Profile
-          </Link>
-          <Link to='/create-company-profile' className='btn btn-primary my-1'>
-            Company Profile
-          </Link>
-        </Fragment>
+        <Redirect to='/create-employee-profile' />
       )}
     </Fragment>
   );
