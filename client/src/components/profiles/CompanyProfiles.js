@@ -22,7 +22,7 @@ const CompanyProfiles = ({
             <i className='fab fa-connectdevelop' /> Browse and connect with
             Companies around you
           </p>
-          <div className='profiles'>
+          <div>
             {profiles.length > 0 ? (
               profiles.map((profile) => (
                 <CompanyProfileItem key={profile._id} profile={profile} />
