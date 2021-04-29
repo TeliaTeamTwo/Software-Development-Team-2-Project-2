@@ -2,6 +2,7 @@ import {
   GET_EMPLOYEE_PROFILE,
   GET_EMPLOYEE_PROFILES,
   PROFILE_ERROR,
+  CLEAR_PROFILE,
   UPDATE_EMPLOYEE_PROFILE,
   GET_COMPANY_PROFILE,
   GET_COMPANY_PROFILES,
@@ -40,6 +41,12 @@ export default function (state = initialState, action) {
         ...state,
         error: payload,
         loading: false,
+        profile: null,
+      };
+    case CLEAR_PROFILE:
+      return {
+        ...state,
+        profile: null
       };
     default:
       return state;

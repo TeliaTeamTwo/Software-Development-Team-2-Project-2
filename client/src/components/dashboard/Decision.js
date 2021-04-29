@@ -1,26 +1,20 @@
 import React, { Fragment, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 
 const Decision = ({
-  auth: { user, isAuthenticated },
-  profile: { profile, loading },
+  auth: { user },
+  profile: { loading },
 }) => {
  
 
-  return loading && profile === null ? (
-    user.isCompany ? (
-      <Redirect to='/create-company-profile' />
-    ) : (
-      <Redirect to='/create-employee-profile' />
-    )
-  ) : user.isCompany ? (
-    <Redirect to='/company-dashboard' />
+  return loading && user.isCompany ? (
+    <Redirect to='/employee-profiles' />
   ) : (
-    <Redirect to='/employee-dashboard' />
+    <Redirect to='/company-profiles' />
   ); 
 };
 
