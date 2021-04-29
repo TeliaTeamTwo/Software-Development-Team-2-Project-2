@@ -34,13 +34,10 @@ router.post(
   [
     auth,
     [
-      check('location', 'Location is required')
-        .not()
-        .isEmpty(),
-      check('skills', 'Skills are required')
-        .not()
-        .isEmpty()
-    ]
+      check('status', 'Status is required').not().isEmpty(),
+      check('location', 'Location is required').not().isEmpty(),
+      check('skills', 'Skills are required').not().isEmpty(),
+    ],
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -48,43 +45,64 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { about, skills, typeOfWork, image, location } = req.body;
+    const {
+      status,
+      about,
+      skills,
+      typeOfWork,
+      image,
+      location,
+      youtube,
+      website,
+      linkedin,
+      github,
+    } = req.body;
 
     // Build profile object
     const profileFields = {};
-     profileFields.user = req.user.id;
-     if (about) profileFields.about = about;
-     if (skills)
-       profileFields.skills = skills.split(',').map((skill) => skill.trim());
-     if (typeOfWork) profileFields.typeOfWork = typeOfWork;
-     if (image) profileFields.image = image;
-     if (location) profileFields.location = location;
+    profileFields.user = req.user.id;
+    if (status) profileFields.status = status;
+    if (about) profileFields.about = about;
+    if (skills)
+      profileFields.skills = skills.split(',').map((skill) => skill.trim());
+    if (typeOfWork) profileFields.typeOfWork = typeOfWork;
+    if (image) profileFields.image = image;
+    if (location) profileFields.location = location;
 
-     try {
-       let employeeprofile = await EmployeeProfile.findOne({ user: req.user.id });
+    // Build social object
+    profileFields.social = {};
+    if (youtube) profileFields.social.youtube = youtube;
+    if (website) profileFields.social.website = website;
+    if (linkedin) profileFields.social.linkedin = linkedin;
+    if (github) profileFields.social.github = github;
 
-       if (employeeprofile) {
-         // Update
-         employeeprofile = await EmployeeProfile.findOneAndUpdate(
-           { user: req.user.id },
-           { $set: profileFields },
-           { new: true }
-         );
+    try {
+      let employeeprofile = await EmployeeProfile.findOne({
+        user: req.user.id,
+      });
 
-         return res.json(employeeprofile);
-       }
+      if (employeeprofile) {
+        // Update
+        employeeprofile = await EmployeeProfile.findOneAndUpdate(
+          { user: req.user.id },
+          { $set: profileFields },
+          { new: true }
+        );
 
-       // Create
-       employeeprofile = new EmployeeProfile(profileFields);
+        return res.json(employeeprofile);
+      }
 
-       await employeeprofile.save();
-       res.json(employeeprofile);
-     } catch (err) {
-       console.error(err.message);
-       res.status(500).send('Server Error');
-     }
+      // Create
+      employeeprofile = new EmployeeProfile(profileFields);
+
+      await employeeprofile.save();
+      res.json(employeeprofile);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
   }
-)
+);
 
 // @route    GET api/employeeprofile
 // @desc     Get all employee profiles
@@ -146,10 +164,19 @@ router.put(
   [
     auth,
     [
-      check('schoolName', 'School name is required').not().isEmpty(),
-      check('title', 'Title is required').not().isEmpty(),
-      check('duration', 'Duration is required').not().isEmpty(),
-    ],
+      check('school', 'School is required')
+        .not()
+        .isEmpty(),
+      check('degree', 'Degree is required')
+        .not()
+        .isEmpty(),
+      check('fieldofstudy', 'Field of study is required')
+        .not()
+        .isEmpty(),
+      check('from', 'From date is required')
+        .not()
+        .isEmpty()
+    ]
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -158,19 +185,23 @@ router.put(
     }
 
     const {
-      schoolName,
-      title,
-      location,
-      description,
-      duration
+      school,
+      degree,
+      fieldofstudy,
+      from,
+      to,
+      current,
+      description
     } = req.body;
 
     const newQualification = {
-      schoolName,
-      title,
-      location,
-      description,
-      duration
+      school,
+      degree,
+      fieldofstudy,
+      from,
+      to,
+      current,
+      description
     };
 
     try {
@@ -219,11 +250,17 @@ router.put(
   [
     auth,
     [
-      check('companyName', 'Company name is required').not().isEmpty(),
-      check('title', 'Title is required').not().isEmpty(),
-      check('duration', 'Duration is required').not().isEmpty(),
+      check('title', 'Title is required')
+        .not()
+        .isEmpty(),
+      check('company', 'Company is required')
+        .not()
+        .isEmpty(),
+      check('from', 'From date is required')
+        .not()
+        .isEmpty()
+    ]
     ],
-  ],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -231,19 +268,23 @@ router.put(
     }
 
     const {
-      companyName,
       title,
+      company,
       location,
-      description,
-      duration
+      from,
+      to,
+      current,
+      description
     } = req.body;
 
     const newExperience = {
-      companyName,
       title,
+      company,
       location,
-      description,
-      duration
+      from,
+      to,
+      current,
+      description
     };
 
     try {
