@@ -9,7 +9,7 @@ import { getCurrentEmployeeProfile, deleteEmployeeAccount } from '../../actions/
 
 const EmployeeDashboard = ({
   getCurrentEmployeeProfile,
-  deleteAccount,
+  deleteEmployeeAccount,
   auth: { user },
   profile: { profile, loading },
 }) => {
