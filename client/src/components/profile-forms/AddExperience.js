@@ -23,6 +23,7 @@ const AddExperience = ({ addExperience, history }) => {
 
   return (
     <Fragment>
+      <section>
       <h1 >Add An Experience</h1>
       <p>
         <i class='fas fa-code-branch' /> Add any developer/programming positions
@@ -114,6 +115,7 @@ const AddExperience = ({ addExperience, history }) => {
           Go Back
         </a>
       </form>
+      </section>
     </Fragment>
   );
 };

@@ -47,7 +47,7 @@ const CreateEmployeeProfile = ({ createEmployeeProfile, history }) => {
       <h1>Create Profile</h1>
       <form className="employee-form" onSubmit={(e) => onSubmit(e)}>
         <label>Image</label>
-        <div className=" employee-form-image">
+        <div className="employee-form-image">
           <div className="filebase-btn">
           <FileBase
             id='image'
@@ -58,7 +58,7 @@ const CreateEmployeeProfile = ({ createEmployeeProfile, history }) => {
           </div>
         </div>
         <div className="employee-form-input">
-        <label>Professional status</label>
+        <label>Professional status*</label>
           <input
             name='status'
             value={status}
@@ -83,7 +83,7 @@ const CreateEmployeeProfile = ({ createEmployeeProfile, history }) => {
           </select>
         </div>
         <div className="employee-form-input">
-          <label>Your location</label>
+          <label>Your location*</label>
           <input
             type='text'
             name='location'
@@ -92,7 +92,7 @@ const CreateEmployeeProfile = ({ createEmployeeProfile, history }) => {
           />
         </div>
         <div className="employee-form-input">
-          <label>Top skills</label>
+          <label>Top skills*</label>
           <input
             type='text'
             name='skills'
@@ -107,6 +107,9 @@ const CreateEmployeeProfile = ({ createEmployeeProfile, history }) => {
             value={about}
             onChange={(e) => onChange(e)}
           />
+        </div>
+        <div className="required-field">
+          <p>All required fields are marked with an *</p>
         </div>
         <div className="employee-form-input">
           <button

@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import FileBase from 'react-file-base64';
 import { createEmployeeProfile, getCurrentEmployeeProfile } from '../../actions/profile';
+import './EditEmployeeProfile.scss'
 
 const EditEmployeeProfile = ({
   profile: { profile, loading },
@@ -65,25 +66,30 @@ const EditEmployeeProfile = ({
 
   return (
     <Fragment>
-      <h1>Edit Your Profile</h1>
-      <p>
-        <i className='fas fa-user' /> Let's get some information to make your
-        profile stand out
-      </p>
-      <small>* = required field</small>
-      <form onSubmit={(e) => onSubmit(e)}>
-        <div>
+      <section className="edit-employee-profile-page">
+      <h1>Edit Profile</h1>
+      <form className="employee-form" onSubmit={(e) => onSubmit(e)}>
+        <label>Image</label>
+        <div className="employee-form-image">
+          <div className="filebase-btn">
+          <FileBase
+            id='image'
+            type='file'
+            multiple={false}
+            onDone={({ base64 }) => setFormData({ ...formData, image: base64 })}
+          />
+        </div>
+        </div>
+        <div className="employee-form-input">
+          <label>Professional status*</label>
           <input
-            placeholder='Professionl Status'
             name='status'
             value={status}
             onChange={(e) => onChange(e)}
           />
-          <small className='form-text'>
-            Give us an idea of where you are at in your career
-          </small>
         </div>
-        <div>
+        <div className="employee-form-input">
+          <label>What type of work are you looking for?</label>
           <select
             type='text'
             name='typeOfWork'
@@ -98,57 +104,45 @@ const EditEmployeeProfile = ({
             <option value='Internship'>Internship</option>
             <option value='Other'>Other</option>
           </select>
-          <small>What kind of work are you looking for?</small>
-        </div>
-        <div>
-          <FileBase
-            id='image'
-            type='file'
-            multiple={false}
-            onDone={({ base64 }) => setFormData({ ...formData, image: base64 })}
-          />
-          <small>Your image</small>
-        </div>
-        <div>
+        </div>    
+        <div className="employee-form-input">
+          <label>Your location*</label>
           <input
             type='text'
-            placeholder='Location'
             name='location'
             value={location}
             onChange={(e) => onChange(e)}
           />
-          <small>City & state suggested (eg. Helsinki, Finland)</small>
         </div>
-        <div>
+        <div className="employee-form-input">
+          <label>Top skills*</label>
           <input
             type='text'
-            placeholder='* Skills'
             name='skills'
             value={skills}
             onChange={(e) => onChange(e)}
           />
-          <small>
-            Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
-          </small>
         </div>
-        <div>
+        <div className="employee-form-input">
+          <label>Describe yourself</label>
           <textarea
             placeholder='A short bio of yourself'
             name='about'
             value={about}
             onChange={(e) => onChange(e)}
           />
-          <small>Tell us a little about yourself</small>
         </div>
-        <div>
+        <div className="required-field">
+          <p>All required fields are marked with an *</p>
+        </div>
+        <div className="employee-form-input">
           <button
             onClick={() => toggleSocialInputs(!displaySocialInputs)}
             type='button'
             className='btn btn-light'
           >
-            Add Social Network Links
+            Add Links
           </button>
-          <span>Optional</span>
         </div>
         {displaySocialInputs && (
           <Fragment>
@@ -156,7 +150,6 @@ const EditEmployeeProfile = ({
               <i className='fab fa-youtube fa-2x' />
               <input
                 type='text'
-                placeholder='YouTube URL'
                 name='youtube'
                 value={youtube}
                 onChange={(e) => onChange(e)}
@@ -166,7 +159,6 @@ const EditEmployeeProfile = ({
               <i className='fab fa-linkedin fa-2x' />
               <input
                 type='text'
-                placeholder='Linkedin URL'
                 name='linkedin'
                 value={linkedin}
                 onChange={(e) => onChange(e)}
@@ -176,7 +168,6 @@ const EditEmployeeProfile = ({
               <i className='fab fa-github fa-2x' />
               <input
                 type='text'
-                placeholder='Github URL'
                 name='github'
                 value={github}
                 onChange={(e) => onChange(e)}
@@ -186,7 +177,6 @@ const EditEmployeeProfile = ({
               <i className='fab fa-instagram fa-2x' />
               <input
                 type='text'
-                placeholder='Website URL'
                 name='website'
                 value={website}
                 onChange={(e) => onChange(e)}
@@ -195,8 +185,9 @@ const EditEmployeeProfile = ({
           </Fragment>
         )}
         <input type='submit' className='btn btn-primary my-1' />
-        <Link to='/dashboard'>Go Back</Link>
+        <Link to='/dashboard'><button className="goback-btn">Go Back</button></Link>
       </form>
+      </section>
     </Fragment>
   );
 };
