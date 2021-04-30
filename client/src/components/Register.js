@@ -39,6 +39,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
         <div className="register-input">
           <label>Name</label>
           <input
+            className="form-input"
             type='text'
             name='name'
             value={name}
@@ -48,6 +49,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
         <div className="register-input">
           <label>E-mail</label>
           <input
+            className="form-input"
             type='email'
             name='email'
             value={email}
@@ -57,6 +59,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
         <div className="register-input">
           <label>Password</label>
           <input
+            className="form-input"
             type='password'
             name='password'
             value={password}
@@ -67,6 +70,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
         <div className="register-input">
           <label>Confirm password</label>
           <input
+            className="form-input"
             type='password'
             name='password2'
             value={password2}
@@ -74,29 +78,31 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             required
           />
         </div>
-        <div>
+          <div className="register-input-radio">
+          <label for='true'>
+          Company Profile
+          </label>
             <input
+              className="radio-btn"
               type='radio'
               name='isCompany'
               value='true'
               onChange={(e) => onChange(e)}
             />
           </div>
-          <label for='true'>
-              Company Profile
+          <div className="register-input-radio">
+          <label for='false'>
+          Employee Profile
           </label>
-          <div>
             <input
+              className="radio-btn"
               type='radio'
               name='isCompany'
               value='false'
               onChange={(e) => onChange(e)}
             />
           </div>
-          <label for='false'>
-              Employee Profile
-          </label>
-        <input type='submit' value='Register' />
+        <input className="register-btn" type='submit' value='Register' />
       </form>
       <div className="yes-account">
         <p>
