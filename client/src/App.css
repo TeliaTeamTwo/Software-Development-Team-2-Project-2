@@ -52,40 +52,72 @@
     width:100%;
 }
 
-.swipeButtons {
-    position: fixed;
-    bottom: 10vh;
-    width:100%;
-    display: flex;
-    justify-content: space-evenly;
+
+#actions {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  margin-top: 10px;
+  position: fixed;
+  top: 8vh;
+  width:100%;
 }
 
-.swipeButtons .MuiIconButton-root {
-    background-color:white;
-    box-shadow: 0px 10px 53px 0px rgba(0,0,0,0.3) !important;
+#actions button {
+	width: 50px;
+	height: 50px;
+	margin-right: 30px;
+	padding: 12px;
+	border: 0;
+	border-radius: 50px;
+	background-color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	float: left;
+	cursor: pointer;
+	box-shadow: 0 2px 3px 0 rgba(0,0,0,0.1);
 }
 
-.swipeButtons__repeat {
-    padding: 3vw !important;
-    color: #f5b748 !important;
+#actions button img {
+	width: 100%;
+	height: auto;
 }
 
-.swipeButtons__left {
-    padding: 3vw !important;
-    color: #ec5e6f !important;
+#actions button:nth-of-type(2),
+#actions button:nth-of-type(3) {
+	width: 60px;
+	height: 60px;
+	padding: 15px;
 }
 
-.swipeButtons__star {
-    padding: 3vw !important;
-    color: #62b4f9 !important;
+#lonely {
+	padding: 10px;
+	border-radius: 1px;
+	background-color: white;
+	border-top: 1px solid #eee;
 }
 
-.swipeButtons__right {
-    padding: 3vw !important;
-    color: #76e2b3 !important;
+#liked-people {
+	margin: auto;
+	overflow: hidden;
 }
 
-.swipeButtons__lightning {
-    padding: 3vw !important;
-    color: #915dd1 !important;
+#liked-people .liked-person {
+	display: inline-block;
+	width: 33%;
+	margin-top: 10px;
+}
+
+#liked-people .liked-person-image {
+	border-radius: 5px;
+}
+
+#liked-people .liked-person-image img {
+	width: 140px;
+	height: 100px;
+	object-fit: cover;
+	object-position: 50% 50%;
 }

@@ -19,6 +19,18 @@ const CompanyProfileSchema = new mongoose.Schema({
   website: {
     type: String,
   },
+  likedUsers: {
+    type: [mongoose.Schema.Types.ObjectId],
+  },
+  superLikedUsers: {
+    type: [mongoose.Schema.Types.ObjectId],
+  },
+  dislikedUsers: {
+    type: [mongoose.Schema.Types.ObjectId],
+  },
+  likedBy: {
+    type: [mongoose.Schema.Types.ObjectId],
+  },
   openPositions: [
     {
       title: {
@@ -31,8 +43,8 @@ const CompanyProfileSchema = new mongoose.Schema({
       description: {
         type: String,
       },
-      minExperience:{
-          type: Number,
+      minExperience: {
+        type: Number,
       },
       skills: {
         type: [String],
