@@ -10,9 +10,10 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     email: '',
     password: '',
     password2: '',
+    isCompany: ''
   });
 
-  const { name, email, password, password2 } = formData;
+  const { name, email, password, password2, isCompany } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -22,12 +23,12 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     if (password !== password2) {
       setAlert('Passwords do not match', 'danger');
     } else {
-      register({ name, email, password });
+      register({ name, email, password, isCompany });
     }
   };
 
    if (isAuthenticated) {
-     return <Redirect to='/dashboard' />;
+     return <Redirect to='/decision' />;
    }
   return (
     <Fragment>
@@ -74,6 +75,28 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             required
           />
         </div>
+        <div>
+            <input
+              type='radio'
+              name='isCompany'
+              value='true'
+              onChange={(e) => onChange(e)}
+            />
+          </div>
+          <label for='true'>
+              Company Profile
+          </label>
+          <div>
+            <input
+              type='radio'
+              name='isCompany'
+              value='false'
+              onChange={(e) => onChange(e)}
+            />
+          </div>
+          <label for='false'>
+              Employee Profile
+          </label>
         <input type='submit' value='Register' />
       </form>
       <p>
