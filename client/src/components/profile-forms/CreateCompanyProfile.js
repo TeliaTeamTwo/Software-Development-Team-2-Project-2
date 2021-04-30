@@ -22,7 +22,6 @@ const CreateCompanyProfile = ({ createCompanyProfile, history }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(formData)
     createCompanyProfile(formData, history);
   };
 
