@@ -1,15 +1,15 @@
 import React, { Fragment, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
-import DashboardActions from './DashboardActions';
+import EmployeeDashboardActions from './EmployeeDashboardActions';
 import Experience from './Experience';
 import Education from './Education';
-import { getCurrentEmployeeProfile, deleteAccount } from '../../actions/profile';
+import { getCurrentEmployeeProfile, deleteEmployeeAccount } from '../../actions/profile';
 
-const Dashboard = ({
+const EmployeeDashboard = ({
   getCurrentEmployeeProfile,
-  deleteAccount,
+  deleteEmployeeAccount,
   auth: { user },
   profile: { profile, loading },
 }) => {
@@ -21,31 +21,26 @@ const Dashboard = ({
     <Spinner />
   ) : (
     <Fragment>
-      <h1 className='large text-primary'>Dashboard</h1>
+      <h1 className='large text-primary'>Employee Dashboard</h1>
       <p className='lead'>
         <i className='fas fa-user' /> Welcome {user && user.name}
       </p>
       {profile !== null ? (
         <Fragment>
-          <DashboardActions />
+          <EmployeeDashboardActions />
           <Experience experience={profile.experience} />
           <Education education={profile.qualification} />
           <div className='my-2'>
-            <button className='btn btn-danger' onClick={() => deleteAccount()}>
+            <button
+              className='btn btn-danger'
+              onClick={() => deleteEmployeeAccount()}
+            >
               <i className='fas fa-user-minus' /> Delete My Account
             </button>
           </div>
         </Fragment>
       ) : (
-        <Fragment>
-          <p>What kind of profile you want to create?</p>
-          <Link to='/create-employee-profile' className='btn btn-primary my-1'>
-            Employee Profile
-          </Link>
-          <Link to='/create-company-profile' className='btn btn-primary my-1'>
-            Company Profile
-          </Link>
-        </Fragment>
+        <Redirect to='/create-employee-profile' />
       )}
     </Fragment>
   );
@@ -57,6 +52,7 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getCurrentEmployeeProfile, deleteAccount })(
-  Dashboard
-);
+export default connect(mapStateToProps, {
+  getCurrentEmployeeProfile,
+  deleteEmployeeAccount,
+})(EmployeeDashboard);

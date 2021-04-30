@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const DashboardActions = () => {
+const EmployeeDashboardActions = () => {
   return (
     <div class='dash-buttons'>
       <Link to='/edit-employee-profile' class='btn btn-light'>
@@ -17,4 +17,4 @@ const DashboardActions = () => {
   );
 };
 
-export default DashboardActions;
+export default EmployeeDashboardActions;

@@ -160,8 +160,8 @@ const CreateEmployeeProfile = ({ createEmployeeProfile, history }) => {
             </div>
           </Fragment>
         )}
-        <input type='submit' className='btn btn-primary my-1' />
-        <Link to='/dashboard'><button className='goback-btn'>Go Back</button></Link>
+        <input type='submit' />
+        <Link to='/employee-dashboard'>Go Back</Link>
       </form>
       </section>
     </Fragment>

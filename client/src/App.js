@@ -7,10 +7,17 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Alert from './components/Alert';
 import CreateEmployeeProfile from './components/profile-forms/CreateEmployeeProfile';
+import CreateCompanyProfile from './components/profile-forms/CreateCompanyProfile';
+import CompanyProfiles from './components/profiles/CompanyProfiles';
+import EmployeeProfiles from './components/profiles/EmployeeProfiles';
 import EditEmployeeProfile from './components/profile-forms/EditEmployeeProfile';
+import EditCompanyProfile from './components/profile-forms/EditCompanyProfile';
 import AddExperience from './components/profile-forms/AddExperience';
+import AddOpenPosition from './components/profile-forms/AddOpenPosition';
 import AddEducation from './components/profile-forms/AddEducation';
-import Dashboard from './components/dashboard/Dashboard';
+import EmployeeDashboard from './components/dashboard/EmployeeDashboard';
+import CompanyDashboard from './components/dashboard/CompanyDashboard';
+import Decision from './components/dashboard/Decision';
 import PrivateRoute from './components/routing/PrivateRoute';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
@@ -36,7 +43,27 @@ const App = () => {
             <Switch>
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={Login} />
-              <PrivateRoute exact path='/dashboard' component={Dashboard} />
+              <PrivateRoute
+                exact
+                path='/employee-dashboard'
+                component={EmployeeDashboard}
+              />
+              <PrivateRoute
+                exact
+                path='/company-profiles'
+                component={CompanyProfiles}
+              />
+              <PrivateRoute
+                exact
+                path='/employee-profiles'
+                component={EmployeeProfiles}
+              />
+              <PrivateRoute
+                exact
+                path='/company-dashboard'
+                component={CompanyDashboard}
+              />
+              <PrivateRoute exact path='/decision' component={Decision} />
               <PrivateRoute
                 exact
                 path='/create-employee-profile'
@@ -44,8 +71,18 @@ const App = () => {
               />
               <PrivateRoute
                 exact
+                path='/create-company-profile'
+                component={CreateCompanyProfile}
+              />
+              <PrivateRoute
+                exact
                 path='/edit-employee-profile'
                 component={EditEmployeeProfile}
+              />
+              <PrivateRoute
+                exact
+                path='/edit-company-profile'
+                component={EditCompanyProfile}
               />
               <PrivateRoute
                 exact
@@ -56,6 +93,11 @@ const App = () => {
                 exact
                 path='/add-education'
                 component={AddEducation}
+              />
+              <PrivateRoute
+                exact
+                path='/add-open-position'
+                component={AddOpenPosition}
               />
             </Switch>
           </section>

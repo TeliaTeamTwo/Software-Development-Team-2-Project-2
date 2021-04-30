@@ -61,7 +61,7 @@ const EditEmployeeProfile = ({
 
   const onSubmit = (e) => {
     e.preventDefault();
-    createEmployeeProfile(formData, history);
+    createEmployeeProfile(formData, history, true);
   };
 
   return (
@@ -185,7 +185,7 @@ const EditEmployeeProfile = ({
           </Fragment>
         )}
         <input type='submit' className='btn btn-primary my-1' />
-        <Link to='/dashboard'><button className="goback-btn">Go Back</button></Link>
+        <Link to='/employee-dashboard'>Go Back</Link>
       </form>
       </section>
     </Fragment>
