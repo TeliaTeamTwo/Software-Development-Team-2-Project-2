@@ -184,8 +184,8 @@ const EditEmployeeProfile = ({
             </div>
           </Fragment>
         )}
-        <input type='submit' className='btn btn-primary my-1' />
-        <Link to='/employee-dashboard'>Go Back</Link>
+        <input type='submit' className='submit-btn' />
+        <Link to='/employee-dashboard'><button className="goback-btn">Go Back</button></Link>
       </form>
       </section>
     </Fragment>
