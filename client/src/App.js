@@ -17,6 +17,7 @@ import AddOpenPosition from './components/profile-forms/AddOpenPosition';
 import AddEducation from './components/profile-forms/AddEducation';
 import EmployeeDashboard from './components/dashboard/EmployeeDashboard';
 import CompanyDashboard from './components/dashboard/CompanyDashboard';
+import SwipeButtons from './components/SwipeButtons'
 import Decision from './components/dashboard/Decision';
 import PrivateRoute from './components/routing/PrivateRoute';
 import { loadUser } from './actions/auth';
@@ -48,15 +49,14 @@ const App = () => {
                 path='/employee-dashboard'
                 component={EmployeeDashboard}
               />
-              <PrivateRoute
-                exact
-                path='/company-profiles'
-                component={CompanyProfiles}
-              />
-              <PrivateRoute
-                exact
-                path='/employee-profiles'
-                component={EmployeeProfiles}
+              <PrivateRoute exact path='/company-profiles'>
+                <CompanyProfiles />
+                <SwipeButtons />
+              </PrivateRoute>
+              <PrivateRoute exact path='/employee-profiles'>
+                <EmployeeProfiles />
+                <SwipeButtons />
+              </PrivateRoute>
               />
               <PrivateRoute
                 exact

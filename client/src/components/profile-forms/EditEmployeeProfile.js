@@ -47,7 +47,6 @@ const EditEmployeeProfile = ({
     about,
     skills,
     typeOfWork,
-    image,
     location,
     website,
     github,

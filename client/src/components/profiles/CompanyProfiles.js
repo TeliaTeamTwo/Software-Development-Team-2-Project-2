@@ -25,7 +25,11 @@ const CompanyProfiles = ({
           <div>
             {profiles.length > 0 ? (
               profiles.map((profile) => (
-                <CompanyProfileItem key={profile._id} profile={profile} />
+                <CompanyProfileItem
+                  key={profile._id}
+                  profile={profile}
+                  className='tinderCards__cardContainer'
+                />
               ))
             ) : (
               <h4>No profiles found...</h4>

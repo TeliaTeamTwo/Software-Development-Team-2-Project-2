@@ -49,7 +49,7 @@ const Footer = ({ auth: { isAuthenticated, user, loading }, logout }) => {
   );
 
   return (
-    <footer >
+    <footer className="footer">
       {!loading && (
         <Fragment>{isAuthenticated ? (
           user.isCompany?(companyLinks):(employeeLinks)
