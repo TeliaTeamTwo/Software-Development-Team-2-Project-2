@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addExperience } from '../../actions/profile';
+import './AddExperience.scss';
 
 const AddExperience = ({ addExperience, history }) => {
   const [formData, setFormData] = useState({
@@ -23,13 +24,8 @@ const AddExperience = ({ addExperience, history }) => {
 
   return (
     <Fragment>
-      <section>
-      <h1 >Add An Experience</h1>
-      <p>
-        <i class='fas fa-code-branch' /> Add any developer/programming positions
-        that you have had in the past
-      </p>
-      <small>* = required field</small>
+      <section className="add-experience">
+      <h1>Work Experience</h1>
       <form
         class='form'
         onSubmit={(e) => {
@@ -37,47 +33,52 @@ const AddExperience = ({ addExperience, history }) => {
           addExperience(formData, history);
         }}
       >
-        <div>
+        <div className="experience-form-input">
+          <label>Job title*</label>
           <input
+            className="form-input"
             type='text'
-            placeholder='* Job Title'
             name='title'
             value={title}
             onChange={(e) => onChange(e)}
             required
           />
         </div>
-        <div>
+        <div className="experience-form-input">
+          <label>Company*</label>
           <input
+            className="form-input"
             type='text'
-            placeholder='* Company'
             name='company'
             value={company}
             onChange={(e) => onChange(e)}
             required
           />
         </div>
-        <div>
+        <div className="experience-form-input">
+          <label>Location</label>
           <input
+            className="form-input"
             type='text'
-            placeholder='Location'
             name='location'
             value={location}
             onChange={(e) => onChange(e)}
           />
         </div>
-        <div>
-          <h4>From Date</h4>
+        <div className="experience-form-input">
+          <label>From*</label>
           <input
+            className="form-input"
             type='date'
             name='from'
             value={from}
             onChange={(e) => onChange(e)}
           />
         </div>
-        <div>
-          <p>
+        <div className="experience-form-checkbox">
+          <label>Do you work here currently?</label>
             <input
+              className="checkbox-btn"
               type='checkbox'
               name='current'
               checked={current}
@@ -87,12 +88,11 @@ const AddExperience = ({ addExperience, history }) => {
                 toggleDisabled(!toDateDisabled);
               }}
             />{' '}
-            Current Job
-          </p>
         </div>
-        <div>
-          <h4>To Date</h4>
+        <div className="experience-form-input">
+          <label>To</label>
           <input
+            className="form-input"
             type='date'
             name='to'
             value={to}
@@ -100,7 +100,8 @@ const AddExperience = ({ addExperience, history }) => {
             disabled={toDateDisabled ? 'disabled' : ''}
           />
         </div>
-        <div>
+        <div className="experience-form-input">
+          <label>Job description</label>
           <textarea
             name='description'
             cols='30'
@@ -110,10 +111,13 @@ const AddExperience = ({ addExperience, history }) => {
             onChange={(e) => onChange(e)}
           />
         </div>
-        <input type='submit' class='btn btn-primary my-1' />
-        <a class='btn btn-light my-1' href='dashboard.html'>
-          Go Back
-        </a>
+        <div className="required-field">
+          <p>All required fields are marked with an *</p>
+        </div>
+        <input type='submit' className="submit-btn" />
+        <Link to='/employee-dashboard'>
+        <button className="goback-btn">Go Back</button>
+        </Link>
       </form>
       </section>
     </Fragment>

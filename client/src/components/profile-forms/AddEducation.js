@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addEducation } from '../../actions/profile';
+import './AddEducation.scss';
 
 const AddEducation = ({ addEducation, history }) => {
   const [formData, setFormData] = useState({
@@ -31,59 +32,60 @@ const AddEducation = ({ addEducation, history }) => {
 
   return (
     <Fragment>
-      <h1 >Add Your Education</h1>
-      <p >
-        <i class='fas fa-code-branch' /> Add any school or bootcamp that you
-        have attended
-      </p>
-      <small>* = required field</small>
+      <section className="add-school">
+      <h1>School Experience</h1>
       <form
         onSubmit={(e) => {
           e.preventDefault();
           addEducation(formData, history);
         }}
       >
-        <div>
+        <div className="school-form-input">
+          <label>School name*</label>
           <input
+            className="form-input"
             type='text'
-            placeholder='* School or Bootcamp'
             name='school'
             value={school}
             onChange={(e) => onChange(e)}
             required
           />
         </div>
-        <div>
+        <div className="school-form-input">
+          <label>Degree*</label>
           <input
+            className="form-input"
             type='text'
-            placeholder='* Degree or Certificate'
             name='degree'
             value={degree}
             onChange={(e) => onChange(e)}
             required
           />
         </div>
-        <div>
+        <div className="school-form-input">
+          <label>Programme*</label>
           <input
+            className="form-input"
             type='text'
-            placeholder='Field of Study'
             name='fieldofstudy'
             value={fieldofstudy}
             onChange={(e) => onChange(e)}
           />
         </div>
-        <div>
-          <h4>From Date</h4>
+        <div className="school-form-input">
+          <label>From*</label>
           <input
+            className="form-input"
             type='date'
             name='from'
             value={from}
             onChange={(e) => onChange(e)}
           />
         </div>
-        <div >
-          <p>
+        <div className="school-form-checkbox">
+          <label>Do you study here currently?</label>
             <input
+              className="checkbox-btn"
               type='checkbox'
               name='current'
               checked={current}
@@ -93,12 +95,11 @@ const AddEducation = ({ addEducation, history }) => {
                 toggleDisabled(!toDateDisabled);
               }}
             />{' '}
-            Current Education
-          </p>
         </div>
-        <div >
-          <h4>To Date</h4>
+        <div className="school-form-input">
+          <label>To</label>
           <input
+            className="form-input"
             type='date'
             name='to'
             value={to}
@@ -106,21 +107,25 @@ const AddEducation = ({ addEducation, history }) => {
             disabled={toDateDisabled ? 'disabled' : ''}
           />
         </div>
-        <div >
+        <div className="school-form-input">
+          <label>Programme description</label>
           <textarea
             name='description'
             cols='30'
             rows='5'
-            placeholder='Program Description'
             value={description}
             onChange={(e) => onChange(e)}
           />
         </div>
-        <input type='submit'/>
-        <Link to='/dashboard'>
-          Go Back
+        <div className="required-field">
+          <p>All required fields are marked with an *</p>
+        </div>
+        <input type='submit' className="submit-btn"/>
+        <Link to='/employee-dashboard'>
+        <button className="goback-btn">Go Back</button>
         </Link>
       </form>
+      </section>
     </Fragment>
   );
 };
