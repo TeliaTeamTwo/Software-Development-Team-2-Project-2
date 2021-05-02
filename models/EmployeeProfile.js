@@ -26,6 +26,30 @@ const EmployeeSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  likes: [
+    {
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+      },
+    },
+  ],
+  dislikes: [
+    {
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+      },
+    },
+  ],
+  likedby: [
+    {
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+      },
+    },
+  ],
   social: {
     youtube: {
       type: String,

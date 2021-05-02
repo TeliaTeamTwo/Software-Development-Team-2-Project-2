@@ -19,6 +19,22 @@ const CompanyProfileSchema = new mongoose.Schema({
   website: {
     type: String,
   },
+  likes: [
+    {
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+      },
+    },
+  ],
+  dislikes: [
+    {
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+      },
+    },
+  ],
   likedby: [
     {
       user: {

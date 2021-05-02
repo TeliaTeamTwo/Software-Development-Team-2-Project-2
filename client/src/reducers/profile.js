@@ -7,7 +7,10 @@ import {
   GET_COMPANY_PROFILE,
   GET_COMPANY_PROFILES,
   UPDATE_COMPANY_PROFILE,
-  ADD_LIKE
+  ADD_LIKEBY,
+  ADD_LIKE,
+  ADD_DISLIKE,
+  REM_PROFILE,
 } from '../actions/types';
 
 const initialState = {
@@ -44,18 +47,35 @@ export default function (state = initialState, action) {
         loading: false,
         profile: null,
       };
-      case ADD_LIKE:
-        return {
+      case REM_PROFILE:
+        return{
           ...state,
-          profiles: state.profiles.map((post) =>
-            post._id === payload.id ? { ...post, likes: payload.likes } : post
-          ),
-          loading: false,
+          profiles: state.profiles.filter(user=> user._id !== payload.id)
         };
+    case ADD_LIKE:
+      return {
+        ...state,
+        profile: { likes: payload.likes },
+        loading: false,
+      };
+    case ADD_DISLIKE:
+      return {
+        ...state,
+        profile: { dislikes: payload.dislikes },
+        loading: false,
+      };
+    case ADD_LIKEBY:
+      return {
+        ...state,
+        profiles: state.profiles.map((post) =>
+          post._id === payload.id ? { ...post, likes: payload.likes } : post
+        ),
+        loading: false,
+      };
     case CLEAR_PROFILE:
       return {
         ...state,
-        profile: null
+        profile: null,
       };
     default:
       return state;

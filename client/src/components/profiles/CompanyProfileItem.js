@@ -2,10 +2,18 @@ import React, {Fragment} from 'react';
 import TinderCard from 'react-tinder-card';
 import OpenPosition from './OpenPosition';
 import { connect } from 'react-redux';
-import {addLike} from '../../actions/profile'
+import {
+  addLikeBy,
+  addLike,
+  addDislike,
+
+} from '../../actions/profile';
+import Lonely from '../Lonely';
 
 const CompanyProfileItem = ({
+  addLikeBy,
   addLike,
+  addDislike,
   profile: {
     user: { _id, name },
     logo,
@@ -34,17 +42,29 @@ const CompanyProfileItem = ({
                 ))}
               </Fragment>
             ) : (
-              <h3>No Open Positions</h3>
+              <h4>No Open Positions</h4>
             )}
           </div>
           <div>
-            <button type='button' onClick={e => addLike(_id)}>
+            <button
+              type='button'
+              onClick={(e) => {
+                addLikeBy(_id);
+                addLike(_id);
+              }}
+            >
               <i class='fas fa-thumbs-up fa-2x' />{' '}
             </button>
             <button type='button'>
-              <i class='fas fa-heart fa-2x' />{' '}
+              <i
+                class='fas fa-heart fa-2x'
+                onClick={(e) => {
+                  addLikeBy(_id);
+                  addLike(_id);
+                }}
+              />{' '}
             </button>
-            <button type='button'>
+            <button type='button' onClick={(e) => addDislike(_id)}>
               <i class='fas fa-thumbs-down fa-2x' />
             </button>
           </div>
@@ -55,7 +75,11 @@ const CompanyProfileItem = ({
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
 });
 
-export default connect(mapStateToProps, {addLike})(CompanyProfileItem);
+export default connect(mapStateToProps, {
+  addLikeBy,
+  addLike,
+  addDislike,
+})(CompanyProfileItem);

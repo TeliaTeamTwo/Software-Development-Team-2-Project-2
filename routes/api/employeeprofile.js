@@ -3,6 +3,7 @@ const router = express.Router();
 const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 const EmployeeProfile = require('../../models/EmployeeProfile');
+const CompanyProfile = require('../../models/CompanyProfile');
 const User = require('../../models/User');
 
 // @route    GET api/employeeprofile/me
@@ -138,6 +139,7 @@ router.get('/user/:user_id', async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+
 
 // @route    DELETE api/employeeprofile
 // @desc     Delete employee profile, user 

@@ -18,6 +18,7 @@ import AddEducation from './components/profile-forms/AddEducation';
 import EmployeeDashboard from './components/dashboard/EmployeeDashboard';
 import CompanyDashboard from './components/dashboard/CompanyDashboard';
 import Decision from './components/dashboard/Decision';
+import Lonely from './components/Lonely';
 import PrivateRoute from './components/routing/PrivateRoute';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
@@ -64,6 +65,7 @@ const App = () => {
                 component={CompanyDashboard}
               />
               <PrivateRoute exact path='/decision' component={Decision} />
+              <PrivateRoute exact path='/match' component={Lonely} />
               <PrivateRoute
                 exact
                 path='/create-employee-profile'

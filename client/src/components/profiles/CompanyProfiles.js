@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect} from 'react';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import CompanyProfileItem from './CompanyProfileItem';
@@ -10,14 +10,13 @@ import {
 const CompanyProfiles = ({
   getCompanyProfiles,
   getCurrentEmployeeProfile,
-  profile: { profile, profiles, loading },
+  profile: {profiles, loading},
 }) => {
   useEffect(() => {
     getCompanyProfiles();
     getCurrentEmployeeProfile();
   }, [getCompanyProfiles, getCurrentEmployeeProfile]);
 
-  
   return (
     <Fragment>
       {loading ? (
@@ -35,11 +34,12 @@ const CompanyProfiles = ({
                 <CompanyProfileItem
                   key={profile._id}
                   profile={profile}
+                  profiles={profiles}
                   className='tinderCards__cardContainer'
                 />
               ))
             ) : (
-              <h4>No profiles found...</h4>
+              <h3>No Company profiles found</h3>
             )}
           </div>
         </Fragment>
