@@ -35,11 +35,9 @@ const CompanyProfileItem = ({
               <h3>No Open Positions</h3>
             )}
           </div>
+          <Actions personId={_id} />
         </div>
       </TinderCard>
-      <Actions
-        personId={_id}
-      />
     </Fragment>
   );
   
