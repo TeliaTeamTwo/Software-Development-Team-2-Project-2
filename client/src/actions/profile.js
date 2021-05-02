@@ -12,8 +12,27 @@ import {
   CLEAR_PROFILE,
   EMPLOYEE_ACCOUNT_DELETED,
   COMPANY_ACCOUNT_DELETED,
+  ADD_LIKE
 } from './types';
 
+// Add like
+export const addLike = id => async dispatch => {
+  try {
+    const res = await axios.put(
+      `/api/companyprofile/user/${id}/likedby`
+    );
+
+    dispatch({
+      type: ADD_LIKE,
+      payload: { id, likes: res.data }
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
 // Get current employee profile
 export const getCurrentEmployeeProfile = () => async (dispatch) => {
   try {

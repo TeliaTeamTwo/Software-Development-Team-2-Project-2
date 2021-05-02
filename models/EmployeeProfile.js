@@ -26,18 +26,6 @@ const EmployeeSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  likedUsers: {
-    type: [String],
-  },
-  superLikedUsers: {
-    type: [String],
-  },
-  dislikedUsers: {
-    type: [String],
-  },
-  likedBy: {
-    type: [String],
-  },
   social: {
     youtube: {
       type: String,

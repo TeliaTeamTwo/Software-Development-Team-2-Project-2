@@ -7,6 +7,7 @@ import {
   GET_COMPANY_PROFILE,
   GET_COMPANY_PROFILES,
   UPDATE_COMPANY_PROFILE,
+  ADD_LIKE
 } from '../actions/types';
 
 const initialState = {
@@ -43,6 +44,14 @@ export default function (state = initialState, action) {
         loading: false,
         profile: null,
       };
+      case ADD_LIKE:
+        return {
+          ...state,
+          profiles: state.profiles.map((post) =>
+            post._id === payload.id ? { ...post, likes: payload.likes } : post
+          ),
+          loading: false,
+        };
     case CLEAR_PROFILE:
       return {
         ...state,

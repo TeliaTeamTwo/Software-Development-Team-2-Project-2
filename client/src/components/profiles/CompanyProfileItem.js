@@ -1,15 +1,17 @@
 import React, {Fragment} from 'react';
 import TinderCard from 'react-tinder-card';
 import OpenPosition from './OpenPosition';
-import Actions from '../Actions.js'
+import { connect } from 'react-redux';
+import {addLike} from '../../actions/profile'
 
 const CompanyProfileItem = ({
+  addLike,
   profile: {
     user: { _id, name },
     logo,
     about,
     location,
-    openPositions
+    openPositions,
   },
 }) => {
   return (
@@ -35,12 +37,25 @@ const CompanyProfileItem = ({
               <h3>No Open Positions</h3>
             )}
           </div>
-          <Actions personId={_id} />
+          <div>
+            <button type='button' onClick={e => addLike(_id)}>
+              <i class='fas fa-thumbs-up fa-2x' />{' '}
+            </button>
+            <button type='button'>
+              <i class='fas fa-heart fa-2x' />{' '}
+            </button>
+            <button type='button'>
+              <i class='fas fa-thumbs-down fa-2x' />
+            </button>
+          </div>
         </div>
       </TinderCard>
     </Fragment>
   );
-  
 };
 
-export default CompanyProfileItem
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps, {addLike})(CompanyProfileItem);

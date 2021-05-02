@@ -19,18 +19,14 @@ const CompanyProfileSchema = new mongoose.Schema({
   website: {
     type: String,
   },
-  likedUsers: {
-    type: [mongoose.Schema.Types.ObjectId],
-  },
-  superLikedUsers: {
-    type: [mongoose.Schema.Types.ObjectId],
-  },
-  dislikedUsers: {
-    type: [mongoose.Schema.Types.ObjectId],
-  },
-  likedBy: {
-    type: [mongoose.Schema.Types.ObjectId],
-  },
+  likedby: [
+    {
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+      },
+    },
+  ],
   openPositions: [
     {
       title: {
@@ -56,6 +52,10 @@ const CompanyProfileSchema = new mongoose.Schema({
       },
     },
   ],
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 module.exports = CompanyProfile = mongoose.model('companyProfile', CompanyProfileSchema);
