@@ -6,7 +6,6 @@ import {
   addLikeBy,
   addLike,
   addDislike,
-
 } from '../../actions/profile';
 import Lonely from '../Lonely';
 

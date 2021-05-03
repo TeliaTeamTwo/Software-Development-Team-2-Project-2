@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import Spinner from './layout/Spinner';
 import { connect } from 'react-redux';
+import LikedPerson from './LIkedPerson';
 
 import {
   getCompanyProfiles,
@@ -10,30 +11,49 @@ import {
 const Match = ({
   getCompanyProfiles,
   getCurrentEmployeeProfile,
-  profile: { profile, loading },
+  auth,
+  profile: { profile, profiles, loading },
 }) => {
-    {
-  useEffect(() => {
-    getCompanyProfiles();
-    getCurrentEmployeeProfile();
-  }, [getCurrentEmployeeProfile, getCompanyProfiles]);
-
-
-  return (
-    <Fragment>
-      {loading ? (
-        <Spinner />
-      ) : (
-        <Fragment>
-          <p>There's no one new around you.</p>
-          <span className='pulse'>
-            <img className='profile-img' src={profile.image} alt='You...' />
-          </span>
-        </Fragment>
-      )}
-    </Fragment>
-  );
-}}
+  {
+    useEffect(() => {
+      getCompanyProfiles();
+      getCurrentEmployeeProfile();
+    }, [
+      getCurrentEmployeeProfile,
+      getCompanyProfiles,
+    ]);
+    return (
+      <Fragment>
+        {loading ? (
+          <Spinner />
+        ) : (
+          <Fragment>
+            <p>There's no one new around you.</p>
+            <span className='pulse'>
+              <img className='profile-img' src={profile.image || profile.logo} alt='You...' />
+            </span>
+            <p>We found you a match</p>
+            {profiles
+              .filter(
+                (profile) =>
+                  profile.likedby.some(
+                    (item) => item['user'] === auth.user._id
+                  ) &&
+                  profile.likes.some((item) => item['user'] === auth.user._id)
+              )
+              .map((profile) => (
+                <LikedPerson
+                  key={profile._id}
+                  profile={profile}
+                  className='tinderCards__cardContainer'
+                />
+              ))}
+          </Fragment>
+        )}
+      </Fragment>
+    );
+  }
+};
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
