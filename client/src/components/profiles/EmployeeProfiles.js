@@ -2,15 +2,20 @@ import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import EmployeeProfileItem from './EmployeeProfileItem';
-import { getEmployeeProfiles } from '../../actions/profile';
+import {
+  getEmployeeProfiles,
+  getCurrentCompanyProfile,
+} from '../../actions/profile';
 
 const EmployeeProfiles = ({
   getEmployeeProfiles,
+  getCurrentCompanyProfile,
   profile: { profiles, loading },
 }) => {
   useEffect(() => {
     getEmployeeProfiles();
-  }, [getEmployeeProfiles]);
+    getCurrentCompanyProfile();
+  }, [getEmployeeProfiles, getCurrentCompanyProfile]);
   return (
     <Fragment>
       {loading ? (
@@ -41,6 +46,7 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { getEmployeeProfiles })(
-  EmployeeProfiles
-);
+export default connect(mapStateToProps, {
+  getEmployeeProfiles,
+  getCurrentCompanyProfile,
+})(EmployeeProfiles);

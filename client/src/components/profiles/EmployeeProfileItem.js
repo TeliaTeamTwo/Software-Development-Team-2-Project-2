@@ -1,9 +1,14 @@
 import React, {Fragment} from 'react';
 import Qualification from './Qualification';
 import TinderCard from 'react-tinder-card';
+import { connect } from 'react-redux';
 import Experience from './Experience';
+import { addLikeByCompany, addLikeCompany, addDislikeCompany } from '../../actions/profile';
 
 const EmployeeProfileItem = ({
+  addLikeCompany,
+  addLikeByCompany,
+  addDislikeCompany,
   profile: {
     user: { _id, name },
     image,
@@ -57,11 +62,42 @@ const EmployeeProfileItem = ({
               <h3>No Experience Credentials</h3>
             )}
           </div>
+          <div>
+            <button
+              type='button'
+              onClick={(e) => {
+                addLikeByCompany(_id);
+                addLikeCompany(_id);
+              }}
+            >
+              <i class='fas fa-thumbs-up fa-2x' />{' '}
+            </button>
+            <button type='button'>
+              <i
+                class='fas fa-heart fa-2x'
+                onClick={(e) => {
+                  addLikeByCompany(_id);
+                  addLikeCompany(_id);
+                }}
+              />{' '}
+            </button>
+            <button type='button' onClick={(e) => addDislikeCompany(_id)}>
+              <i class='fas fa-thumbs-down fa-2x' />
+            </button>
+          </div>
         </div>
       </div>
     </TinderCard>
   );
 };
 
-export default EmployeeProfileItem;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, {
+  addLikeByCompany,
+  addLikeCompany,
+  addDislikeCompany,
+})(EmployeeProfileItem);
 

@@ -14,7 +14,10 @@ import {
   COMPANY_ACCOUNT_DELETED,
   ADD_LIKEBY,
   ADD_LIKE,
-  ADD_DISLIKE
+  ADD_DISLIKE,
+  ADD_LIKEBY_COMPANY,
+  ADD_LIKE_COMPANY,
+  ADD_DISLIKE_COMPANY
 } from './types';
 
 // Add like by
@@ -56,15 +59,17 @@ export const addLike = id => async dispatch => {
   }
 };
 
-// Delete Profile
-export const delProfile = id => async dispatch => {
+
+
+// Add dislike
+export const addDislike = id => async dispatch => {
   try {
-    const res = await axios.delete(
-      `/api/companyprofile/user/${id}`
+    const res = await axios.put(
+      `/api/companyprofile/user/${id}/dislikes`
     );
 
     dispatch({
-      type: ADD_LIKE,
+      type: ADD_DISLIKE,
       payload: { id, likes: res.data }
     });
   } catch (err) {
@@ -75,15 +80,71 @@ export const delProfile = id => async dispatch => {
   }
 };
 
-// Add like
-export const addDislike = id => async dispatch => {
+// Add like by
+export const addLikeByCompany = id => async dispatch => {
   try {
     const res = await axios.put(
-      `/api/companyprofile/user/${id}/dislikes`
+      `/api/employeeprofile/user/${id}/likedby`
     );
 
     dispatch({
-      type: ADD_DISLIKE,
+      type: ADD_LIKEBY_COMPANY,
+      payload: { id, likes: res.data }
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+
+// Add like
+export const addLikeCompany = (id) => async (dispatch) => {
+  try {
+    const res = await axios.put(`/api/employeeprofile/user/${id}/likes`);
+
+    dispatch({
+      type: ADD_LIKE_COMPANY,
+      payload: { id, likes: res.data },
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+
+
+// Add dislike
+export const addDislikeCompany = (id) => async (dispatch) => {
+  try {
+    const res = await axios.put(`/api/employeeprofile/user/${id}/dislikes`);
+
+    dispatch({
+      type: ADD_DISLIKE_COMPANY,
+      payload: { id, likes: res.data },
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Delete Profile
+export const delProfile = id => async dispatch => {
+  try {
+    const res = await axios.delete(
+      `/api/companyprofile/user/${id}`
+    );
+
+    dispatch({
+      type: ADD_LIKE,
       payload: { id, likes: res.data }
     });
   } catch (err) {

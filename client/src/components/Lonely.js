@@ -3,20 +3,24 @@ import { connect } from 'react-redux';
 import LikedPerson from './LIkedPerson'
 import Spinner from './layout/Spinner'
 import {
-  getCompanyProfiles,
-  getCurrentEmployeeProfile,
+  getCompanyProfiles, getEmployeeProfiles,
+  getCurrentEmployeeProfile, getCurrentCompanyProfile
 } from '../actions/profile';
 
 const Lonely = ({
   getCompanyProfiles,
+  getEmployeeProfiles,
   getCurrentEmployeeProfile,
+  getCurrentCompanyProfile,
   auth,
   profile: { profiles, loading },
 }) => {
   useEffect(() => {
     getCompanyProfiles();
+    getEmployeeProfiles();
     getCurrentEmployeeProfile();
-  }, [getCurrentEmployeeProfile, getCompanyProfiles]);
+    getCurrentCompanyProfile();
+  }, [getCurrentEmployeeProfile, getCompanyProfiles, getEmployeeProfiles, getCurrentCompanyProfile]);
 
   return (
     <Fragment>
@@ -51,7 +55,9 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
   getCompanyProfiles,
+  getEmployeeProfiles,
   getCurrentEmployeeProfile,
+  getCurrentCompanyProfile,
 })(Lonely);
 
 

@@ -5,7 +5,7 @@ const LIkedPerson = ({profile}) => {
       <div>
         <h3>{profile.user.name}</h3>
         <span className='pulse'>
-          <img className='profile-img' src={profile.logo} alt='Your likes' />
+          <img className='profile-img' src={profile.logo || profile.image} alt='Your likes' />
         </span>
       </div>
     );
