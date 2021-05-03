@@ -28,26 +28,47 @@ const Match = ({
           <Spinner />
         ) : (
           <Fragment>
-            <p>There's no one new around you.</p>
-            <span className='pulse'>
-              <img className='profile-img' src={profile.image || profile.logo} alt='You...' />
-            </span>
-            <p>We found you a match</p>
-            {profiles
-              .filter(
-                (profile) =>
-                  profile.likedby.some(
-                    (item) => item['user'] === auth.user._id
-                  ) &&
-                  profile.likes.some((item) => item['user'] === auth.user._id)
-              )
-              .map((profile) => (
-                <LikedPerson
-                  key={profile._id}
-                  profile={profile}
-                  className='tinderCards__cardContainer'
-                />
-              ))}
+          
+            {profiles.filter(
+              (profile) =>
+                profile.likedby.some(
+                  (item) => item['user'] === auth.user._id
+                ) &&
+                profile.likes.some((item) => item['user'] === auth.user._id)
+            ).length > 0 ? (
+              <Fragment>
+                <p>We found you a match</p>
+                {profiles
+                  .filter(
+                    (profile) =>
+                      profile.likedby.some(
+                        (item) => item['user'] === auth.user._id
+                      ) &&
+                      profile.likes.some(
+                        (item) => item['user'] === auth.user._id
+                      )
+                  )
+                  .map((profile) => (
+                    <LikedPerson
+                      key={profile._id}
+                      profile={profile}
+                      className='tinderCards__cardContainer'
+                    />
+                  ))}
+              </Fragment>
+            ) : (
+              <Fragment>
+                <p>There's no one new around you.</p>
+                <span className='pulse'>
+                  <img
+                    className='profile-img'
+                    src={profile.image || profile.logo}
+                    alt='You...'
+                  />
+                </span>
+                )
+              </Fragment>
+            )}
           </Fragment>
         )}
       </Fragment>

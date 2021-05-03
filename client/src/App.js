@@ -19,7 +19,9 @@ import EmployeeDashboard from './components/dashboard/EmployeeDashboard';
 import CompanyDashboard from './components/dashboard/CompanyDashboard';
 import Decision from './components/dashboard/Decision';
 import Lonely from './components/Lonely';
+import LonelyCompany from './components/LonelyCompany';
 import Match from './components/Match';
+import MatchCompany from './components/MatchCompany';
 import PrivateRoute from './components/routing/PrivateRoute';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
@@ -67,7 +69,13 @@ const App = () => {
               />
               <PrivateRoute exact path='/decision' component={Decision} />
               <PrivateRoute exact path='/likes' component={Lonely} />
+              <PrivateRoute exact path='/likes-company' component={LonelyCompany} />
               <PrivateRoute exact path='/match' component={Match} />
+              <PrivateRoute
+                exact
+                path='/match-company'
+                component={MatchCompany}
+              />
               <PrivateRoute
                 exact
                 path='/create-employee-profile'

@@ -1,13 +1,15 @@
-import React, {Fragment, useEffect} from 'react'
+import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
-import LikedPerson from './LIkedPerson'
-import Spinner from './layout/Spinner'
+import LikedPerson from './LIkedPerson';
+import Spinner from './layout/Spinner';
 import {
-  getCompanyProfiles, getEmployeeProfiles,
-  getCurrentEmployeeProfile, getCurrentCompanyProfile
+  getCompanyProfiles,
+  getEmployeeProfiles,
+  getCurrentEmployeeProfile,
+  getCurrentCompanyProfile,
 } from '../actions/profile';
 
-const Lonely = ({
+const LonelyCompany = ({
   getCompanyProfiles,
   getEmployeeProfiles,
   getCurrentEmployeeProfile,
@@ -16,22 +18,25 @@ const Lonely = ({
   profile: { profiles, loading },
 }) => {
   useEffect(() => {
-    getCompanyProfiles();
+    getEmployeeProfiles();
     getCurrentEmployeeProfile();
-  }, [getCurrentEmployeeProfile, getCompanyProfiles, getEmployeeProfiles, getCurrentCompanyProfile]);
+  }, [
+    getCurrentEmployeeProfile,
+    getCompanyProfiles,
+    getEmployeeProfiles,
+    getCurrentCompanyProfile,
+  ]);
 
   return (
     <Fragment>
       {loading ? (
-       <Spinner/>
+        <Spinner />
       ) : (
         <Fragment>
           <p>People you liked...let's hope they like you</p>
           {profiles
             .filter((profile) =>
-              profile.likedby.some(
-                (item) => item['user'] === auth.user._id
-              )
+              profile.likedby.some((item) => item['user'] === auth.user._id)
             )
             .map((profile) => (
               <LikedPerson
@@ -56,6 +61,4 @@ export default connect(mapStateToProps, {
   getEmployeeProfiles,
   getCurrentEmployeeProfile,
   getCurrentCompanyProfile,
-})(Lonely);
-
-
+})(LonelyCompany);
