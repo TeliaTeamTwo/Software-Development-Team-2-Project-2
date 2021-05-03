@@ -169,6 +169,32 @@ router.put('/user/:user_id/likedby', auth, async (req, res) => {
   }
 });
 
+router.put('/user/:user_id/dislikedby', auth, async (req, res) => {
+  try {
+    const employeeprofile = await EmployeeProfile.findOne({
+      user: req.params.user_id,
+    });
+
+    // Check if the company has already been disliked
+    if (
+      employeeprofile.dislikedby.filter(
+        (dislike) => dislike.user.toString() === req.user.id
+      ).length > 0
+    ) {
+      return res.status(400).json({ msg: 'Employee already disliked' });
+    }
+
+    employeeprofile.dislikedby.unshift({ user: req.user.id });
+
+    await employeeprofile.save();
+
+    res.json(employeeprofile.dislikedby);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 // @route    PUT employeeprofile/user/:user_id/likes
 // @desc     Like a post
 // @access   Private

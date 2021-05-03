@@ -43,6 +43,14 @@ const CompanyProfileSchema = new mongoose.Schema({
       },
     },
   ],
+  dislikedby: [
+    {
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+      },
+    },
+  ],
   openPositions: [
     {
       title: {

@@ -13,9 +13,11 @@ import {
   EMPLOYEE_ACCOUNT_DELETED,
   COMPANY_ACCOUNT_DELETED,
   ADD_LIKEBY,
+  ADD_DISLIKEBY,
   ADD_LIKE,
   ADD_DISLIKE,
   ADD_LIKEBY_COMPANY,
+  ADD_DISLIKEBY_COMPANY,
   ADD_LIKE_COMPANY,
   ADD_DISLIKE_COMPANY
 } from './types';
@@ -39,7 +41,24 @@ export const addLikeBy = id => async dispatch => {
   }
 };
 
+// Add dislike by
+export const addDislikeBy = id => async dispatch => {
+  try {
+    const res = await axios.put(
+      `/api/companyprofile/user/${id}/dislikedby`
+    );
 
+    dispatch({
+      type: ADD_DISLIKEBY,
+      payload: { id, likes: res.data }
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
 // Add like
 export const addLike = id => async dispatch => {
   try {
@@ -99,6 +118,22 @@ export const addLikeByCompany = id => async dispatch => {
   }
 };
 
+// Add dislike by
+export const addDislikeByCompany = (id) => async (dispatch) => {
+  try {
+    const res = await axios.put(`/api/employeeprofile/user/${id}/dislikedby`);
+
+    dispatch({
+      type: ADD_DISLIKEBY_COMPANY,
+      payload: { id, likes: res.data },
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
 
 // Add like
 export const addLikeCompany = (id) => async (dispatch) => {

@@ -3,12 +3,13 @@ import Qualification from './Qualification';
 import TinderCard from 'react-tinder-card';
 import { connect } from 'react-redux';
 import Experience from './Experience';
-import { addLikeByCompany, addLikeCompany, addDislikeCompany } from '../../actions/profile';
+import { addLikeByCompany, addLikeCompany, addDislikeCompany, addDislikeByCompany } from '../../actions/profile';
 
 const EmployeeProfileItem = ({
   addLikeCompany,
   addLikeByCompany,
   addDislikeCompany,
+  addDislikeByCompany,
   profile: {
     user: { _id, name },
     image,
@@ -81,7 +82,7 @@ const EmployeeProfileItem = ({
                 }}
               />{' '}
             </button>
-            <button type='button' onClick={(e) => addDislikeCompany(_id)}>
+            <button type='button' onClick={(e) => {addDislikeCompany(_id); addDislikeByCompany(_id);}}>
               <i class='fas fa-thumbs-down fa-2x' />
             </button>
           </div>
@@ -99,5 +100,6 @@ export default connect(mapStateToProps, {
   addLikeByCompany,
   addLikeCompany,
   addDislikeCompany,
+  addDislikeByCompany,
 })(EmployeeProfileItem);
 

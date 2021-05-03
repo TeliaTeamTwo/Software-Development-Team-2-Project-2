@@ -1,34 +1,20 @@
 import React, { Fragment, useEffect } from 'react';
 import Spinner from './layout/Spinner';
-import { connect } from 'react-redux';
 import LikedPerson from './LIkedPerson';
-
-import {
-  getCompanyProfiles,
-  getCurrentEmployeeProfile,
-} from '../actions/profile';
+import Lonely from './Lonely';
 
 const Match = ({
-  getCompanyProfiles,
-  getCurrentEmployeeProfile,
   auth,
-  profile: { profile, profiles, loading },
+  profile,
+  profiles,
+  loading
 }) => {
-  {
-    useEffect(() => {
-      getCompanyProfiles();
-      getCurrentEmployeeProfile();
-    }, [
-      getCurrentEmployeeProfile,
-      getCompanyProfiles,
-    ]);
     return (
       <Fragment>
         {loading ? (
           <Spinner />
         ) : (
           <Fragment>
-          
             {profiles.filter(
               (profile) =>
                 profile.likedby.some(
@@ -58,29 +44,14 @@ const Match = ({
               </Fragment>
             ) : (
               <Fragment>
-                <p>There's no one new around you.</p>
-                <span className='pulse'>
-                  <img
-                    className='profile-img'
-                    src={profile.image || profile.logo}
-                    alt='You...'
-                  />
-                </span>
-                )
+                <Lonely profiles={profiles} loading={loading} auth={auth} />
               </Fragment>
             )}
           </Fragment>
         )}
       </Fragment>
     );
-  }
 };
 
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-  profile: state.profile,
-});
-export default connect(mapStateToProps, {
-  getCompanyProfiles,
-  getCurrentEmployeeProfile,
-})(Match);
+
+export default Match;

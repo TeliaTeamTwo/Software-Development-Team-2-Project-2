@@ -50,6 +50,14 @@ const EmployeeSchema = mongoose.Schema({
       },
     },
   ],
+  dislikedby: [
+    {
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+      },
+    },
+  ],
   social: {
     youtube: {
       type: String,

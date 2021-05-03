@@ -149,6 +149,34 @@ router.put('/user/:user_id/likedby', auth, async (req, res) => {
   }
 });
 
+// @route    PUT companyprofile/user/:user_id/dislikedby
+// @desc     Like a post
+// @access   Private
+router.put('/user/:user_id/dislikedby', auth, async (req, res) => {
+  try {
+    const companyprofile = await CompanyProfile.findOne({
+      user: req.params.user_id,
+    });
+
+    // Check if the company has already been disliked
+    if (
+      companyprofile.dislikedby.filter(
+        (dislike) => dislike.user.toString() === req.user.id
+      ).length > 0
+    ) {
+      return res.status(400).json({ msg: 'Company already disliked' });
+    }
+
+    companyprofile.dislikedby.unshift({ user: req.user.id });
+
+    await companyprofile.save();
+
+    res.json(companyprofile.dislikedby);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 // @route    PUT companyprofile/user/:user_id/likes
 // @desc     Like a post
 // @access   Private

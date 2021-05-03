@@ -4,6 +4,7 @@ import OpenPosition from './OpenPosition';
 import { connect } from 'react-redux';
 import {
   addLikeBy,
+  addDislikeBy,
   addLike,
   addDislike,
 } from '../../actions/profile';
@@ -13,6 +14,7 @@ const CompanyProfileItem = ({
   addLikeBy,
   addLike,
   addDislike,
+  addDislikeBy,
   profile: {
     user: { _id, name },
     logo,
@@ -63,7 +65,7 @@ const CompanyProfileItem = ({
                 }}
               />{' '}
             </button>
-            <button type='button' onClick={(e) => addDislike(_id)}>
+            <button type='button' onClick={(e) => {addDislike(_id); addDislikeBy(_id)}}>
               <i class='fas fa-thumbs-down fa-2x' />
             </button>
           </div>
@@ -81,4 +83,5 @@ export default connect(mapStateToProps, {
   addLikeBy,
   addLike,
   addDislike,
+  addDislikeBy,
 })(CompanyProfileItem);
