@@ -22,7 +22,7 @@ const AddExperience = ({ addExperience, history }) => {
 
   return (
     <Fragment>
-      <h1 >Add An Experience</h1>
+      <h1>Add An Experience</h1>
       <p>
         <i class='fas fa-code-branch' /> Add any developer/programming positions
         that you have had in the past
@@ -108,10 +108,8 @@ const AddExperience = ({ addExperience, history }) => {
             onChange={(e) => onChange(e)}
           />
         </div>
-        <input type='submit' class='btn btn-primary my-1' />
-        <a class='btn btn-light my-1' href='dashboard.html'>
-          Go Back
-        </a>
+        <input type='submit' />
+        <Link to='/dashboard'>Go Back</Link>
       </form>
     </Fragment>
   );
