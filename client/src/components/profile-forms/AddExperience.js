@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { addExperience } from '../../actions/profile';
 
 const AddExperience = ({ addExperience, history }) => {
