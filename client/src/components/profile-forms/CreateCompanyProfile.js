@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import FileBase from 'react-file-base64';
 import { createCompanyProfile } from '../../actions/profile';
+import './CreateCompanyProfile.scss';
 
 const CreateCompanyProfile = ({ createCompanyProfile, history }) => {
   const [formData, setFormData] = useState({
@@ -27,21 +28,24 @@ const CreateCompanyProfile = ({ createCompanyProfile, history }) => {
 
   return (
     <Fragment>
+      <section className="create-company-profile-page">
       <h1>Create Your Profile</h1>
       <p>
         <i className='fas fa-user' /> Let's get some information about your
         Company
       </p>
       <small>* = required field</small>
-      <form onSubmit={(e) => onSubmit(e)}>
-        <div>
-          <FileBase
-            id='logo'
-            type='file'
-            multiple={false}
-            onDone={({ base64 }) => setFormData({ ...formData, logo: base64 })}
-          />
-          <small>*Your companmy's logo</small>
+      <form className="company-form" onSubmit={(e) => onSubmit(e)}>
+        <div className="company-form-image">
+          <div className="filebase-btn">
+            <FileBase
+              id='logo'
+              type='file'
+              multiple={false}
+              onDone={({ base64 }) => setFormData({ ...formData, logo: base64 })}
+            />
+          </div>
+        <small>*Your companmy's logo</small>
         </div>
         <div>
           <input
@@ -78,6 +82,7 @@ const CreateCompanyProfile = ({ createCompanyProfile, history }) => {
         <input type='submit' className='btn btn-primary my-1' />
         <Link to='/company-dashboard'>Go Back</Link>
       </form>
+      </section>
     </Fragment>
   );
 };

@@ -1,0 +1,35 @@
+@import "../../variables";
+
+@media (max-width: 576px) {
+  .create-company-profile-page {
+    // height: 100vh;
+    background-color: $primary-color;
+    font-family: $primary-font;
+    h1 {
+      font-family: $secondary-font;
+      color: $light-color;
+      font-size: 64px;
+      font-weight: lighter;
+      text-align: center;
+      padding-top: 2rem;
+    }
+    .company-form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .company-form-image {
+        padding: 0.5rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        max-width: 300px;
+        .filebase-btn {
+          margin-left: 5rem;
+          color: $light-color;
+        }
+      }
+    }
+  }
+}
