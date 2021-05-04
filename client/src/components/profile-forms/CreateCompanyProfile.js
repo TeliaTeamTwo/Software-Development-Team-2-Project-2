@@ -29,59 +29,84 @@ const CreateCompanyProfile = ({ createCompanyProfile, history }) => {
   return (
     <Fragment>
       <section className="create-company-profile-page">
-      <h1>Create Your Profile</h1>
-      <p>
-        <i className='fas fa-user' /> Let's get some information about your
-        Company
-      </p>
-      <small>* = required field</small>
-      <form className="company-form" onSubmit={(e) => onSubmit(e)}>
-        <div className="company-form-image">
-          <div className="filebase-btn">
-            <FileBase
-              id='logo'
-              type='file'
-              multiple={false}
-              onDone={({ base64 }) => setFormData({ ...formData, logo: base64 })}
-            />
+        <h1>Create Profile</h1>
+        {/* <p>
+          <i className='fas fa-user' /> Let's get some information about your
+          Company
+        </p>
+        <small>* = required field</small> */}
+        <form className="company-form" onSubmit={(e) => onSubmit(e)}>
+          <label>Company logo</label>
+          <div className="company-form-image">
+            <div className="company-form-image">
+              <div className="filebase-btn">
+                <FileBase
+                  id='logo'
+                  type='file'
+                  multiple={false}
+                  onDone={({ base64 }) => setFormData({ ...formData, logo: base64 })}
+                />
+              </div>
+            </div>
           </div>
-        <small>*Your companmy's logo</small>
-        </div>
-        <div>
-          <input
-            type='text'
-            placeholder='*Location'
-            name='location'
-            value={location}
-            onChange={(e) => onChange(e)}
-          />
-          <small>City & Country suggested (eg. Helsinki, Finland)</small>
-        </div>
 
-        <div>
-          <textarea
-            name='about'
-            value={about}
-            onChange={(e) => onChange(e)}
-          />
-          <small>Tell us a little about your Company</small>
-        </div>
+          <div className="company-form-input">
+            <label>Company name*</label>
+            <div>
+              <input
+                type='text'
+                name='location'
+                value={location}
+                onChange={(e) => onChange(e)}
+              />
+            </div>
+          </div>
 
-        <div>
-          <i className='fab fa-website fa-2x' />
-          <input
-            type='text'
-            placeholder='Website URL'
-            name='website'
-            value={website}
-            onChange={(e) => onChange(e)}
-          />
-          <small>Company's website URL</small>
-        </div>
+          <div className="company-form-input">
+            <label>Location*</label>
+            <div>
+              <input
+                type='text'
+                name='location'
+                value={location}
+                onChange={(e) => onChange(e)}
+              />
+              {/* <label>City & Country suggested (eg. Helsinki, Finland)</label> */}
+            </div>
+          </div>
 
-        <input type='submit' className='btn btn-primary my-1' />
-        <Link to='/company-dashboard'>Go Back</Link>
-      </form>
+          <div className="company-form-input">
+            <label>Description</label>
+            <div>
+              <textarea
+                name='about'
+                value={about}
+                onChange={(e) => onChange(e)}
+              />
+            </div>
+          </div>
+
+          <div className="company-form-input">
+            <label>Company website</label>
+            <div>
+              {/* <i className='fab fa-website fa-2x' /> */}
+              <input
+                type='text'
+                name='website'
+                value={website}
+                onChange={(e) => onChange(e)}
+              />
+            </div>
+          </div>
+
+          <div className="required-field">
+            <p>All required fields are marked with *</p>
+          </div>
+
+          <input className="submit-btn" type='submit' />
+          <Link to='/company-dashboard'><button className="goback-btn">Go Back</button>
+          </Link>
+        </form>
       </section>
     </Fragment>
   );
