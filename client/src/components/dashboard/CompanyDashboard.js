@@ -8,12 +8,14 @@ import {
   getCurrentCompanyProfile,
   deleteCompanyAccount,
 } from '../../actions/profile';
+import { logout } from '../../actions/auth';
 import './CompanyDashboard.scss';
 
 const CompanyDashboard = ({
   getCurrentCompanyProfile,
   deleteCompanyAccount,
   auth: { user },
+  logout,
   profile: { profile, loading },
 }) => {
   useEffect(() => {
@@ -46,6 +48,11 @@ const CompanyDashboard = ({
             </div>
             <OpenPosition openPositions={profile.openPositions} />
             <CompanyDashboardActions />
+            <div className="text-part logout">
+            <button className ="logout-btn" onClick={logout} href='#!'>
+            Logout
+            </button>
+          </div>
           </div>
           <div className='delete-btn'>
             <button
@@ -72,4 +79,5 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   getCurrentCompanyProfile,
   deleteCompanyAccount,
+  logout,
 })(CompanyDashboard);

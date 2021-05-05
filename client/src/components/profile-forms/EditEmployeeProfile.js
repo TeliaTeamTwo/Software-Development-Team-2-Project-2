@@ -126,7 +126,6 @@ const EditEmployeeProfile = ({
         <div className="employee-form-input">
           <label>Describe yourself</label>
           <textarea
-            placeholder='A short bio of yourself'
             name='about'
             value={about}
             onChange={(e) => onChange(e)}

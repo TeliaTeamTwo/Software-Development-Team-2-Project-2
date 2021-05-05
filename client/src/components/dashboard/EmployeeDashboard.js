@@ -6,13 +6,15 @@ import EmployeeDashboardActions from './EmployeeDashboardActions';
 import Experience from './Experience';
 import Education from './Education';
 import { getCurrentEmployeeProfile, deleteEmployeeAccount } from '../../actions/profile';
+import { logout } from '../../actions/auth';
 import './EmployeeDashboard.scss';
 
 const EmployeeDashboard = ({
   getCurrentEmployeeProfile,
   deleteEmployeeAccount,
   auth: { user },
-  profile: { profile, loading },
+  logout,
+  profile: { profile, loading }, 
 }) => {
   useEffect(() => {
     getCurrentEmployeeProfile();
@@ -59,6 +61,11 @@ const EmployeeDashboard = ({
           <Experience experience={profile.experience} />
           <Education education={profile.qualification} />
           <EmployeeDashboardActions />
+          <div className="text-part logout">
+            <button className ="logout-btn" onClick={logout} href='#!'>
+            Logout
+            </button>
+          </div>
           </div>
           <div className='delete-btn'>
             <button
@@ -86,4 +93,5 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   getCurrentEmployeeProfile,
   deleteEmployeeAccount,
+  logout,
 })(EmployeeDashboard);
