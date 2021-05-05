@@ -1,7 +1,7 @@
 @import '../../variables';
 
 @media (max-width: 576px) {
-  .employee-profile {
+  .company-profile {
     background-color: $primary-color;
     font-family: $primary-font;
     .image-header {
@@ -51,19 +51,12 @@
           font-size: 22px;
         }
       }
-      .location,
-      .status {
+      .location {
         font-family: $secondary-font;
         font-weight: lighter;
         font-size: 22px;
       }
-      .skills,
-      .typeOfWork {
-        p {
-          margin-top: 0.5rem;
-        }
-      }
-      .links {
+      .website {
         label {
           margin-bottom: 1rem;
         }

@@ -2,13 +2,14 @@ import React, { Fragment } from 'react';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { deleteOpenPosition } from '../../actions/profile';
+import './OpenPosition.scss';
 
 const OpenPosition = ({ openPositions, deleteOpenPosition }) => {
   const allOpenPositions = openPositions.map((pos) => (
     <tr key={pos._id}>
       <td>{pos.title}</td>
       <td>{pos.location}</td>
-      <td>{pos.skills}</td>
+      {/* <td className="skills">{pos.skills.join(', ')}</td> */}
       <td>{pos.contractType}</td>
 
       <td>
@@ -24,9 +25,10 @@ const OpenPosition = ({ openPositions, deleteOpenPosition }) => {
 
   return (
     <Fragment>
-      <h2 className='my-2'>Current Open Positions</h2>
-      <table className='table'>
-        <thead>
+      <div className="open-positions">
+      <label>Open Positions</label>
+      <table>
+        {/* <thead>
           <tr>
             <th>Title</th>
             <th>Location</th>
@@ -34,9 +36,10 @@ const OpenPosition = ({ openPositions, deleteOpenPosition }) => {
             <th>Contract Type</th>
             <th />
           </tr>
-        </thead>
+        </thead> */}
         <tbody>{allOpenPositions}</tbody>
       </table>
+      </div>
     </Fragment>
   );
 };

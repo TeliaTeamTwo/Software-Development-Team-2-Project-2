@@ -37,7 +37,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
       <h1>Sign Up</h1>
       <form className="register-form" onSubmit={(e) => onSubmit(e)}>
         <div className="register-input">
-          <label>Name</label>
+          <label>Name/Company</label>
           <input
             className="form-input"
             type='text'

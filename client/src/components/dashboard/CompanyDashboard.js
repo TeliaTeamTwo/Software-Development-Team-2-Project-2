@@ -8,6 +8,7 @@ import {
   getCurrentCompanyProfile,
   deleteCompanyAccount,
 } from '../../actions/profile';
+import './CompanyDashboard.scss';
 
 const CompanyDashboard = ({
   getCurrentCompanyProfile,
@@ -23,26 +24,42 @@ const CompanyDashboard = ({
     <Spinner />
   ) : (
     <Fragment>
-      <h1 className='large text-primary'>Dashboard</h1>
-      <p className='lead'>
-        <i className='fas fa-user' /> Welcome {user && user.name}
-      </p>
+      <section className="company-profile">
       {profile !== null ? (
         <Fragment>
-          <CompanyDashboardActions />
-          <OpenPosition openPositions={profile.openPositions} />
-          <div className='my-2'>
+          <div className="image-header">
+            <img src={profile.logo}></img>
+            <div className="header-container">
+              <h1>{user.name}</h1>
+            </div>
+          </div>
+          <div className="profile-text">
+            <div className="text-part location">
+              <p>{profile.location}</p>
+            </div>
+            <div className="text-part">
+              <p>{profile.about}</p>
+            </div>
+            <div className="text-part website">
+              <label>Website</label>
+              <a href={profile.website}>{profile.website}</a>
+            </div>
+            <OpenPosition openPositions={profile.openPositions} />
+            <CompanyDashboardActions />
+          </div>
+          <div className='delete-btn'>
             <button
               className='btn btn-danger'
               onClick={() => deleteCompanyAccount()}
             >
-              <i className='fas fa-user-minus' /> Delete My Account
+            Delete My Account
             </button>
           </div>
         </Fragment>
       ) : (
         <Redirect to="create-company-profile"/>
       )}
+      </section>
     </Fragment>
   );
 };
