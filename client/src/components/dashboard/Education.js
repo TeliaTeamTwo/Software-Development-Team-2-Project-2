@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { deleteEducation } from '../../actions/profile';
+import './Education.scss';
 
 const Education = ({ education, deleteEducation }) => {
   const educations = education.map((edu) => (
@@ -9,7 +10,7 @@ const Education = ({ education, deleteEducation }) => {
       <td>{edu.school}</td>
       <td className='hide-sm'>{edu.degree}</td>
       <td>
-        <Moment format='YYYY/MM/DD'>{edu.from}</Moment> -{' '}
+        <Moment format='YYYY/MM/DD'>{edu.from}</Moment>{' '}
         {edu.to === null ? (
           ' Now'
         ) : (
@@ -29,18 +30,20 @@ const Education = ({ education, deleteEducation }) => {
 
   return (
     <Fragment>
-      <h2 className='my-2'>Education Credentials</h2>
-      <table className='table'>
-        <thead>
+      <div className="education">
+      <label>Education</label>
+      <table>
+        {/* <thead>
           <tr>
             <th>School</th>
             <th className='hide-sm'>Degree</th>
             <th className='hide-sm'>Years</th>
             <th />
           </tr>
-        </thead>
+        </thead> */}
         <tbody>{educations}</tbody>
       </table>
+      </div>
     </Fragment>
   );
 };
