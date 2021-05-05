@@ -30,13 +30,8 @@ const CreateCompanyProfile = ({ createCompanyProfile, history }) => {
     <Fragment>
       <section className="create-company-profile-page">
         <h1>Create Profile</h1>
-        {/* <p>
-          <i className='fas fa-user' /> Let's get some information about your
-          Company
-        </p>
-        <small>* = required field</small> */}
         <form className="company-form" onSubmit={(e) => onSubmit(e)}>
-          <label>Company logo</label>
+          <label>Company logo*</label>
           <div className="company-form-image">
             <div className="company-form-image">
               <div className="filebase-btn">
@@ -51,18 +46,6 @@ const CreateCompanyProfile = ({ createCompanyProfile, history }) => {
           </div>
 
           <div className="company-form-input">
-            <label>Company name*</label>
-            <div>
-              <input
-                type='text'
-                name='location'
-                value={location}
-                onChange={(e) => onChange(e)}
-              />
-            </div>
-          </div>
-
-          <div className="company-form-input">
             <label>Location*</label>
             <div>
               <input
@@ -71,7 +54,6 @@ const CreateCompanyProfile = ({ createCompanyProfile, history }) => {
                 value={location}
                 onChange={(e) => onChange(e)}
               />
-              {/* <label>City & Country suggested (eg. Helsinki, Finland)</label> */}
             </div>
           </div>
 
@@ -89,7 +71,6 @@ const CreateCompanyProfile = ({ createCompanyProfile, history }) => {
           <div className="company-form-input">
             <label>Company website</label>
             <div>
-              {/* <i className='fab fa-website fa-2x' /> */}
               <input
                 type='text'
                 name='website'
@@ -104,7 +85,8 @@ const CreateCompanyProfile = ({ createCompanyProfile, history }) => {
           </div>
 
           <input className="submit-btn" type='submit' />
-          <Link to='/company-dashboard'><button className="goback-btn">Go Back</button>
+          <Link to='/company-dashboard'>
+            <button className="goback-btn">Go Back</button>
           </Link>
         </form>
       </section>
