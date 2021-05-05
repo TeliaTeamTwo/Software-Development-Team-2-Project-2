@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addOpenPosition } from '../../actions/profile';
+import './AddOpenPosition.scss';
 
 const AddOpenPosition = ({ addOpenPosition, history }) => {
   const [formData, setFormData] = useState({
@@ -27,77 +28,92 @@ const AddOpenPosition = ({ addOpenPosition, history }) => {
 
   return (
     <Fragment>
-      <h1>Add An Open Position</h1>
-
-      <small>* = required field</small>
+      <section className="add-position">
+      <h1>Add Position</h1>
       <form
-        class='form'
         onSubmit={(e) => {
           e.preventDefault();
           addOpenPosition(formData, history);
         }}
       >
+      <div className="position-form-input">
+        <label>Job title*</label>
         <div>
           <input
+            className='form-input'
             type='text'
-            placeholder='* Job Title'
             name='title'
             value={title}
             onChange={(e) => onChange(e)}
             required
           />
         </div>
+      </div>
+
+      <div className="position-form-input">
+        <label>Skills*</label>
         <div>
           <input
+            className='form-input'
             type='text'
-            placeholder='* Skills'
             name='skills'
             value={skills}
             onChange={(e) => onChange(e)}
           />
-          <small>
-            Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
-          </small>
         </div>
+      </div>
 
+      <div className="position-form-input">
+        <label>Location</label>
         <div>
           <input
+            className='form-input'
             type='text'
-            placeholder='Location'
             name='location'
             value={location}
             onChange={(e) => onChange(e)}
           />
         </div>
+      </div>
+
+      <div className="position-form-input">
+        <label>Years of experience</label>
         <div>
           <input
+            className='form-input'
             type='number'
-            placeholder='Experience needed'
             name='minExperience'
             value={minExperience}
             onChange={(e) => onChange(e)}
           />
-          <small>Please use numbers (eg. 0 or 3 or 10)</small>
+          {/* <small>Please use numbers (eg. 0 or 3 or 10)</small> */}
         </div>
+      </div>
 
+      <div className="position-form-input">
+        <label>Job description</label>
         <div>
           <textarea
             name='description'
             cols='20'
             rows='5'
-            placeholder='Job Description'
             value={description}
             onChange={(e) => onChange(e)}
           />
         </div>
+      </div>
+
+      <div className="position-form-input">
+        <label>Contract type</label>
         <div>
           <select
+            className='form-input'
             type='text'
             name='contractType'
             value={contractType}
             onChange={(e) => onChange(e)}
           >
-            <option value='0'>* Select from the options</option>
+            <option value='0'>* Select from options</option>
             <option value='Full Time'>Full Time</option>
             <option value='Part Time'>Part Time</option>
             <option value='Consultant'>Consultant</option>
@@ -105,11 +121,20 @@ const AddOpenPosition = ({ addOpenPosition, history }) => {
             <option value='Internship'>Internship</option>
             <option value='Other'>Other</option>
           </select>
-          <small>What kind of contract?</small>
         </div>
-        <input type='submit' class='btn btn-primary my-1' />
-        <Link to='/company-dashboard'>Go Back</Link>
+      </div>
+
+      <div className="required-field">
+        <p>All required fields are marked with *</p>
+      </div>
+
+        <input type='submit' className='submit-btn' />
+        <Link to='/company-dashboard'>
+          <button className="goback-btn">Go Back</button>
+        </Link>
+
       </form>
+      </section>
     </Fragment>
   );
 };
