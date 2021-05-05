@@ -26,3 +26,10 @@
 .onlineIcon {
   margin-right: 5%;
 }
+.activeItem {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding-left: 20px;
+  padding-top: 4px;
+}
