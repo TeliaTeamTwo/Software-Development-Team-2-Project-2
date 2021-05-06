@@ -25,7 +25,7 @@ const Login = ({ login, isAuthenticated }) => {
   }
   return (
     <Fragment>
-      <section className="login-page">
+      <div className="login-page">
       <h1>Log In</h1>
       <form className="login-form" onSubmit={(e) => onSubmit(e)}>
         <div className="login-input">
@@ -58,7 +58,7 @@ const Login = ({ login, isAuthenticated }) => {
         </p>
         <Link to='/register'><button>Sign Up</button></Link>
       </div>
-    </section>
+    </div>
     </Fragment>
   );
 };

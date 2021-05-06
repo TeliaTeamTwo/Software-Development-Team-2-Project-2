@@ -6,6 +6,18 @@
   box-sizing: border-box;
 }
 
+.edit-employee-profile-page,
+.edit-company-profile-page,
+.create-employee-profile-page,
+.create-company-profile-page,
+.add-position,
+.add-experience,
+.add-school,
+.employee-profile,
+.company-profile {
+  padding-bottom: 4rem; // so footer doesnt overlap
+}
+
 .alert-danger {
   color: red;
 }

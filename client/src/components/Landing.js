@@ -5,7 +5,7 @@ import './Landing.scss';
 
 const Landing = () => {
   return (
-    <section className="landing-page">
+    <div className="landing-page">
           <JargonLogo />
           <h2>Welcome to Jargon Moment!
           We connect companies with
@@ -19,7 +19,7 @@ const Landing = () => {
               <button>Sign up</button>
             </Link>
           </div>
-    </section>
+    </div>
   );
 };
 

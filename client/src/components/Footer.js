@@ -2,15 +2,20 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../actions/auth';
+import {ReactComponent as JargonIcon} from '../logo-icon.svg';
+import './Footer.scss';
 
 const Footer = ({ auth: { isAuthenticated, user, loading }, logout }) => {
   const companyLinks = (
     <ul>
       <li>
-        <Link to='/employee-profiles'>Employee-Profiles</Link>
+        <Link to='/employee-profiles'><JargonIcon /></Link>
       </li>
       <li>
-        <Link to='/company-dashboard'>Company dashboard</Link>
+        <Link to='/chats'><i class="fas fa-comment-dots"></i></Link>
+      </li>
+      <li>
+        <Link to='/company-dashboard'><i class="fas fa-user-circle"></i></Link>
       </li>
       {/* <li>
         <a onClick={logout} href='#!'>
@@ -23,10 +28,13 @@ const Footer = ({ auth: { isAuthenticated, user, loading }, logout }) => {
   const employeeLinks = (
     <ul>
       <li>
-        <Link to='/company-profiles'>Company Profiles</Link>
+        <Link to='/company-profiles'><JargonIcon /></Link>
       </li>
       <li>
-        <Link to='/employee-dashboard'>Employee-dashboard</Link>
+        <Link to='/chats'><i class="fas fa-comment-dots"></i></Link>
+      </li>
+      <li>
+        <Link to='/employee-dashboard'><i class="fas fa-user-circle"></i></Link>
       </li>
       {/* <li>
         <a onClick={logout} href='#!'>

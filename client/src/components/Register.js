@@ -33,7 +33,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
    }
   return (
     <Fragment>
-      <section className="register-page">
+      <div className="register-page">
       <h1>Sign Up</h1>
       <form className="register-form" onSubmit={(e) => onSubmit(e)}>
         <div className="register-input">
@@ -110,7 +110,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
         </p>
         <Link to='/login'><button>Sign In</button></Link>
       </div>
-      </section>
+      </div>
     </Fragment>
   );
 };
