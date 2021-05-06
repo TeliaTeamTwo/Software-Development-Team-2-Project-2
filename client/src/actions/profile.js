@@ -208,7 +208,7 @@ export const getCurrentEmployeeProfile = () => async (dispatch) => {
 
 // Get all company profiles
 export const getCompanyProfiles = () => async (dispatch) => {
-  dispatch({ type: CLEAR_PROFILE });
+  
 
   try {
     const res = await axios.get('/api/companyprofile');
@@ -427,7 +427,6 @@ export const getCurrentCompanyProfile = () => async (dispatch) => {
 
 // Get all employee profiles
 export const getEmployeeProfiles = () => async dispatch => {
-  dispatch({ type: CLEAR_PROFILE });
 
   try {
     const res = await axios.get('/api/employeeprofile');
