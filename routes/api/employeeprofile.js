@@ -3,6 +3,7 @@ const router = express.Router();
 const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 const EmployeeProfile = require('../../models/EmployeeProfile');
+const CompanyProfile = require('../../models/CompanyProfile');
 const User = require('../../models/User');
 
 // @route    GET api/employeeprofile/me
@@ -138,6 +139,120 @@ router.get('/user/:user_id', async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+
+// @route    PUT companyprofile/user/:user_id/likedby
+// @desc     Like a post
+// @access   Private
+router.put('/user/:user_id/likedby', auth, async (req, res) => {
+  try {
+    const employeeprofile = await EmployeeProfile.findOne({
+      user: req.params.user_id,
+    });
+
+    // Check if the company has already been liked
+    if (
+      employeeprofile.likedby.filter(
+        (like) => like.user.toString() === req.user.id
+      ).length > 0
+    ) {
+      return res.status(400).json({ msg: 'Employee already liked' });
+    }
+
+    employeeprofile.likedby.unshift({ user: req.user.id });
+
+    await employeeprofile.save();
+
+    res.json(employeeprofile.likedby);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+router.put('/user/:user_id/dislikedby', auth, async (req, res) => {
+  try {
+    const employeeprofile = await EmployeeProfile.findOne({
+      user: req.params.user_id,
+    });
+
+    // Check if the company has already been disliked
+    if (
+      employeeprofile.dislikedby.filter(
+        (dislike) => dislike.user.toString() === req.user.id
+      ).length > 0
+    ) {
+      return res.status(400).json({ msg: 'Employee already disliked' });
+    }
+
+    employeeprofile.dislikedby.unshift({ user: req.user.id });
+
+    await employeeprofile.save();
+
+    res.json(employeeprofile.dislikedby);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route    PUT employeeprofile/user/:user_id/likes
+// @desc     Like a post
+// @access   Private
+router.put('/user/:user_id/likes', auth, async (req, res) => {
+  try {
+    const companyprofile = await CompanyProfile.findOne({
+      user: req.user.id,
+    });
+
+    // Check if the company has already been liked
+    if (
+      companyprofile.likes.filter(
+        (like) => like.user.toString() === req.params.user_id.toString()
+      ).length > 0
+    ) {
+      return res.status(400).json({ msg: 'Employee already liked' });
+    }
+
+    companyprofile.likes.unshift({ user: req.params.user_id });
+
+    await companyprofile.save();
+
+    res.json(companyprofile.likes);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route    PUT employeeprofile/user/:user_id/dislikes
+// @desc     Like a post
+// @access   Private
+router.put('/user/:user_id/dislikes', auth, async (req, res) => {
+  try {
+    const companyprofile = await CompanyProfile.findOne({
+      user: req.user.id,
+    });
+
+    // Check if the company has already been liked
+    if (
+      companyprofile.dislikes.filter(
+        (dislike) => dislike.user.toString() === req.params.user_id.toString()
+      ).length > 0
+    ) {
+      return res.status(400).json({ msg: 'Employee already disliked' });
+    }
+
+    companyprofile.dislikes.unshift({ user: req.params.user_id });
+
+    await companyprofile.save();
+
+    res.json(companyprofile.dislikes);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 
 // @route    DELETE api/employeeprofile
 // @desc     Delete employee profile, user 

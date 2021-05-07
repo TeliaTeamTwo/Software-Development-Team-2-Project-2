@@ -17,7 +17,7 @@ const CompanyDashboard = ({
 }) => {
   useEffect(() => {
     getCurrentCompanyProfile();
-  }, []);
+  }, [getCurrentCompanyProfile]);
 
   return loading && profile === null ? (
     <Spinner />

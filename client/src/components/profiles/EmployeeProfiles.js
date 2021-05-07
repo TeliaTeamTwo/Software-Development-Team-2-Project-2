@@ -2,15 +2,23 @@ import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import EmployeeProfileItem from './EmployeeProfileItem';
-import { getEmployeeProfiles } from '../../actions/profile';
+import Lonely from '../Lonely';
+import Match from '../Match';
+import {
+  getEmployeeProfiles,
+  getCurrentCompanyProfile,
+} from '../../actions/profile';
 
 const EmployeeProfiles = ({
   getEmployeeProfiles,
-  profile: { profiles, loading },
+  getCurrentCompanyProfile,
+  auth,
+  profile: { profile, profiles, loading },
 }) => {
   useEffect(() => {
     getEmployeeProfiles();
-  }, [getEmployeeProfiles]);
+    getCurrentCompanyProfile();
+  }, [getEmployeeProfiles, getCurrentCompanyProfile]);
   return (
     <Fragment>
       {loading ? (
@@ -23,12 +31,45 @@ const EmployeeProfiles = ({
             talent around you
           </p>
           <div>
-            {profiles.length > 0 ? (
-              profiles.map((profile) => (
-                <EmployeeProfileItem key={profile._id} profile={profile} />
-              ))
+            {profiles.filter(
+              (profile) =>
+                !profile.likedby.some(
+                  (item) => item['user'] === auth.user._id
+                ) &&
+                !profile.dislikedby.some(
+                  (item) => item['user'] === auth.user._id
+                )
+            ).length > 0 ? (
+              profiles
+                .filter(
+                  (profile) =>
+                    !profile.likedby.some(
+                      (item) => item['user'] === auth.user._id
+                    ) &&
+                    !profile.dislikedby.some(
+                      (item) => item['user'] === auth.user._id
+                    )
+                )
+                .map((profile) => (
+                  <EmployeeProfileItem key={profile._id} profile={profile} />
+                ))
             ) : (
-              <h4>No profiles found...</h4>
+              <Fragment>
+                <span>
+                  <img
+                    className='profile-img'
+                    src={profile.image || profile.logo}
+                    alt='You...'
+                  />
+                </span>
+                <h4>No new profiles</h4>
+                <Match
+                  profiles={profiles}
+                  loading={loading}
+                  auth={auth}
+                  profile={profile}
+                />
+              </Fragment>
             )}
           </div>
         </Fragment>
@@ -39,8 +80,10 @@ const EmployeeProfiles = ({
 
 const mapStateToProps = (state) => ({
   profile: state.profile,
+  auth: state.auth,
 });
 
-export default connect(mapStateToProps, { getEmployeeProfiles })(
-  EmployeeProfiles
-);
+export default connect(mapStateToProps, {
+  getEmployeeProfiles,
+  getCurrentCompanyProfile,
+})(EmployeeProfiles);

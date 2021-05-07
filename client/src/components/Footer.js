@@ -13,6 +13,9 @@ const Footer = ({ auth: { isAuthenticated, user, loading }, logout }) => {
         <Link to='/company-dashboard'>Company dashboard</Link>
       </li>
       <li>
+        <Link to='/chats-company'>Chats</Link>
+      </li>
+      <li>
         <a onClick={logout} href='#!'>
           <i className='fas fa-sign-out-alt' />{' '}
           <span className='hide-sm'>Logout</span>
@@ -27,6 +30,9 @@ const Footer = ({ auth: { isAuthenticated, user, loading }, logout }) => {
       </li>
       <li>
         <Link to='/employee-dashboard'>Employee-dashboard</Link>
+      </li>
+      <li>
+        <Link to='/chats'>Chats</Link>
       </li>
       <li>
         <a onClick={logout} href='#!'>
@@ -49,7 +55,7 @@ const Footer = ({ auth: { isAuthenticated, user, loading }, logout }) => {
   );
 
   return (
-    <footer >
+    <footer className="footer">
       {!loading && (
         <Fragment>{isAuthenticated ? (
           user.isCompany?(companyLinks):(employeeLinks)
