@@ -23,7 +23,8 @@ const Match = ({
                 profile.likes.some((item) => item['user'] === auth.user._id)
             ).length > 0 ? (
               <Fragment>
-                <p>We found you a match</p>
+                <h2>Congratulations</h2>{' '}
+                <p>You have earned yourself a Jargon Moment with...</p>
                 {profiles
                   .filter(
                     (profile) =>

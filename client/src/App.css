@@ -4,9 +4,8 @@
 
 .profile {
   align-items: center;
-  grid-gap: 2rem;
-  padding: 1rem;
-  line-height: 1.8;
+  grid-gap: 2rem; 
+  line-height: 1.5;
   margin-bottom: 1rem;
 }
 
@@ -37,7 +36,7 @@
     width: 900px;
     padding: 20px;
     max-width: 85vw;
-    height: 65vh;
+    height: 70vh;
     border-radius: 20px;
     background-size: cover;
     background-position: center;
