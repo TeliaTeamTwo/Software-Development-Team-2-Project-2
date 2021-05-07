@@ -12,8 +12,183 @@ import {
   CLEAR_PROFILE,
   EMPLOYEE_ACCOUNT_DELETED,
   COMPANY_ACCOUNT_DELETED,
+  ADD_LIKEBY,
+  ADD_DISLIKEBY,
+  ADD_LIKE,
+  ADD_DISLIKE,
+  ADD_LIKEBY_COMPANY,
+  ADD_DISLIKEBY_COMPANY,
+  ADD_LIKE_COMPANY,
+  ADD_DISLIKE_COMPANY
 } from './types';
 
+// Add like by
+export const addLikeBy = id => async dispatch => {
+  try {
+    const res = await axios.put(
+      `/api/companyprofile/user/${id}/likedby`
+    );
+
+    dispatch({
+      type: ADD_LIKEBY,
+      payload: { id, likes: res.data }
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Add dislike by
+export const addDislikeBy = id => async dispatch => {
+  try {
+    const res = await axios.put(
+      `/api/companyprofile/user/${id}/dislikedby`
+    );
+
+    dispatch({
+      type: ADD_DISLIKEBY,
+      payload: { id, likes: res.data }
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+// Add like
+export const addLike = id => async dispatch => {
+  try {
+    const res = await axios.put(
+      `/api/companyprofile/user/${id}/likes`
+    );
+
+    dispatch({
+      type: ADD_LIKE,
+      payload: { id, likes: res.data }
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+
+
+// Add dislike
+export const addDislike = id => async dispatch => {
+  try {
+    const res = await axios.put(
+      `/api/companyprofile/user/${id}/dislikes`
+    );
+
+    dispatch({
+      type: ADD_DISLIKE,
+      payload: { id, likes: res.data }
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Add like by
+export const addLikeByCompany = id => async dispatch => {
+  try {
+    const res = await axios.put(
+      `/api/employeeprofile/user/${id}/likedby`
+    );
+
+    dispatch({
+      type: ADD_LIKEBY_COMPANY,
+      payload: { id, likes: res.data }
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Add dislike by
+export const addDislikeByCompany = (id) => async (dispatch) => {
+  try {
+    const res = await axios.put(`/api/employeeprofile/user/${id}/dislikedby`);
+
+    dispatch({
+      type: ADD_DISLIKEBY_COMPANY,
+      payload: { id, likes: res.data },
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Add like
+export const addLikeCompany = (id) => async (dispatch) => {
+  try {
+    const res = await axios.put(`/api/employeeprofile/user/${id}/likes`);
+
+    dispatch({
+      type: ADD_LIKE_COMPANY,
+      payload: { id, likes: res.data },
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+
+
+// Add dislike
+export const addDislikeCompany = (id) => async (dispatch) => {
+  try {
+    const res = await axios.put(`/api/employeeprofile/user/${id}/dislikes`);
+
+    dispatch({
+      type: ADD_DISLIKE_COMPANY,
+      payload: { id, likes: res.data },
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Delete Profile
+export const delProfile = id => async dispatch => {
+  try {
+    const res = await axios.delete(
+      `/api/companyprofile/user/${id}`
+    );
+
+    dispatch({
+      type: ADD_LIKE,
+      payload: { id, likes: res.data }
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
 // Get current employee profile
 export const getCurrentEmployeeProfile = () => async (dispatch) => {
   try {
@@ -33,7 +208,7 @@ export const getCurrentEmployeeProfile = () => async (dispatch) => {
 
 // Get all company profiles
 export const getCompanyProfiles = () => async (dispatch) => {
-  dispatch({ type: CLEAR_PROFILE });
+  
 
   try {
     const res = await axios.get('/api/companyprofile');
@@ -252,7 +427,6 @@ export const getCurrentCompanyProfile = () => async (dispatch) => {
 
 // Get all employee profiles
 export const getEmployeeProfiles = () => async dispatch => {
-  dispatch({ type: CLEAR_PROFILE });
 
   try {
     const res = await axios.get('/api/employeeprofile');

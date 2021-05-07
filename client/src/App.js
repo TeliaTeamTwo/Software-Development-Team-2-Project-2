@@ -18,6 +18,9 @@ import AddEducation from './components/profile-forms/AddEducation';
 import EmployeeDashboard from './components/dashboard/EmployeeDashboard';
 import CompanyDashboard from './components/dashboard/CompanyDashboard';
 import Decision from './components/dashboard/Decision';
+import Chats from './components/chat/Chats';
+import ChatsCompany from './components/chat/ChatsCompany';
+import ChatScreen from './components/chat/ChatScreen';
 import PrivateRoute from './components/routing/PrivateRoute';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
@@ -69,6 +72,9 @@ const App = () => {
                 path='/create-employee-profile'
                 component={CreateEmployeeProfile}
               />
+              <PrivateRoute exact path='/chats' component={Chats} />
+              <PrivateRoute exact path='/chats-company' component={ChatsCompany} />
+              <PrivateRoute path='/chat' component={ChatScreen} />
               <PrivateRoute
                 exact
                 path='/create-company-profile'

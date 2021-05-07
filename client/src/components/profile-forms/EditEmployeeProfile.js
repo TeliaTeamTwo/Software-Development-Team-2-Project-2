@@ -40,7 +40,7 @@ const EditEmployeeProfile = ({
       youtube: loading || !profile.social ? '' : profile.social.youtube,
       github: loading || !profile.social ? '' : profile.social.github,
     });
-  }, [loading]);
+  }, [getCurrentEmployeeProfile, loading]);
 
 
   const {
@@ -48,7 +48,6 @@ const EditEmployeeProfile = ({
     about,
     skills,
     typeOfWork,
-    image,
     location,
     website,
     github,

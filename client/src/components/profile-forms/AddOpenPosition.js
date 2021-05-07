@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addOpenPosition } from '../../actions/profile';
 import './AddOpenPosition.scss';
@@ -45,7 +45,6 @@ const AddOpenPosition = ({ addOpenPosition, history }) => {
             name='title'
             value={title}
             onChange={(e) => onChange(e)}
-            required
           />
         </div>
       </div>

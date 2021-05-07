@@ -17,12 +17,6 @@ const Footer = ({ auth: { isAuthenticated, user, loading }, logout }) => {
       <li>
         <Link to='/company-dashboard'><i class="fas fa-user-circle"></i></Link>
       </li>
-      {/* <li>
-        <a onClick={logout} href='#!'>
-          <i className='fas fa-sign-out-alt' />{' '}
-          <span className='hide-sm'>Logout</span>
-        </a>
-      </li> */}
     </ul>
   );
   const employeeLinks = (
@@ -36,32 +30,15 @@ const Footer = ({ auth: { isAuthenticated, user, loading }, logout }) => {
       <li>
         <Link to='/employee-dashboard'><i class="fas fa-user-circle"></i></Link>
       </li>
-      {/* <li>
-        <a onClick={logout} href='#!'>
-          <i className='fas fa-sign-out-alt' />{' '}
-          <span className='hide-sm'>Logout</span>
-        </a>
-      </li> */}
     </ul>
   );
-
-  // const guestLinks = (
-  //   <ul>
-  //     <li>
-  //       <Link to='/register'>Register</Link>
-  //     </li>
-  //     <li>
-  //       <Link to='/login'>Login</Link>
-  //     </li>
-  //   </ul>
-  // );
 
   const nothing = (
     <div></div>
   );
 
   return (
-    <footer >
+    <footer className="footer">
       {!loading && (
         <Fragment>{isAuthenticated ? (
           user.isCompany?(companyLinks):(employeeLinks)

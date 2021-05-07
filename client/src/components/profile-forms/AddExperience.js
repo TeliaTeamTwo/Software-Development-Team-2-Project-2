@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
-import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { addExperience } from '../../actions/profile';
 import './AddExperience.scss';
 

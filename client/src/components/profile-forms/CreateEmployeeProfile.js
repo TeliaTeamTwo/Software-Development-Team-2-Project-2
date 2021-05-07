@@ -24,7 +24,6 @@ const CreateEmployeeProfile = ({ createEmployeeProfile, history }) => {
     about,
     skills,
     typeOfWork,
-    image,
     location,
     website,
     github,

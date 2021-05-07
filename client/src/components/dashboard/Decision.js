@@ -1,7 +1,7 @@
-import React, { Fragment, useState } from 'react';
+import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Spinner from '../layout/Spinner';
+
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 

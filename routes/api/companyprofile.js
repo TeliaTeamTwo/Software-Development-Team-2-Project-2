@@ -3,6 +3,7 @@ const router = express.Router();
 const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 const CompanyProfile = require('../../models/CompanyProfile');
+const EmployeeProfile = require('../../models/EmployeeProfile');
 const User = require('../../models/User');
 
 // @route    GET api/companyprofile/me
@@ -97,7 +98,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// @route    GET api/profile/user/:user_id
+// @route    GET api/companyprofile/user/:user_id
 // @desc     Get profile by user ID
 // @access   Public
 router.get('/user/:user_id', async (req, res) => {
@@ -119,22 +120,121 @@ router.get('/user/:user_id', async (req, res) => {
   }
 });
 
-// @route    DELETE api/company profile
-// @desc     Delete company profile, user 
+// @route    PUT companyprofile/user/:user_id/likedby
+// @desc     Like a post
 // @access   Private
-router.delete('/', auth, async (req, res) => {
+router.put('/user/:user_id/likedby', auth, async (req, res) => {
   try {
-    // Remove profile
-    await CompanyProfile.findOneAndRemove({ user: req.user.id });
-    // Remove user
-    await User.findOneAndRemove({ _id: req.user.id });
+    const companyprofile = await CompanyProfile.findOne({
+      user: req.params.user_id,
+    });
 
-    res.json({ msg: 'User deleted' });
+    // Check if the company has already been liked
+    if (
+      companyprofile.likedby.filter(
+        (like) => like.user.toString() === req.user.id
+      ).length > 0
+    ) {
+      return res.status(400).json({ msg: 'Company already liked' });
+    }
+
+    companyprofile.likedby.unshift({ user: req.user.id });
+
+    await companyprofile.save();
+
+    res.json(companyprofile.likedby);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
   }
 });
+
+// @route    PUT companyprofile/user/:user_id/dislikedby
+// @desc     Like a post
+// @access   Private
+router.put('/user/:user_id/dislikedby', auth, async (req, res) => {
+  try {
+    const companyprofile = await CompanyProfile.findOne({
+      user: req.params.user_id,
+    });
+
+    // Check if the company has already been disliked
+    if (
+      companyprofile.dislikedby.filter(
+        (dislike) => dislike.user.toString() === req.user.id
+      ).length > 0
+    ) {
+      return res.status(400).json({ msg: 'Company already disliked' });
+    }
+
+    companyprofile.dislikedby.unshift({ user: req.user.id });
+
+    await companyprofile.save();
+
+    res.json(companyprofile.dislikedby);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+// @route    PUT companyprofile/user/:user_id/likes
+// @desc     Like a post
+// @access   Private
+router.put('/user/:user_id/likes', auth, async (req, res) => {
+  try {
+    const employeeprofile = await EmployeeProfile.findOne({
+      user: req.user.id,
+    });
+
+    // Check if the company has already been liked
+    if (
+      employeeprofile.likes.filter(
+        (like) => like.user.toString() === req.params.user_id.toString()
+      ).length > 0
+    ) {
+      return res.status(400).json({ msg: 'Company already liked' });
+    }
+
+    employeeprofile.likes.unshift({ user: req.params.user_id });
+
+    await employeeprofile.save();
+
+    res.json(employeeprofile.likes);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route    PUT companyprofile/user/:user_id/dislikes
+// @desc     Like a post
+// @access   Private
+router.put('/user/:user_id/dislikes', auth, async (req, res) => {
+  try {
+    const employeeprofile = await EmployeeProfile.findOne({
+      user: req.user.id,
+    });
+
+    // Check if the company has already been liked
+    if (
+      employeeprofile.dislikes.filter(
+        (dislike) => dislike.user.toString() === req.params.user_id.toString()
+      ).length > 0
+    ) {
+      return res.status(400).json({ msg: 'Company already disliked' });
+    }
+
+    employeeprofile.dislikes.unshift({ user: req.params.user_id });
+
+    await employeeprofile.save();
+
+    res.json(employeeprofile.dislikes);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 
 // @route    PUT api/companyprofile/openpositions
 // @desc     Add new open position
