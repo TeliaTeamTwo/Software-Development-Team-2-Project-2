@@ -44,7 +44,6 @@ const AddOpenPosition = ({ addOpenPosition, history }) => {
             name='title'
             value={title}
             onChange={(e) => onChange(e)}
-            required
           />
         </div>
         <div>
