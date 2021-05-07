@@ -88,6 +88,7 @@ const EmployeeProfileItem = ({
           </div>
         </div>
       </div>
+  
     </TinderCard>
   );
 };
