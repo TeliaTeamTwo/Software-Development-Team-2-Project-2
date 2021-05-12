@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 
 const CompanyDashboardActions = () => {
   return (
-    <div >
+    <div className="dash-buttons">
       <Link to='/edit-company-profile'>
-        <i class='fas fa-user-circle' /> Edit Profile
+        <button>Edit Profile</button>
       </Link>
       <Link to='/add-open-position' >
-        <i class='fas fa-graduation-cap text-primary' /> Add Open Positions
+        <button>Add Position</button>
       </Link>
     </div>
   );

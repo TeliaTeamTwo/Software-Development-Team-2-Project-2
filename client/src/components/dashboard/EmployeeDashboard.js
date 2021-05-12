@@ -6,12 +6,15 @@ import EmployeeDashboardActions from './EmployeeDashboardActions';
 import Experience from './Experience';
 import Education from './Education';
 import { getCurrentEmployeeProfile, deleteEmployeeAccount } from '../../actions/profile';
+import { logout } from '../../actions/auth';
+import './EmployeeDashboard.scss';
 
 const EmployeeDashboard = ({
   getCurrentEmployeeProfile,
   deleteEmployeeAccount,
   auth: { user },
-  profile: { profile, loading },
+  logout,
+  profile: { profile, loading }, 
 }) => {
   useEffect(() => {
     getCurrentEmployeeProfile();
@@ -21,27 +24,62 @@ const EmployeeDashboard = ({
     <Spinner />
   ) : (
     <Fragment>
-      <h1 className='large text-primary'>Employee Dashboard</h1>
-      <p className='lead'>
-        <i className='fas fa-user' /> Welcome {user && user.name}
-      </p>
+      <section className="employee-profile">     
       {profile !== null ? (
         <Fragment>
-          <EmployeeDashboardActions />
+          <div className="image-header">
+            <img src={profile.image}></img>
+            <div className="header-container">
+              <h1>{user.name}</h1>
+            </div>
+          </div>
+          <div className="profile-text">
+            <div className="text-part location">
+              <p>{profile.location}</p>
+            </div>
+            <div className="text-part status">
+              <p>{profile.status}</p>
+            </div>
+            <div className="text-part">
+              <p>{profile.about}</p>
+            </div>
+            <div className="text-part skills">
+              <label>Top Skills</label>
+                <p>{profile.skills.join(', ')}</p>
+            </div>
+            <div className="text-part typeOfWork">
+              <label>Looking for</label>
+              <p>{profile.typeOfWork} position</p>
+            </div>
+            <div className="text-part links">
+              <label>Links</label>
+              <a href={profile.social.youtube}>{profile.social.youtube}</a>
+              <a href={profile.social.linkedin}>{profile.social.linkedin}</a>
+              <a href={profile.social.github}>{profile.social.github}</a>
+              <a href={profile.social.website}>{profile.social.website}</a>
+            </div>
           <Experience experience={profile.experience} />
           <Education education={profile.qualification} />
-          <div className='my-2'>
+          <EmployeeDashboardActions />
+          <div className="text-part logout">
+            <button className ="logout-btn" onClick={logout} href='#!'>
+            Logout
+            </button>
+          </div>
+          </div>
+          <div className='delete-btn'>
             <button
               className='btn btn-danger'
               onClick={() => deleteEmployeeAccount()}
             >
-              <i className='fas fa-user-minus' /> Delete My Account
+            Delete My Account
             </button>
           </div>
         </Fragment>
       ) : (
         <Redirect to='/create-employee-profile' />
       )}
+      </section>
     </Fragment>
   );
 };
@@ -55,4 +93,5 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   getCurrentEmployeeProfile,
   deleteEmployeeAccount,
+  logout,
 })(EmployeeDashboard);

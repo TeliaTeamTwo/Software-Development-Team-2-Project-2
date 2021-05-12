@@ -6,6 +6,7 @@ import {
   createCompanyProfile,
   getCurrentCompanyProfile,
 } from '../../actions/profile';
+import './EditCompanyProfile.scss';
 
 const EditCompanyProfile = ({
   profile: { profile, loading },
@@ -48,50 +49,64 @@ const EditCompanyProfile = ({
 
   return (
     <Fragment>
-      <h1>Edit Your Profile</h1>
+      <section className="edit-company-profile-page">
+      <h1>Edit Profile</h1>
 
-      <small>* = required field</small>
-      <form onSubmit={(e) => onSubmit(e)}>
-        <div>
-          <FileBase
-            id='logo'
-            type='file'
-            multiple={false}
-            onDone={({ base64 }) => setFormData({ ...formData, logo: base64 })}
-          />
-          <small>*Your companmy's logo</small>
+      <form className="company-form" onSubmit={(e) => onSubmit(e)}>
+        <label>Company logo*</label>
+        <div className="company-form-image">
+          <div className="filebase-btn">
+            <div>
+              <FileBase
+                id='logo'
+                type='file'
+                multiple={false}
+                onDone={({ base64 }) => setFormData({ ...formData, logo: base64 })}
+              />
+            </div>
+          </div>
         </div>
-        <div>
+
+        <div className="company-form-input">
+          <label>Location*</label>
           <input
             type='text'
-            placeholder='*Location'
             name='location'
             value={location}
             onChange={(e) => onChange(e)}
           />
-          <small>City & Country suggested (eg. Helsinki, Finland)</small>
         </div>
 
-        <div>
-          <textarea name='about' value={about} onChange={(e) => onChange(e)} />
-          <small>Tell us a little about your Company</small>
+        <div className="company-form-input">
+          <label>Description</label>
+          <div>
+            <textarea name='about' value={about} onChange={(e) => onChange(e)} />
+          </div>
         </div>
 
-        <div>
-          <i className='fab fa-website fa-2x' />
-          <input
-            type='text'
-            placeholder='Website URL'
-            name='website'
-            value={website}
-            onChange={(e) => onChange(e)}
-          />
-          <small>Company's website URL</small>
+        <div className="company-form-input">
+          <label>Company website</label>
+          <div>
+            {/* <i className='fab fa-website fa-2x' /> */}
+            <input
+              type='text'
+              name='website'
+              value={website}
+              onChange={(e) => onChange(e)}
+            />
+          </div>
         </div>
 
-        <input type='submit' className='btn btn-primary my-1' />
-        <Link to='/company-dashboard'>Go Back</Link>
+        <div className="required-field">
+          <p>All required fields are marked with *</p>
+        </div>
+
+        <input type='submit' className='submit-btn' />
+        <Link to='/company-dashboard'>
+          <button className="goback-btn">Go Back</button>
+        </Link>
       </form>
+      </section>
     </Fragment>
   );
 };

@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../actions/alert';
 import { register } from '../actions/auth';
+import './Register.scss';
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -32,76 +33,84 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
    }
   return (
     <Fragment>
+      <div className="register-page">
       <h1>Sign Up</h1>
-      <p>
-        <i className='fas fa-user' /> Create Your Account
-      </p>
-      <form onSubmit={(e) => onSubmit(e)}>
-        <div>
+      <form className="register-form" onSubmit={(e) => onSubmit(e)}>
+        <div className="register-input">
+          <label>Name/Company</label>
           <input
+            className="form-input"
             type='text'
-            placeholder='Name'
             name='name'
             value={name}
             onChange={(e) => onChange(e)}
           />
         </div>
-        <div>
+        <div className="register-input">
+          <label>E-mail</label>
           <input
+            className="form-input"
             type='email'
-            placeholder='Email Address'
             name='email'
             value={email}
             onChange={(e) => onChange(e)}
           />
         </div>
-        <div>
+        <div className="register-input">
+          <label>Password</label>
           <input
+            className="form-input"
             type='password'
-            placeholder='Password'
             name='password'
             value={password}
             onChange={(e) => onChange(e)}
             required
           />
         </div>
-        <div>
+        <div className="register-input">
+          <label>Confirm password</label>
           <input
+            className="form-input"
             type='password'
-            placeholder='Confirm Password'
             name='password2'
             value={password2}
             onChange={(e) => onChange(e)}
             required
           />
         </div>
-        <div>
+          <div className="register-input-radio">
+          <label for='true'>
+          Company Profile
+          </label>
             <input
+              className="radio-btn"
               type='radio'
               name='isCompany'
               value='true'
               onChange={(e) => onChange(e)}
             />
           </div>
-          <label for='true'>
-              Company Profile
+          <div className="register-input-radio">
+          <label for='false'>
+          Employee Profile
           </label>
-          <div>
             <input
+              className="radio-btn"
               type='radio'
               name='isCompany'
               value='false'
               onChange={(e) => onChange(e)}
             />
           </div>
-          <label for='false'>
-              Employee Profile
-          </label>
-        <input type='submit' value='Register' />
+        <input className="register-btn" type='submit' value='Register' />
       </form>
-      <p>
-        Already have an account? <Link to='/login'>Sign In</Link>
-      </p>
+      <div className="yes-account">
+        <p>
+          Already have an account? 
+        </p>
+        <Link to='/login'><button>Sign In</button></Link>
+      </div>
+      </div>
     </Fragment>
   );
 };

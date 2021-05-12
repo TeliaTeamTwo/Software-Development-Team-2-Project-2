@@ -1,0 +1,80 @@
+@import '../variables';
+
+@media (max-width: 576px) {
+  .login-page {
+    height: 100vh;
+    background-color: $primary-color;
+    h1 {
+      font-family: $secondary-font;
+      font-size: 64px;
+      color: $light-color;
+      font-weight: lighter;
+      text-align: center;
+      padding: 2rem;
+    }
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 4rem;
+      .login-input {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin: 1rem;
+        label {
+          color: $light-color;
+          font-family: $primary-font;
+          font-size: 18px;
+          font-weight: lighter;
+        }
+        input {
+          width: 15rem;
+          height: 3rem;
+          font-size: 24px;
+          font-family: $primary-font;
+          background-color: $light-color;
+          color: $secondary-color;
+          border: 2px solid $secondary-color;
+          border-radius: 5px;
+        }
+      }
+      .login-btn {
+        input {
+          width: 15rem;
+          height: 3rem;
+          font-size: 24px;
+          font-family: $primary-font;
+          background-color: $light-color;
+          color: $secondary-color;
+          border: 2px solid $secondary-color;
+          border-radius: 5px;
+          margin: 2rem;
+        }
+      }
+    }
+    .no-account {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 3rem;
+      p {
+        color: $light-color;
+        font-size: 18px;
+        padding: 1rem;
+      }
+      button {
+        width: 15rem;
+        height: 3rem;
+        font-size: 24px;
+        font-family: $primary-font;
+        background-color: $light-color;
+        color: $secondary-color;
+        border: 2px solid $secondary-color;
+        border-radius: 5px;
+      }
+    }
+  }
+}

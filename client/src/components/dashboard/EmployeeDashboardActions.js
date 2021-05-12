@@ -1,17 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './EmployeeDashboardActions.scss';
 
 const EmployeeDashboardActions = () => {
   return (
     <div class='dash-buttons'>
-      <Link to='/edit-employee-profile' class='btn btn-light'>
-        <i class='fas fa-user-circle text-primary' /> Edit Profile
+      <Link to='/edit-employee-profile'>
+        <button>Edit Profile</button>
       </Link>
-      <Link to='/add-experience' class='btn btn-light'>
-        <i class='fab fa-black-tie text-primary' /> Add Experience
+      <Link to='/add-experience'>
+        <button>Add Experience</button>
       </Link>
-      <Link to='/add-education' class='btn btn-light'>
-        <i class='fas fa-graduation-cap text-primary' /> Add Education
+      <Link to='/add-education'>
+        <button>Add Education</button>
       </Link>
     </div>
   );

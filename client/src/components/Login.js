@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../actions/auth';
+import './Login.scss';
 
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -24,36 +25,40 @@ const Login = ({ login, isAuthenticated }) => {
   }
   return (
     <Fragment>
-      <h1>Sign In</h1>
-      <p>
-        <i className='fas fa-user' /> Sign Into Your Account
-      </p>
-      <form onSubmit={(e) => onSubmit(e)}>
-        <div>
+      <div className="login-page">
+      <h1>Log In</h1>
+      <form className="login-form" onSubmit={(e) => onSubmit(e)}>
+        <div className="login-input">
+          <label>E-mail</label>
           <input
             type='email'
-            placeholder='Email Address'
             name='email'
             value={email}
             onChange={(e) => onChange(e)}
             required
           />
         </div>
-        <div>
+        <div className="login-input">
+          <label>Password</label>
           <input
             type='password'
-            placeholder='Password'
             name='password'
             value={password}
             onChange={(e) => onChange(e)}
             minLength='6'
           />
         </div>
-        <input type='submit' value='Login' />
+        <div className="login-btn">
+        <input type='submit' value='Log In' />
+        </div>
       </form>
-      <p>
-        Don't have an account? <Link to='/register'>Sign Up</Link>
-      </p>
+      <div className="no-account">
+        <p>
+          Don't have an account?
+        </p>
+        <Link to='/register'><button>Sign Up</button></Link>
+      </div>
+    </div>
     </Fragment>
   );
 };
