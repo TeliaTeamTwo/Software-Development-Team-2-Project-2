@@ -1,10 +1,10 @@
-.alert-danger{
-    color: red;
+.alert-danger {
+  color: red;
 }
 
 .profile {
   align-items: center;
-  grid-gap: 2rem; 
+  grid-gap: 2rem;
   line-height: 1.5;
   margin-bottom: 1rem;
 }
@@ -14,109 +14,106 @@
 }
 
 .profile-img {
-    height: 100px;
-    object-fit: contain;
+  height: 100px;
+  object-fit: contain;
 }
 
 .swipe {
-    position: absolute;
+  position: absolute;
 }
-
 
 .tinderCards__cardContainer {
-    display: flex;
-    justify-content: center;
-    margin-top: 5vh;
+  display: flex;
+  justify-content: center;
+  margin-top: 5vh;
 }
 
+/* .card {
+  background-color: white;
+  position: relative;
+  width: 900px;
+  padding: 20px;
+  max-width: 85vw;
+  height: 70vh;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  overflow-y: scroll;
+  position: absolute;
+  box-shadow: 0px 18px 53px 0px rgba(0, 0, 0, 0.3);
+} */
 
-.card {
-    background-color: white;
-    position: relative;
-    width: 900px;
-    padding: 20px;
-    max-width: 85vw;
-    height: 70vh;
-    border-radius: 20px;
-    background-size: cover;
-    background-position: center;
-    overflow-y:scroll;
-    position:absolute;
-    box-shadow: 0px 18px 53px 0px rgba(0,0,0,0.3)
-} 
-
-.footer{
+.footer {
   position: fixed;
-    bottom: 0vh;
-    width:100%;
+  bottom: 0vh;
+  width: 100%;
 }
-
 
 #actions {
-	padding-top: 10px;
-	padding-bottom: 10px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 10px;
   position: fixed;
   top: 8vh;
-  width:100%;
+  width: 100%;
 }
 
 #actions button {
-	width: 50px;
-	height: 50px;
-	margin-right: 30px;
-	padding: 12px;
-	border: 0;
-	border-radius: 50px;
-	background-color: white;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	float: left;
-	cursor: pointer;
-	box-shadow: 0 2px 3px 0 rgba(0,0,0,0.1);
+  width: 50px;
+  height: 50px;
+  margin-right: 30px;
+  padding: 12px;
+  border: 0;
+  border-radius: 50px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  float: left;
+  cursor: pointer;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
 }
 
 #actions button img {
-	width: 100%;
-	height: auto;
+  width: 100%;
+  height: auto;
 }
 
 #actions button:nth-of-type(2),
 #actions button:nth-of-type(3) {
-	width: 60px;
-	height: 60px;
-	padding: 15px;
+  width: 60px;
+  height: 60px;
+  padding: 15px;
 }
 
 #lonely {
-	padding: 10px;
-	border-radius: 1px;
-	background-color: white;
-	border-top: 1px solid #eee;
+  padding: 10px;
+  border-radius: 1px;
+  background-color: white;
+  border-top: 1px solid #eee;
 }
 
 #liked-people {
-	margin: auto;
-	overflow: hidden;
+  margin: auto;
+  overflow: hidden;
 }
 
 #liked-people .liked-person {
-	display: inline-block;
-	width: 33%;
-	margin-top: 10px;
+  display: inline-block;
+  width: 33%;
+  margin-top: 10px;
 }
 
 #liked-people .liked-person-image {
-	border-radius: 5px;
+  border-radius: 5px;
 }
 
 #liked-people .liked-person-image img {
-	width: 140px;
-	height: 100px;
-	object-fit: cover;
-	object-position: 50% 50%;
+  width: 140px;
+  height: 100px;
+  object-fit: cover;
+  object-position: 50% 50%;
 }

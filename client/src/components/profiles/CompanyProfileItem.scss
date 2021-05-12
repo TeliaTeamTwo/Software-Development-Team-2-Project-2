@@ -1,0 +1,61 @@
+@import "../../variables";
+
+@media (max-width: 576px) {
+  body {
+    background-color: $primary-color;
+  }
+  .profile-swipe {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .card {
+      background-color: $primary-color;
+      font-family: $primary-font;
+      color: $light-color;
+      position: absolute;
+      top: 1rem;
+      width: 900px;
+      padding: 20px;
+      max-width: 95vw;
+      min-height: 80vh;
+      border: 1px solid $light-color;
+      border-radius: 5px;
+      background-size: cover;
+      background-position: center;
+      //   overflow-y: scroll;
+      //   box-shadow: 0px 0px 5px $light-color;
+    }
+    .profile-img {
+      height: 12rem;
+      max-width: 50vw;
+      margin: 1rem;
+    }
+    .h2-container {
+      background-color: $light-color;
+      border-radius: 5px;
+      h2 {
+        font-family: $secondary-font;
+        color: $primary-color;
+        letter-spacing: 0.1rem;
+        font-size: 3rem;
+        font-weight: lighter;
+      }
+    }
+    h3 {
+      font-size: 2rem;
+      font-weight: lighter;
+    }
+    p {
+      font-size: 1.5rem;
+    }
+    button {
+      color: $highlight-color;
+      height: 4rem;
+      width: 4rem;
+      margin: 1rem 0.5rem;
+      border: none;
+      border-radius: 50%;
+    }
+  }
+}
