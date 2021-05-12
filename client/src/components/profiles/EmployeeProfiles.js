@@ -55,13 +55,6 @@ const EmployeeProfiles = ({
                 ))
             ) : (
               <Fragment>
-                <span>
-                  <img
-                    className='profile-img'
-                    src={profile.image || profile.logo}
-                    alt='You...'
-                  />
-                </span>
                 <h4>No new profiles</h4>
                 <Match
                   profiles={profiles}

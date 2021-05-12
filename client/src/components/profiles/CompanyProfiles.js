@@ -26,6 +26,10 @@ const CompanyProfiles = ({
       ) : (
         <Fragment>
           <h1>Company Profiles</h1>
+          <p>
+            <i className='fab fa-connectdevelop' /> Browse and connect with
+            companies around you
+          </p>
           <div>
             {profiles.filter(
               (profile) =>
@@ -56,13 +60,6 @@ const CompanyProfiles = ({
                 ))
             ) : (
               <Fragment>
-                <span>
-                  <img
-                    className='profile-img'
-                    src={profile.image || profile.logo}
-                    alt='You...'
-                  />
-                </span>
                 <h4>No new profiles</h4>
                 <Match
                   profiles={profiles}

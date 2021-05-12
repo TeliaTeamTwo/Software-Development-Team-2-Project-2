@@ -21,8 +21,20 @@ const EmployeeProfileItem = ({
     experience
   },
 }) => {
+  const onSwipe = (direction) => {
+    if(direction==='left'){
+      addDislikeCompany(_id);
+      addDislikeByCompany(_id);
+    }else if(direction==='right'){
+      addLikeByCompany(_id);addLikeCompany(_id);
+    }
+  };
   return (
-    <TinderCard className='profile swipe' preventSwipe={['up', 'down']}>
+    <TinderCard
+      className='profile swipe'
+      onSwipe={onSwipe}
+      preventSwipe={['up', 'down']}
+    >
       <div className='card'>
         <img src={image} alt='' className='round-img profile-img' />
         <div>
@@ -63,31 +75,36 @@ const EmployeeProfileItem = ({
               <h3>No Experience Credentials</h3>
             )}
           </div>
-          <div>
-            <button
-              type='button'
-              onClick={(e) => {
-                addLikeByCompany(_id);
-                addLikeCompany(_id);
-              }}
-            >
-              <i class='fas fa-thumbs-up fa-2x' />{' '}
-            </button>
-            <button type='button'>
-              <i
-                class='fas fa-heart fa-2x'
-                onClick={(e) => {
-                  addLikeByCompany(_id);
-                  addLikeCompany(_id);
-                }}
-              />{' '}
-            </button>
-            <button type='button' onClick={(e) => {addDislikeCompany(_id); addDislikeByCompany(_id);}}>
-              <i class='fas fa-thumbs-down fa-2x' />
-            </button>
-          </div>
+          <div></div>
         </div>
       </div>
+      <button
+        type='button'
+        onClick={(e) => {
+          addLikeByCompany(_id);
+          addLikeCompany(_id);
+        }}
+      >
+        <i class='fas fa-thumbs-up fa-2x' />{' '}
+      </button>
+      <button type='button'>
+        <i
+          class='fas fa-heart fa-2x'
+          onClick={(e) => {
+            addLikeByCompany(_id);
+            addLikeCompany(_id);
+          }}
+        />{' '}
+      </button>
+      <button
+        type='button'
+        onClick={(e) => {
+          addDislikeCompany(_id);
+          addDislikeByCompany(_id);
+        }}
+      >
+        {' '}
+      </button>
     </TinderCard>
   );
 };

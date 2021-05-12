@@ -15,7 +15,7 @@ const Lonely = ({
        <Spinner/>
       ) : (
         <Fragment>
-          <p>People you liked...let's hope they like you</p>
+          <p>Profiles you liked...let's hope they like you</p>
           {profiles
             .filter((profile) =>
               profile.likedby.some(
