@@ -1,0 +1,18 @@
+@import '../variables';
+
+@media (max-width: 576px) {
+  .lonely {
+    background-color: $primary-color;
+    font-family: $primary-font;
+    color: $light-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1rem;
+    p {
+      font-size: 26px;
+      font-family: $secondary-font;
+    }
+  }
+}
