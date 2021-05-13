@@ -8,6 +8,7 @@ import {
   getEmployeeProfiles,
   getCurrentCompanyProfile,
 } from '../../actions/profile';
+import './EmployeeProfiles.scss';
 
 const EmployeeProfiles = ({
   getEmployeeProfiles,
@@ -25,11 +26,7 @@ const EmployeeProfiles = ({
         <Spinner />
       ) : (
         <Fragment>
-          <h1>Employee Profiles</h1>
-          <p>
-            <i className='fab fa-connectdevelop' /> Browse and connect with
-            talent around you
-          </p>
+          <h1 className="browse-employees">Browse Employees</h1>
           <div>
             {profiles.filter(
               (profile) =>
@@ -55,14 +52,14 @@ const EmployeeProfiles = ({
                 ))
             ) : (
               <Fragment>
-                <span>
+                <div className="own-profile">
                   <img
                     className='profile-img'
                     src={profile.image || profile.logo}
                     alt='You...'
                   />
-                </span>
-                <h4>No new profiles</h4>
+                <h4>No new talent to Jargon with!</h4>
+                </div>
                 <Match
                   profiles={profiles}
                   loading={loading}

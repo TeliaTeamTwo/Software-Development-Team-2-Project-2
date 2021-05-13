@@ -17,7 +17,7 @@ const Lonely = ({
        <Spinner/>
       ) : (
         <Fragment>
-          <p>Companies you have liked</p>
+          <p>Profiles you have liked</p>
           {profiles
             .filter((profile) =>
               profile.likedby.some(
