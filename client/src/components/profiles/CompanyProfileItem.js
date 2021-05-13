@@ -32,6 +32,7 @@ const CompanyProfileItem = ({
           <div className="profile-details">
             <div className="h2-container">
               <h2>{name}</h2>
+              <h3 className='location'>Location: {location && <span>{location}</span>}</h3>
             </div>
 
             <div>
@@ -57,7 +58,6 @@ const CompanyProfileItem = ({
               <i class='fas fa-thumbs-down fa-3x' />
             </button>
           </div>
-            <h3 className='location'>Location: {location && <span>{location}</span>}</h3>
             <p>{about && <span>{about}</span>}</p>
             {openPositions.length > 0 ? (
               <Fragment>

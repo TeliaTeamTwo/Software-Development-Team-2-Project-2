@@ -45,6 +45,7 @@
 
 .footer {
   position: fixed;
+  z-index: 1000;
   bottom: 0vh;
   width: 100%;
 }

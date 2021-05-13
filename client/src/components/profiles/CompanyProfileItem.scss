@@ -5,6 +5,8 @@
     background-color: $primary-color;
   }
   .profile-swipe {
+    position: relative;
+    z-index: 1000;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -13,10 +15,8 @@
       background-color: $primary-color;
       font-family: $primary-font;
       color: $light-color;
-      position: absolute;
-      top: 1rem;
       width: 900px;
-      padding: 20px;
+      padding: 1rem 1rem 5rem 1rem;
       max-width: 95vw;
       min-height: 100vh;
       border: 1px solid $light-color;
@@ -36,6 +36,7 @@
     .h2-container {
       background-color: $light-color;
       border-radius: 5px;
+      padding: 1rem;
       h2 {
         font-family: $secondary-font;
         color: $primary-color;
@@ -43,11 +44,13 @@
         font-size: 3rem;
         font-weight: lighter;
       }
+      h3.location {
+        color: $primary-color;
+      }
     }
     h3 {
       font-size: 1.5rem;
       font-weight: lighter;
-      margin-bottom: 1rem;
     }
     p {
       font-size: 1rem;
@@ -63,10 +66,7 @@
     h3.open-positions {
       font-family: $secondary-font;
       font-size: 2rem;
-      margin-top: 2rem;
-    }
-    p:last-child {
-      margin-bottom: 5rem;
+      margin: 2rem 1rem 1rem 1rem;
     }
   }
 }

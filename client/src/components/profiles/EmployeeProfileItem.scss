@@ -1,0 +1,95 @@
+@import "../../variables";
+
+@media (max-width: 576px) {
+  body {
+    background-color: $primary-color;
+  }
+  .profile-swipe {
+    position: relative;
+    z-index: 1000;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .card {
+      position: absolute;
+      top: 0;
+      background-color: $primary-color;
+      font-family: $primary-font;
+      color: $light-color;
+      width: 900px;
+      padding: 1rem 1rem 5rem 1rem;
+      max-width: 95vw;
+      min-height: 100vh;
+      border: none;
+      // border: 1px solid $light-color;
+      border-radius: 5px;
+      background-size: cover;
+      background-position: center;
+      //   overflow-y: scroll;
+      //   box-shadow: 0px 0px 5px $light-color;
+      .profile-img {
+        position: relative;
+        z-index: 1;
+        height: 18rem;
+        width: 18rem;
+        margin: 1rem 0 -1rem 0;
+        border: 2px solid $primary-color;
+        border-radius: 50%;
+      }
+      .h2-container {
+        position: relative;
+        z-index: 10;
+        background-color: $light-color;
+        border: 1px solid $primary-color;
+        border-radius: 5px;
+        padding: 1rem;
+        h2 {
+          font-family: $secondary-font;
+          color: $primary-color;
+          letter-spacing: 0.1rem;
+          font-size: 3rem;
+          font-weight: lighter;
+        }
+        h3.location {
+          color: $primary-color;
+        }
+      }
+      h3.section-headings {
+        font-size: 1.5rem;
+        font-weight: lighter;
+        text-align: justify;
+        margin: 2rem 0 1rem 0;
+        color: $highlight-color;
+      }
+      .top-skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem 3rem;
+        width: 90vw;
+        justify-content: stretch;
+      }
+      .info-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem 3rem;
+        width: 90vw;
+        justify-content: stretch;
+        text-align: left;
+      }
+      p {
+        font-size: 1rem;
+        margin: 1rem 0;
+        text-align: justify;
+      }
+      button {
+        color: $highlight-color;
+        height: 5rem;
+        width: 5rem;
+        margin: 2rem 0.5rem 1.5rem 0.5rem;
+        border: none;
+        border-radius: 50%;
+      }
+    }
+  }
+}
