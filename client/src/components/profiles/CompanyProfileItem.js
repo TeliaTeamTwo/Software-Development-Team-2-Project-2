@@ -57,12 +57,11 @@ const CompanyProfileItem = ({
               <i class='fas fa-thumbs-down fa-3x' />
             </button>
           </div>
-
-            <h3 className='my-1'>{location && <span>{location}</span>}</h3>
+            <h3 className='location'>Location: {location && <span>{location}</span>}</h3>
             <p>{about && <span>{about}</span>}</p>
             {openPositions.length > 0 ? (
               <Fragment>
-                <h3>Open Positions</h3>
+                <h3 className="open-positions">Open Positions</h3>
                 {openPositions.map((openPosition) => (
                   <OpenPosition
                     key={openPosition._id}

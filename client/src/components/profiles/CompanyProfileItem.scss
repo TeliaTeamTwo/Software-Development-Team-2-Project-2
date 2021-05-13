@@ -18,7 +18,7 @@
       width: 900px;
       padding: 20px;
       max-width: 95vw;
-      min-height: 80vh;
+      min-height: 100vh;
       border: 1px solid $light-color;
       border-radius: 5px;
       background-size: cover;
@@ -27,9 +27,11 @@
       //   box-shadow: 0px 0px 5px $light-color;
     }
     .profile-img {
-      height: 12rem;
-      max-width: 50vw;
-      margin: 1rem;
+      height: 18rem;
+      width: 18rem;
+      // margin: 1rem;
+      border: 2px solid $primary-color;
+      border-radius: 50%;
     }
     .h2-container {
       background-color: $light-color;
@@ -43,11 +45,12 @@
       }
     }
     h3 {
-      font-size: 2rem;
+      font-size: 1.5rem;
       font-weight: lighter;
+      margin-bottom: 1rem;
     }
     p {
-      font-size: 1.5rem;
+      font-size: 1rem;
     }
     button {
       color: $highlight-color;
@@ -56,6 +59,14 @@
       margin: 1rem 0.5rem;
       border: none;
       border-radius: 50%;
+    }
+    h3.open-positions {
+      font-family: $secondary-font;
+      font-size: 2rem;
+      margin-top: 2rem;
+    }
+    p:last-child {
+      margin-bottom: 5rem;
     }
   }
 }
