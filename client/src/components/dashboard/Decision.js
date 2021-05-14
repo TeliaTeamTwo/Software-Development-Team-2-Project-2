@@ -1,31 +1,26 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useEffect} from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
-import { register } from '../../actions/auth';
+import { register, loadUser } from '../../actions/auth';
 
 const Decision = ({
   auth: { user },
   profile: { loading, profile },
-}) => {
+}
+
+) => {
+  useEffect(() => {
+    loadUser();
+  }, [loadUser]);
   return (
     <Fragment>
-      loading ? (<h1>Loading...</h1>) :{' '}
-      {user.isCompany ? (
+      {loading && (<h1>Loading...</h1>) };
+      {
         <Fragment>
-          profile?(
-          <Redirect to='/employee-profiles' />
-          ):(
-          <Redirect to='/create-company-profile' />)
+          <Redirect to='/welcome' />
         </Fragment>
-      ) : (
-        <Fragment>
-          profile?(
-          <Redirect to='/company-profiles' />
-          ):(
-          <Redirect to='/create-employee-profile' />)
-        </Fragment>
-      )}
+   }
     </Fragment>
   );
 }
@@ -35,4 +30,6 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, {setAlert, register})(Decision);
+export default connect(mapStateToProps, { setAlert, register, loadUser})(
+  Decision
+);

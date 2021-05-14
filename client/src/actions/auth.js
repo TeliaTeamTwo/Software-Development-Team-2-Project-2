@@ -80,7 +80,6 @@ export const login = (email, password) => async dispatch => {
       payload: res.data
     });
     
-    window.location.reload();
     dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;

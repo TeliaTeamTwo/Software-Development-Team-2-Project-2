@@ -45,7 +45,7 @@ const EmployeeProfileItem = ({
           <p>{about && <span>{about}</span>}</p>
           <h3>Top Skills</h3>
           <div>
-            {skills.map((skill, index) => (
+            {skills && skills.map((skill, index) => (
               <div key={index} className='p-1'>
                 <i className='fas fa-check' /> {skill}
               </div>
