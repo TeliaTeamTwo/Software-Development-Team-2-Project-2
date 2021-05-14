@@ -60,14 +60,12 @@ const EmployeeProfileItem = ({
           <p>{about && <span>{about}</span>}</p>
           <h3 className="section-headings">Top Skills</h3>
             <div className="top-skills">
-              {/* <div className="skills-row"> */}
               {skills.map((skill, index) => (
                 <div key={index} className='p-1'>
                   <i className='fas fa-check' /> {skill}
                 </div>
               ))}
-              {/* </div> */}
-          </div>
+            </div>
           <div>
             {qualification.length > 0 ? (
               <Fragment>

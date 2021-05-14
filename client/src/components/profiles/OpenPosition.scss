@@ -14,6 +14,15 @@
     p.min-experience {
       margin: 0;
     }
+    p.skills {
+      margin: 0;
+    }
+    .position-skills {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     p.job-description {
       text-align: justify;
     }

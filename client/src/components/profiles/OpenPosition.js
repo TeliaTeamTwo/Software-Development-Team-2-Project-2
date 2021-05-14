@@ -2,7 +2,7 @@ import React from 'react';
 import './OpenPosition.scss';
 
 const OpenPosition = ({
-    openPosition: {title, location, description, minExperience, contractType}
+    openPosition: {title, location, description, skills, minExperience, contractType}
 }) => {
     return (
       <div className="position-container">
@@ -12,6 +12,7 @@ const OpenPosition = ({
         </h3>
         <p className="contract-type">{contractType}</p>
         <p className="min-experience">Minimun Experience: {minExperience} years</p>
+        <p className="skills">Top Skills: {skills}</p>
         <p className="job-description">{description}</p>
       </div>
     );
