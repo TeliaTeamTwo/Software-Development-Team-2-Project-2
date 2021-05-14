@@ -1,0 +1,21 @@
+@import "../../variables";
+
+@media (max-width: 576px) {
+  .position-container {
+    text-align: left;
+    .position-title {
+      margin: 1rem 0 0 0;
+      font-size: 1.5rem;
+    }
+    p.contract-type {
+      margin: 0;
+      padding: 0;
+    }
+    p.min-experience {
+      margin: 0;
+    }
+    p.job-description {
+      text-align: justify;
+    }
+  }
+}

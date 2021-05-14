@@ -55,18 +55,15 @@
     p {
       font-size: 1rem;
     }
-    button {
-      color: $highlight-color;
-      height: 4rem;
-      width: 4rem;
-      margin: 1rem 0.5rem;
-      border: none;
-      border-radius: 50%;
-    }
-    h3.open-positions {
-      font-family: $secondary-font;
-      font-size: 2rem;
-      margin: 2rem 1rem 1rem 1rem;
+    .open-positions {
+      text-align: left;
+      align-items: flex-start;
+      margin-top: 2rem;
+      h3.heading {
+        color: $highlight-color;
+        font-family: $secondary-font;
+        font-size: 2rem;
+      }
     }
   }
 }

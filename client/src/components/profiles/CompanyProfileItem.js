@@ -35,42 +35,22 @@ const CompanyProfileItem = ({
               <h3 className='location'>Location: {location && <span>{location}</span>}</h3>
             </div>
 
-            <div>
-            <button
-              type='button'
-              onClick={(e) => {
-                addLikeBy(_id);
-                addLike(_id);
-              }}
-            >
-              <i class='fas fa-thumbs-up fa-3x' />{' '}
-            </button>
-            <button type='button'>
-              <i
-                class='fas fa-grin-hearts fa-3x'
-                onClick={(e) => {
-                  addLikeBy(_id);
-                  addLike(_id);
-                }}
-              />{' '}
-            </button>
-            <button type='button' onClick={(e) => {addDislike(_id); addDislikeBy(_id)}}>
-              <i class='fas fa-thumbs-down fa-3x' />
-            </button>
-          </div>
-            <p>{about && <span>{about}</span>}</p>
             {openPositions.length > 0 ? (
               <Fragment>
-                <h3 className="open-positions">Open Positions</h3>
-                {openPositions.map((openPosition) => (
-                  <OpenPosition
-                    key={openPosition._id}
-                    openPosition={openPosition}
-                  />
-                ))}
+                <div className="open-positions">
+                  <h3 className="heading">Open Position</h3>
+                  {openPositions.map((openPosition) => (
+                    <OpenPosition
+                      key={openPosition._id}
+                      openPosition={openPosition}
+                    />
+                  ))}
+                <h3 className="heading">About the company</h3>
+                <p>{about && <span>{about}</span>}</p>
+                </div>
               </Fragment>
             ) : (
-              <h4>No Open Positions</h4>
+              <h3 className="open-positions">No Open Positions</h3>
             )}
           </div>
         </div>
