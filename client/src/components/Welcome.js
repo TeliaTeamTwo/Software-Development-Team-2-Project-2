@@ -8,10 +8,9 @@ const Welcome = () => {
     <div className='landing-page'>
       <JargonLogo />
       <h2>
-        Welcome to Jargon Moment! We connect companies with IT rock stars and
-        unicorns.
+        Hooray! Wecome to Jargon Moment family
       </h2>
-      <h3>You are logged in</h3>
+      <h3>You can create your own profile and start browsing.</h3>
     </div>
   );
 };
