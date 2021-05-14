@@ -1,7 +1,7 @@
 @import '../variables';
 
 @media (max-width: 576px) {
-  .lonely {
+  .match {
     background-color: $primary-color;
     font-family: $primary-font;
     color: $light-color;
@@ -11,9 +11,15 @@
     justify-content: center;
     padding-top: 1rem;
     min-height: 80vh;
-    p {
+    h2 {
       font-size: 26px;
       font-family: $secondary-font;
+      font-weight: lighter;
+      padding-bottom: 1rem;
+    }
+    p {
+      font-size: 20px;
+      text-align: center;
     }
   }
 }

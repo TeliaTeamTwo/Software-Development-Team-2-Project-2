@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import Spinner from './layout/Spinner';
 import LikedPerson from './LIkedPerson';
 import Lonely from './Lonely';
+import './Match.scss';
 
 const Match = ({
   auth,
@@ -23,6 +24,7 @@ const Match = ({
                 profile.likes.some((item) => item['user'] === auth.user._id)
             ).length > 0 ? (
               <Fragment>
+                <section className="match">
                 <h2>Congratulations</h2>{' '}
                 <p>You have earned yourself a Jargon Moment with...</p>
                 {profiles
@@ -42,6 +44,7 @@ const Match = ({
                       className='tinderCards__cardContainer'
                     />
                   ))}
+                  </section>
               </Fragment>
             ) : (
               <Fragment>
