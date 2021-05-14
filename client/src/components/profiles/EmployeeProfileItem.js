@@ -28,11 +28,11 @@ const EmployeeProfileItem = ({
         <img src={image} alt='' className='profile-img' />
         <div className="profile-details">
         <div className="h2-container">
-              <h2>{name}</h2>
-              <h3 className='location'>Location: {location && <span>{location}</span>}</h3>
-            </div>
+          <h2>{name}</h2>
+          <h3 className='location'>Location: {location && <span>{location}</span>}</h3>
+        </div>
 
-          <div>
+          {/* <div>
             <button
               type='button'
               onClick={(e) => {
@@ -54,8 +54,9 @@ const EmployeeProfileItem = ({
             <button type='button' onClick={(e) => {addDislikeCompany(_id); addDislikeByCompany(_id);}}>
               <i class='fas fa-thumbs-down fa-3x' />
             </button>
-          </div>
-          <h3 className="type-of-work">Looking for: {typeOfWork}</h3>
+          </div> */}
+
+          <h3 className="type-of-work">Interested in: {typeOfWork}</h3>
           <p>{about && <span>{about}</span>}</p>
           <h3 className="section-headings">Top Skills</h3>
             <div className="top-skills">
@@ -70,7 +71,7 @@ const EmployeeProfileItem = ({
           <div>
             {qualification.length > 0 ? (
               <Fragment>
-                <h3 className="section-headings">Qualification</h3>
+                <h3 className="section-headings">Education</h3>
                 <div className="info-container">
                   {qualification.map((qual) => (
                     <Qualification key={qual._id} qual={qual} />
@@ -78,7 +79,7 @@ const EmployeeProfileItem = ({
                 </div>
               </Fragment>
             ) : (
-              <h3>No Education Credentials</h3>
+              <h3 className="section-headings">No Education Credentials</h3>
             )}
           </div>
           <div>
@@ -92,7 +93,7 @@ const EmployeeProfileItem = ({
                 </div>
               </Fragment>
             ) : (
-              <h3>No Experience Credentials</h3>
+              <h3 className="section-headings">No Experience Credentials</h3>
             )}
           </div>
         </div>

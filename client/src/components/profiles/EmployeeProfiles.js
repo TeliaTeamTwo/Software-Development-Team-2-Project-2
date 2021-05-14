@@ -25,11 +25,7 @@ const EmployeeProfiles = ({
         <Spinner />
       ) : (
         <Fragment>
-          {/* <h1>Employee Profiles</h1>
-          <p>
-            <i className='fab fa-connectdevelop' /> Browse and connect with
-            talent around you
-          </p> */}
+          {/* <h1>Employee Profiles</h1> */}
           <div>
             {profiles.filter(
               (profile) =>
