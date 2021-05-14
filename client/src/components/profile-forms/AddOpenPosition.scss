@@ -1,4 +1,4 @@
-@import "../../variables";
+@import '../../variables';
 
 @media (max-width: 576px) {
   .add-position {
@@ -50,6 +50,7 @@
         }
         input,
         textarea {
+          padding: 0.5rem;
           margin-top: 0.5rem;
         }
       }
