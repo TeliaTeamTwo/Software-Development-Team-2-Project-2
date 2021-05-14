@@ -32,30 +32,6 @@ const EmployeeProfileItem = ({
           <h3 className='location'>Location: {location && <span>{location}</span>}</h3>
         </div>
 
-          {/* <div>
-            <button
-              type='button'
-              onClick={(e) => {
-                addLikeByCompany(_id);
-                addLikeCompany(_id);
-              }}
-            >
-              <i class='fas fa-thumbs-up fa-3x' />{' '}
-            </button>
-            <button type='button'>
-              <i
-                class='fas fa-grin-hearts fa-3x'
-                onClick={(e) => {
-                  addLikeByCompany(_id);
-                  addLikeCompany(_id);
-                }}
-              />{' '}
-            </button>
-            <button type='button' onClick={(e) => {addDislikeCompany(_id); addDislikeByCompany(_id);}}>
-              <i class='fas fa-thumbs-down fa-3x' />
-            </button>
-          </div> */}
-
           <h3 className="type-of-work">Interested in: {typeOfWork}</h3>
           <p>{about && <span>{about}</span>}</p>
           <h3 className="section-headings">Top Skills</h3>
