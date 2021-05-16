@@ -1,9 +1,13 @@
-.outerContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #1a1a1d;
+@import "../../variables";
+
+@media (max-width: 576px) {
+  .outerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: $primary-color;
+  }
 }
 
 .container {

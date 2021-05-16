@@ -1,0 +1,33 @@
+@import "../../variables";
+
+@media (max-width: 576px) {
+  body {
+    background-color: $primary-color;
+  }
+  .chat {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 12rem;
+    border-bottom: 1px solid $light-color;
+    margin: 1rem;
+    &__image {
+      border-radius: 50%;
+      height: 10rem;
+      width: 10rem;
+      margin-right: 1rem;
+    }
+    &__details {
+      flex: 1;
+      h2 {
+        font-size: 1.5rem;
+        color: $light-color;
+        font-weight: lighter;
+      }
+    }
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}

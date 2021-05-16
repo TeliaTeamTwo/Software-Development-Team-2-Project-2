@@ -5,7 +5,7 @@ import Messages from './Messages/Messages';
 import InfoBar from './InfoBar/InfoBar';
 import Input from './Input/Input';
 
-import './ChatScreen.css';
+import './ChatScreen.scss';
 
 const ENDPOINT = 'http://localhost:4000/';
 
