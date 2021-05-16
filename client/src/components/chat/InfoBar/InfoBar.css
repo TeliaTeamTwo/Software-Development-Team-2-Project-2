@@ -2,10 +2,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #200B35;
-  color: white;
+  background: #7198ff;
   border-radius: 4px 4px 0 0;
-  height: 60px;
+  height: 4rem;
   width: 100%;
 }
 
