@@ -3,19 +3,21 @@
 @media (max-width: 576px) {
   body {
     background-color: $primary-color;
+    margin-bottom: 3.9rem;
   }
   .chat {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    height: 12rem;
-    border-bottom: 1px solid $light-color;
+    height: 8rem;
+    border-bottom: 1px solid $secondary-color;
     margin: 1rem;
     &__image {
       border-radius: 50%;
-      height: 10rem;
-      width: 10rem;
+      height: 8rem;
+      width: 8rem;
       margin-right: 1rem;
+      margin-bottom: 1rem;
     }
     &__details {
       flex: 1;

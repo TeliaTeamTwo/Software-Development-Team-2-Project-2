@@ -30,7 +30,7 @@ const ChatsCompany = ({
               profile.likes.some((item) => item['user'] === auth.user._id)
           ).length > 0 ? (
             <Fragment>
-              <p>Current Chats</p>
+              <p className="current-chat">Current Chats</p>
               {profiles
                 .filter(
                   (profile) =>
@@ -50,7 +50,7 @@ const ChatsCompany = ({
             </Fragment>
           ) : (
             <Fragment>
-              <h4>No current chats</h4>
+              <h4 className="current-chat">No current chats</h4>
             </Fragment>
           )}
         </Fragment>
