@@ -38,9 +38,9 @@ const ChatScreen = ({ location }) => {
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);
 
-    axios.get(
-      `http://localhost:4000/chats/room/${room}`
-    ).then(res=>{setMessages(res.data.chat)});
+    axios.get(`${ENDPOINT}chats/room/${room}`).then((res) => {
+      setMessages(res.data.chat);
+    });
   }, [location.search]);
 
   useEffect(() => {
