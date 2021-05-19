@@ -1,0 +1,36 @@
+@import '../../variables';
+
+@media (max-width: 576px) {
+  .browse-companies {
+    font-family: $secondary-font;
+    color: $light-color;
+    background-color: $primary-color;
+    font-size: 64px;
+    font-weight: lighter;
+    text-align: center;
+    padding-top: 2rem;
+  }
+  .own-profile {
+    background-color: $primary-color;
+    font-family: $primary-font;
+    color: $light-color;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    img {
+      border-radius: 50%;
+      height: 7rem;
+      width: 7rem;
+      object-fit: contain;
+      border: 2px solid $secondary-color;
+    }
+    h4 {
+      font-size: 20px;
+      font-weight: lighter;
+      padding: 1rem;
+      text-align: center;
+    }
+  }
+}

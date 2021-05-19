@@ -1,4 +1,4 @@
-@import "../../variables";
+@import '../../variables';
 
 @media (max-width: 576px) {
   .create-company-profile-page {
@@ -37,6 +37,7 @@
         text-align: center;
         margin: 0.5rem;
         input {
+          padding: 0.5rem;
           width: 20rem;
           height: 2rem;
           font-size: 18px;
@@ -47,6 +48,7 @@
           border-radius: 5px;
         }
         textarea {
+          padding: 0.5rem;
           width: 20rem;
           height: 5rem;
           font-family: $primary-font;
