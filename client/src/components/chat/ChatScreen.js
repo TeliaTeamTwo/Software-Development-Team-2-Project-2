@@ -41,7 +41,7 @@ const ChatScreen = ({ location }) => {
     axios.get(`${ENDPOINT}chats/room/${room}`).then((res) => {
       setMessages(res.data.chat);
     });
-  }, [location.search]);
+  }, [ENDPOINT, location.search]);
 
   useEffect(() => {
     socket.on('message', (message) => {

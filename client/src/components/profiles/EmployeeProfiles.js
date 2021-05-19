@@ -2,7 +2,6 @@ import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import EmployeeProfileItem from './EmployeeProfileItem';
-import Lonely from '../Lonely';
 import Match from '../Match';
 import {
   getEmployeeProfiles,

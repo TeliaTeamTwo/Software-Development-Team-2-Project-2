@@ -8,7 +8,6 @@ import {
   addLike,
   addDislike,
 } from '../../actions/profile';
-import Lonely from '../Lonely';
 
 const CompanyProfileItem = ({
   addLikeBy,

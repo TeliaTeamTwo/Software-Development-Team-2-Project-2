@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect} from 'react'
+import React, {Fragment} from 'react'
 
 import LikedPerson from './LIkedPerson'
 import Spinner from './layout/Spinner'
