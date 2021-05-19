@@ -2,12 +2,12 @@ import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import EmployeeProfileItem from './EmployeeProfileItem';
-import Lonely from '../Lonely';
 import Match from '../Match';
 import {
   getEmployeeProfiles,
   getCurrentCompanyProfile,
 } from '../../actions/profile';
+import './EmployeeProfiles.scss';
 
 const EmployeeProfiles = ({
   getEmployeeProfiles,
@@ -25,7 +25,6 @@ const EmployeeProfiles = ({
         <Spinner />
       ) : (
         <Fragment>
-          {/* <h1>Employee Profiles</h1> */}
           <div>
             {profiles.filter(
               (profile) =>
@@ -51,14 +50,14 @@ const EmployeeProfiles = ({
                 ))
             ) : (
               <Fragment>
-                <span>
+                <div className="own-profile">
                   <img
                     className='profile-img'
                     src={profile.image || profile.logo}
                     alt='You...'
                   />
-                </span>
-                <h4>No new profiles</h4>
+                <h4>No new talent to Jargon with!</h4>
+                </div>
                 <Match
                   profiles={profiles}
                   loading={loading}

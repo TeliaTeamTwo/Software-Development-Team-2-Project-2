@@ -22,8 +22,20 @@ const EmployeeProfileItem = ({
     experience
   },
 }) => {
+  const onSwipe = (direction) => {
+    if(direction==='left'){
+      addDislikeCompany(_id);
+      addDislikeByCompany(_id);
+    }else if(direction==='right'){
+      addLikeByCompany(_id);addLikeCompany(_id);
+    }
+  };
   return (
-    <TinderCard className='profile-swipe' preventSwipe={['up', 'down']}>
+    <TinderCard
+      className='profile swipe'
+      onSwipe={onSwipe}
+      preventSwipe={['up', 'down']}
+    >
       <div className='card'>
         <img src={image} alt='' className='profile-img' />
         <div className="profile-details">

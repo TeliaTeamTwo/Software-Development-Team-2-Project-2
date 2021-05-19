@@ -1,0 +1,13 @@
+@import '../../variables';
+
+@media (max-width: 576px) {
+  .browse-employees {
+    font-family: $secondary-font;
+    color: $light-color;
+    background-color: $primary-color;
+    font-size: 64px;
+    font-weight: lighter;
+    text-align: center;
+    padding-top: 2rem;
+  }
+}

@@ -8,8 +8,8 @@ import {
   addLike,
   addDislike,
 } from '../../actions/profile';
-import Lonely from '../Lonely';
 import './CompanyProfileItem.scss';
+
 
 const CompanyProfileItem = ({
   addLikeBy,
@@ -24,9 +24,22 @@ const CompanyProfileItem = ({
     openPositions,
   },
 }) => {
+  const onSwipe = (direction) => {
+    if (direction === 'left') {
+      addDislike(_id);
+      addDislikeBy(_id);
+    } else if (direction === 'right') {
+      addLikeBy(_id);
+      addLike(_id);
+    }
+  };
   return (
     <Fragment>
-      <TinderCard className='profile-swipe' preventSwipe={['up', 'down']}>
+      <TinderCard
+        className='profile swipe'
+        onSwipe={onSwipe}
+        preventSwipe={['up', 'down']}
+      >
         <div className='card'>
           <img src={logo} alt='' className='profile-img' />
           <div className="profile-details">

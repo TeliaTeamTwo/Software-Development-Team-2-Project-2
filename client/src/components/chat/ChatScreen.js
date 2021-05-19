@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import queryString from 'query-string';
+import axios from 'axios';
 import io from 'socket.io-client';
 import Messages from './Messages/Messages';
 import InfoBar from './InfoBar/InfoBar';
@@ -31,6 +32,14 @@ const ChatScreen = ({ location }) => {
       if (error) {
         alert(error);
       }
+    });
+  }, [ENDPOINT, location.search]);
+
+  useEffect(() => {
+    const { name, room } = queryString.parse(location.search);
+
+    axios.get(`${ENDPOINT}chats/room/${room}`).then((res) => {
+      setMessages(res.data.chat);
     });
   }, [ENDPOINT, location.search]);
 

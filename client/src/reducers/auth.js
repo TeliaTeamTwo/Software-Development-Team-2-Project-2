@@ -14,7 +14,7 @@ const initialState = {
     token: localStorage.getItem('token'),
     isAuthenticated: null,
     loading: true,
-    user: null
+    user: {}
 };
 
 export default function( state= initialState, action){
@@ -48,7 +48,8 @@ export default function( state= initialState, action){
        ...state,
        token: null,
        isAuthenticated: false,
-       loading: false
+       loading: false,
+       user:{}
      };
    default:
      return state;
