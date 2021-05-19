@@ -32,7 +32,7 @@ const EmployeeProfileItem = ({
   };
   return (
     <TinderCard
-      className='profile swipe'
+      className='profile-swipe'
       onSwipe={onSwipe}
       preventSwipe={['up', 'down']}
     >
@@ -84,33 +84,6 @@ const EmployeeProfileItem = ({
           </div>
         </div>
       </div>
-      <button
-        type='button'
-        onClick={(e) => {
-          addLikeByCompany(_id);
-          addLikeCompany(_id);
-        }}
-      >
-        <i class='fas fa-thumbs-up fa-2x' />{' '}
-      </button>
-      <button type='button'>
-        <i
-          class='fas fa-heart fa-2x'
-          onClick={(e) => {
-            addLikeByCompany(_id);
-            addLikeCompany(_id);
-          }}
-        />{' '}
-      </button>
-      <button
-        type='button'
-        onClick={(e) => {
-          addDislikeCompany(_id);
-          addDislikeByCompany(_id);
-        }}
-      >
-        {' '}
-      </button>
     </TinderCard>
   );
 };

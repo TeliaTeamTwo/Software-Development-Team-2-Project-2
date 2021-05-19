@@ -36,7 +36,7 @@ const CompanyProfileItem = ({
   return (
     <Fragment>
       <TinderCard
-        className='profile swipe'
+        className='profile-swipe'
         onSwipe={onSwipe}
         preventSwipe={['up', 'down']}
       >

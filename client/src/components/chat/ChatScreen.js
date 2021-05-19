@@ -39,8 +39,11 @@ const ChatScreen = ({ location }) => {
     const { name, room } = queryString.parse(location.search);
 
     axios.get(`${ENDPOINT}chats/room/${room}`).then((res) => {
-      setMessages(res.data.chat);
-    });
+      const result = res.data.chat;
+      {result && setMessages(result)};
+    }
+    );
+    
   }, [ENDPOINT, location.search]);
 
   useEffect(() => {
@@ -65,7 +68,7 @@ const ChatScreen = ({ location }) => {
     <div className='outerContainer'>
       <div className='container'>
         <InfoBar users={users} />
-        <Messages messages={messages} name={name} />
+        {messages && <Messages messages={messages} name={name} />}
         <Input
           message={message}
           setMessage={setMessage}
