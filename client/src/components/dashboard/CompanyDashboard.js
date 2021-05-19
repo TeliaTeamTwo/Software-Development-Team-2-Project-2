@@ -30,7 +30,7 @@ const CompanyDashboard = ({
       {profile !== null ? (
         <Fragment>
           <div className="image-header">
-            <img src={profile.logo}></img>
+            <img src={profile.logo} alt="profile_logo"></img>
             <div className="header-container">
               <h1>{user.name}</h1>
             </div>

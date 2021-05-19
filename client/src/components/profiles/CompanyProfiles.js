@@ -26,7 +26,6 @@ const CompanyProfiles = ({
         <Spinner />
       ) : (
         <Fragment>
-          {/* <h1 className="browse-companies">Browse Companies</h1> */}
           <div>
             {profiles.filter(
               (profile) =>

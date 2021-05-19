@@ -18,67 +18,77 @@ const EmployeeDashboard = ({
 }) => {
   useEffect(() => {
     getCurrentEmployeeProfile();
-  }, []);
+  }, [getCurrentEmployeeProfile]);
 
   return loading && profile === null ? (
     <Spinner />
   ) : (
     <Fragment>
-      <section className="employee-profile">     
-      {profile !== null ? (
-        <Fragment>
-          <div className="image-header">
-            <img src={profile.image}></img>
-            <div className="header-container">
-              <h1>{user.name}</h1>
+      <section className='employee-profile'>
+        {profile !== null ? (
+          <Fragment>
+            <div className='image-header'>
+              <img src={profile.image} alt="profile-pic"></img>
+              <div className='header-container'>
+                <h1>{user.name}</h1>
+              </div>
             </div>
-          </div>
-          <div className="profile-text">
-            <div className="text-part location">
-              <p>{profile.location}</p>
-            </div>
-            <div className="text-part status">
-              <p>{profile.status}</p>
-            </div>
-            <div className="text-part">
-              <p>{profile.about}</p>
-            </div>
-            <div className="text-part skills">
-              <label>Top Skills</label>
+            <div className='profile-text'>
+              <div className='text-part location'>
+                <p>{profile.location}</p>
+              </div>
+              <div className='text-part status'>
+                <p>{profile.status}</p>
+              </div>
+              <div className='text-part'>
+                <p>{profile.about}</p>
+              </div>
+              <div className='text-part skills'>
+                <label>Top Skills</label>
                 <p>{profile.skills.join(', ')}</p>
+              </div>
+              <div className='text-part typeOfWork'>
+                <label>Looking for</label>
+                <p>{profile.typeOfWork} position</p>
+              </div>
+              <div className='text-part links'>
+                {profile.social && (
+                  <>
+                    <label>Links</label>
+                    <a href={profile.social.youtube}>
+                      {profile.social.youtube}
+                    </a>
+                    <a href={profile.social.linkedin}>
+                      {profile.social.linkedin}
+                    </a>
+                    <a href={profile.social.github}>{profile.social.github}</a>
+                    <a href={profile.social.website}>
+                      {profile.social.website}
+                    </a>
+                  </>
+                )}
+              </div>
+              <Experience experience={profile.experience} />
+              <Education education={profile.qualification} />
+              <EmployeeDashboardActions />
+              <div className='text-part logout'>
+                <button className='logout-btn' onClick={logout} href='#!'>
+                  Logout
+                </button>
+              </div>
             </div>
-            <div className="text-part typeOfWork">
-              <label>Looking for</label>
-              <p>{profile.typeOfWork} position</p>
+            <div className='delete-btn'>
+              <button
+                className='btn btn-danger'
+                onClick={() => deleteEmployeeAccount()}
+              >
+                Delete My Account
+              </button>
             </div>
-            <div className="text-part links">
-              <label>Links</label>
-              <a href={profile.social.youtube}>{profile.social.youtube}</a>
-              <a href={profile.social.linkedin}>{profile.social.linkedin}</a>
-              <a href={profile.social.github}>{profile.social.github}</a>
-              <a href={profile.social.website}>{profile.social.website}</a>
-            </div>
-          <Experience experience={profile.experience} />
-          <Education education={profile.qualification} />
-          <EmployeeDashboardActions />
-          <div className="text-part logout">
-            <button className ="logout-btn" onClick={logout} href='#!'>
-            Logout
-            </button>
-          </div>
-          </div>
-          <div className='delete-btn'>
-            <button
-              className='btn btn-danger'
-              onClick={() => deleteEmployeeAccount()}
-            >
-            Delete My Account
-            </button>
-          </div>
-        </Fragment>
-      ) : (
-        <Redirect to='/create-employee-profile' />
-      )}
+          </Fragment>
+        ) : (
+          <Redirect to='/create-employee-profile' />
+        )}
       </section>
     </Fragment>
   );

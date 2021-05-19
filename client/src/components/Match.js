@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment} from 'react';
 import Spinner from './layout/Spinner';
 import LikedPerson from './LIkedPerson';
 import Lonely from './Lonely';

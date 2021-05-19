@@ -4,6 +4,7 @@ import './App.scss';
 import Landing from './components/Landing';
 import Footer from './components/Footer';
 import Register from './components/Register';
+import Welcome from './components/Welcome';
 import Login from './components/Login';
 import Alert from './components/Alert';
 import CreateEmployeeProfile from './components/profile-forms/CreateEmployeeProfile';
@@ -48,6 +49,7 @@ const App = () => {
             <Switch>
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={Login} />
+              <PrivateRoute exact path='/welcome' component={Welcome} />
               <PrivateRoute
                 exact
                 path='/employee-dashboard'
@@ -75,7 +77,11 @@ const App = () => {
                 component={CreateEmployeeProfile}
               />
               <PrivateRoute exact path='/chats' component={Chats} />
-              <PrivateRoute exact path='/chats-company' component={ChatsCompany} />
+              <PrivateRoute
+                exact
+                path='/chats-company'
+                component={ChatsCompany}
+              />
               <PrivateRoute path='/chat' component={ChatScreen} />
               <PrivateRoute
                 exact

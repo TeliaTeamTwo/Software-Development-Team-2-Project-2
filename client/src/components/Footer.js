@@ -12,7 +12,7 @@ const Footer = ({ auth: { isAuthenticated, user, loading }, logout }) => {
         <Link to='/employee-profiles'><JargonIcon /></Link>
       </li>
       <li>
-        <Link to='/chats'><i class="fas fa-comment-dots"></i></Link>
+        <Link to='/chats-company'><i class="fas fa-comment-dots"></i></Link>
       </li>
       <li>
         <Link to='/company-dashboard'><i class="fas fa-user-circle"></i></Link>
