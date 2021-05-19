@@ -1,0 +1,3 @@
+{
+  "mongoURI": "mongodb+srv://BCH_SDP-2:BCH123456@cluster0.psmpy.mongodb.net/jm-chats?retryWrites=true&w=majority"
+}

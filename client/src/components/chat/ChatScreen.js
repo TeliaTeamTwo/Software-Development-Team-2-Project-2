@@ -8,7 +8,7 @@ import Input from './Input/Input';
 
 import './ChatScreen.scss';
 
-const ENDPOINT = 'http://localhost:4000/';
+const ENDPOINT = 'https://jm-chat-server.herokuapp.com/';
 
 let socket;
 
