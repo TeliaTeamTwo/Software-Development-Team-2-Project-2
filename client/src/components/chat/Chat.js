@@ -1,5 +1,5 @@
 import React from 'react';
-import './Chat.css';
+import './Chat.scss';
 import { Link } from 'react-router-dom';
 
 const Chat = ({
@@ -14,7 +14,6 @@ const Chat = ({
         <img className='chat__image' src={profile.logo || profile.image} alt="profile_pic"/>
         <div className='chat__details'>
           <h2>{profile.user.name}</h2>
-
         </div>
       </div>
     </Link>

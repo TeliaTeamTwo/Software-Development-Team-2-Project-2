@@ -1,4 +1,4 @@
-@import 'variables';
+@import "variables";
 
 * {
   padding: 0;
@@ -22,4 +22,14 @@
 
 .alert-danger {
   color: red;
+}
+
+h4.current-chat,
+p.current-chat {
+  font-family: $secondary-font;
+  color: $light-color;
+  font-size: 64px;
+  font-weight: lighter;
+  text-align: center;
+  padding-top: 2rem;
 }
