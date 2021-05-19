@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect} from 'react'
+import React, {Fragment} from 'react'
 
 import LikedPerson from './LIkedPerson'
 import Spinner from './layout/Spinner'
@@ -15,7 +15,7 @@ const Lonely = ({
        <Spinner/>
       ) : (
         <Fragment>
-          <p>People you liked...let's hope they like you</p>
+          <p>Profiles you liked...let's hope they like you</p>
           {profiles
             .filter((profile) =>
               profile.likedby.some(

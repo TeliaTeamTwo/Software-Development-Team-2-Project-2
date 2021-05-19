@@ -2,7 +2,6 @@ import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import EmployeeProfileItem from './EmployeeProfileItem';
-import Lonely from '../Lonely';
 import Match from '../Match';
 import {
   getEmployeeProfiles,
@@ -55,13 +54,6 @@ const EmployeeProfiles = ({
                 ))
             ) : (
               <Fragment>
-                <span>
-                  <img
-                    className='profile-img'
-                    src={profile.image || profile.logo}
-                    alt='You...'
-                  />
-                </span>
                 <h4>No new profiles</h4>
                 <Match
                   profiles={profiles}

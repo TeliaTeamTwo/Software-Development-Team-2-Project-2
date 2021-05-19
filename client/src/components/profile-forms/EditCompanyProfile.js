@@ -31,7 +31,7 @@ const EditCompanyProfile = ({
       location: loading || !profile.location ? '' : profile.location,
       website: loading || !profile.website ? '' : profile.website,
     });
-  }, [loading, getCurrentCompanyProfile]);
+  }, [loading, getCurrentCompanyProfile, profile]);
 
   const {
     about,
