@@ -18,7 +18,7 @@ const EmployeeDashboard = ({
 }) => {
   useEffect(() => {
     getCurrentEmployeeProfile();
-  }, []);
+  }, [getCurrentEmployeeProfile]);
 
   return loading && profile === null ? (
     <Spinner />
@@ -28,7 +28,7 @@ const EmployeeDashboard = ({
         {profile !== null ? (
           <Fragment>
             <div className='image-header'>
-              <img src={profile.image}></img>
+              <img src={profile.image} alt="profile-pic"></img>
               <div className='header-container'>
                 <h1>{user.name}</h1>
               </div>

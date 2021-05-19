@@ -1,0 +1,25 @@
+@import '../variables';
+
+@media (max-width: 576px) {
+  .liked-person {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    img {
+      border-radius: 50%;
+      height: 7rem;
+      width: 7rem;
+      object-fit: contain;
+      border: 2px solid $secondary-color;
+      background-color: $light-color;
+    }
+    h3 {
+      font-size: 20px;
+      font-weight: lighter;
+      text-align: center;
+      min-width: 12rem;
+    }
+  }
+}

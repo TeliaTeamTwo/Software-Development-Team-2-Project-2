@@ -1,7 +1,8 @@
-import React, {Fragment, useEffect} from 'react'
+import React, {Fragment} from 'react'
 
 import LikedPerson from './LIkedPerson'
 import Spinner from './layout/Spinner'
+import './Lonely.scss';
 
 
 const Lonely = ({
@@ -11,11 +12,12 @@ const Lonely = ({
 }) => {
   return (
     <Fragment>
+      <section className="lonely">
       {loading ? (
        <Spinner/>
       ) : (
         <Fragment>
-          <p>Profiles you liked...let's hope they like you</p>
+          <p>Profiles you have liked</p>
           {profiles
             .filter((profile) =>
               profile.likedby.some(
@@ -31,6 +33,7 @@ const Lonely = ({
             ))}
         </Fragment>
       )}
+      </section>
     </Fragment>
   );
 };

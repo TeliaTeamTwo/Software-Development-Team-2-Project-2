@@ -4,6 +4,7 @@ import TinderCard from 'react-tinder-card';
 import { connect } from 'react-redux';
 import Experience from './Experience';
 import { addLikeByCompany, addLikeCompany, addDislikeCompany, addDislikeByCompany } from '../../actions/profile';
+import './EmployeeProfileItem.scss';
 
 const EmployeeProfileItem = ({
   addLikeCompany,
@@ -36,46 +37,51 @@ const EmployeeProfileItem = ({
       preventSwipe={['up', 'down']}
     >
       <div className='card'>
-        <img src={image} alt='' className='round-img profile-img' />
-        <div>
-          <h2>
-            {name}, {location && <span>{location}</span>}
-          </h2>
-          <h3>{typeOfWork}</h3>
+        <img src={image} alt='' className='profile-img' />
+        <div className="profile-details">
+        <div className="h2-container">
+          <h2>{name}</h2>
+          <h3 className='location'>Location: {location && <span>{location}</span>}</h3>
+        </div>
+
+          <h3 className="type-of-work">Interested in: {typeOfWork}</h3>
           <p>{about && <span>{about}</span>}</p>
-          <h3>Top Skills</h3>
-          <div>
-            {skills && skills.map((skill, index) => (
-              <div key={index} className='p-1'>
-                <i className='fas fa-check' /> {skill}
-              </div>
-            ))}
-          </div>
+          <h3 className="section-headings">Top Skills</h3>
+            <div className="top-skills">
+              {skills.map((skill, index) => (
+                <div key={index} className='p-1'>
+                  <i className='fas fa-check' /> {skill}
+                </div>
+              ))}
+            </div>
           <div>
             {qualification.length > 0 ? (
               <Fragment>
-                <h3>Qualification</h3>
-                {qualification.map((qual) => (
-                  <Qualification key={qual._id} qual={qual} />
-                ))}
+                <h3 className="section-headings">Education</h3>
+                <div className="info-container">
+                  {qualification.map((qual) => (
+                    <Qualification key={qual._id} qual={qual} />
+                  ))}
+                </div>
               </Fragment>
             ) : (
-              <h3>No Education Credentials</h3>
+              <h3 className="section-headings">No Education Credentials</h3>
             )}
           </div>
           <div>
             {experience.length > 0 ? (
               <Fragment>
-                <h3>Experience</h3>
-                {experience.map((exp) => (
-                  <Experience key={exp._id} exp={exp} />
-                ))}
+                <h3 className="section-headings">Experience</h3>
+                <div className="info-container">
+                  {experience.map((exp) => (
+                    <Experience key={exp._id} exp={exp} />
+                  ))}
+                </div>
               </Fragment>
             ) : (
-              <h3>No Experience Credentials</h3>
+              <h3 className="section-headings">No Experience Credentials</h3>
             )}
           </div>
-          <div></div>
         </div>
       </div>
       <button

@@ -7,7 +7,11 @@ const ChatCompany = ({ auth, profile }) => {
   return (
     <Link to={`/chat?name=${auth.user.name}&room=${room}`}>
       <div className='chat'>
-        <img className='chat__image' src={profile.logo || profile.image} />
+        <img
+          className='chat__image'
+          src={profile.logo || profile.image}
+          alt='profile_pic'
+        />
         <div className='chat__details'>
           <h2>{profile.user.name}</h2>
         </div>

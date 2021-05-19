@@ -20,7 +20,7 @@ const InfoBar = ({ users }) => (
       </div>
     ) : null}
     <div className='rightInnerContainer'>
-      <a href='/'>
+      <a href='/welcome'>
         <img src={closeIcon} alt='close icon' />
       </a>
     </div>

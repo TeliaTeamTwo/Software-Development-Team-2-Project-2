@@ -8,7 +8,8 @@ import {
   addLike,
   addDislike,
 } from '../../actions/profile';
-import Lonely from '../Lonely';
+import './CompanyProfileItem.scss';
+
 
 const CompanyProfileItem = ({
   addLikeBy,
@@ -41,52 +42,29 @@ const CompanyProfileItem = ({
       >
         <div className='card'>
           <img src={logo} alt='' className='profile-img' />
-          <div>
-            <h2>{name}</h2>
-            <h3 className='my-1'>{location && <span>{location}</span>}</h3>
-            <p>{about && <span>{about}</span>}</p>
+          <div className="profile-details">
+            <div className="h2-container">
+              <h2>{name}</h2>
+              <h3 className='location'>Location: {location && <span>{location}</span>}</h3>
+            </div>
+
             {openPositions.length > 0 ? (
               <Fragment>
-                <h3>Open Positions</h3>
-                {openPositions.map((openPosition) => (
-                  <OpenPosition
-                    key={openPosition._id}
-                    openPosition={openPosition}
-                  />
-                ))}
+                <div className="open-positions">
+                  <h3 className="heading">Open Position</h3>
+                  {openPositions.map((openPosition) => (
+                    <OpenPosition
+                      key={openPosition._id}
+                      openPosition={openPosition}
+                    />
+                  ))}
+                <h3 className="heading">About the company</h3>
+                <p>{about && <span>{about}</span>}</p>
+                </div>
               </Fragment>
             ) : (
-              <h4>No Open Positions</h4>
+              <h3 className="open-positions">No Open Positions</h3>
             )}
-          </div>
-          <div>
-            <button
-              type='button'
-              onClick={(e) => {
-                addLikeBy(_id);
-                addLike(_id);
-              }}
-            >
-              <i class='fas fa-thumbs-up fa-2x' />{' '}
-            </button>
-            <button type='button'>
-              <i
-                class='fas fa-heart fa-2x'
-                onClick={(e) => {
-                  addLikeBy(_id);
-                  addLike(_id);
-                }}
-              />{' '}
-            </button>
-            <button
-              type='button'
-              onClick={(e) => {
-                addDislike(_id);
-                addDislikeBy(_id);
-              }}
-            >
-              <i class='fas fa-thumbs-down fa-2x' />
-            </button>
           </div>
         </div>
       </TinderCard>
