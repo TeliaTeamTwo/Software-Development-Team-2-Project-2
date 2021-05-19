@@ -1,16 +1,18 @@
-import React from 'react'
+import React from 'react';
+import './OpenPosition.scss';
 
 const OpenPosition = ({
-    openPosition: {title, location, description, minExperience, contractType}
+    openPosition: {title, description, skills, minExperience, contractType}
 }) => {
     return (
-      <div>
-        <h3>
-          {title}, {location}
+      <div className="position-container">
+        <h3 className="position-title">
+          {title}
         </h3>
-        <p>{contractType}</p>
-        <p>Minimun Experience - {minExperience} years</p>
-        <p>{description}</p>
+        <p className="contract-type">{contractType}</p>
+        <p className="min-experience">Minimun Experience: {minExperience} years</p>
+        <p className="skills">Top Skills: {skills}</p>
+        <p className="job-description">{description}</p>
       </div>
     );
 }
