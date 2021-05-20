@@ -1,0 +1,21 @@
+@import "../../variables";
+
+@media (max-width: 576px) {
+  .outerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: $primary-color;
+    margin-top: -2rem;
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: $light-color;
+      border-radius: 5px;
+      height: 80% !important;
+      width: 90% !important;
+    }
+  }
+}

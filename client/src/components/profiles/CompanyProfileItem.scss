@@ -1,0 +1,67 @@
+@import "../../variables";
+
+@media (max-width: 576px) {
+  body {
+    background-color: $primary-color;
+  }
+  .profile-swipe {
+    position: relative;
+    z-index: 1000;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .card {
+      background-color: $primary-color;
+      font-family: $primary-font;
+      color: $light-color;
+      width: 900px;
+      padding: 1rem 1rem 5rem 1rem;
+      max-width: 95vw;
+      min-height: 100vh;
+      border: 1px solid $light-color;
+      border-radius: 5px;
+      background-size: cover;
+      background-position: center;
+      //   overflow-y: scroll;
+      //   box-shadow: 0px 0px 5px $light-color;
+    }
+    .profile-img {
+      height: 18rem;
+      width: 18rem;
+      // margin: 1rem;
+      border: 2px solid $primary-color;
+      border-radius: 50%;
+    }
+    .h2-container {
+      background-color: $light-color;
+      border-radius: 5px;
+      padding: 1rem;
+      h2 {
+        font-family: $secondary-font;
+        color: $primary-color;
+        letter-spacing: 0.1rem;
+        font-size: 3rem;
+        font-weight: lighter;
+      }
+      h3.location {
+        color: $primary-color;
+      }
+    }
+    h3 {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      font-weight: lighter;
+    }
+    .open-positions {
+      text-align: left;
+      align-items: flex-start;
+      margin-top: 2rem;
+      h3.heading {
+        color: $highlight-color;
+        font-family: $secondary-font;
+        font-size: 2rem;
+      }
+    }
+  }
+}

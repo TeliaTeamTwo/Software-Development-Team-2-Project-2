@@ -1,0 +1,15 @@
+@import "../../variables";
+
+@media (max-width: 576px) {
+  .position-container {
+    text-align: left;
+    .position-title {
+      margin-top: 1rem;
+      font-size: 1.5rem;
+    }
+    p.job-description {
+      text-align: justify;
+      margin-top: 1rem;
+    }
+  }
+}

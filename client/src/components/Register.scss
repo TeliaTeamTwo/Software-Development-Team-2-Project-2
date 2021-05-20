@@ -1,0 +1,93 @@
+@import '../variables';
+
+@media (max-width: 576px) {
+  .register-page {
+    background-color: $primary-color;
+    height: 100vh;
+    h1 {
+      font-family: $secondary-font;
+      color: $light-color;
+      font-size: 64px;
+      font-weight: lighter;
+      text-align: center;
+      padding-top: 2rem;
+    }
+    .register-form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .register-input {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin: 0.5rem;
+        label {
+          color: $light-color;
+          font-family: $primary-font;
+          font-size: 18px;
+          font-weight: lighter;
+        }
+        .form-input {
+          width: 15rem;
+          height: 3rem;
+          font-size: 24px;
+          font-family: $primary-font;
+          background-color: $light-color;
+          color: $secondary-color;
+          border: 2px solid $secondary-color;
+          border-radius: 5px;
+        }
+      }
+      .register-input-radio {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-size: 18px;
+        font-family: $primary-font;
+        color: $light-color;
+        margin: 0.5rem;
+        .radio-btn {
+          margin-left: 1rem;
+          height: 1.5rem;
+          width: 1.5rem;
+        }
+      }
+      .register-btn {
+        width: 15rem;
+        height: 3rem;
+        font-size: 24px;
+        font-family: $primary-font;
+        background-color: $light-color;
+        color: $secondary-color;
+        border: 2px solid $secondary-color;
+        border-radius: 5px;
+        margin: 0.5rem;
+      }
+      input {
+        padding: 0.5rem;
+      }
+    }
+    .yes-account {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      p {
+        color: $light-color;
+        font-size: 18px;
+        padding: 1rem;
+      }
+      button {
+        width: 15rem;
+        height: 3rem;
+        font-size: 24px;
+        font-family: $primary-font;
+        background-color: $light-color;
+        color: $secondary-color;
+        border: 2px solid $secondary-color;
+        border-radius: 5px;
+      }
+    }
+  }
+}

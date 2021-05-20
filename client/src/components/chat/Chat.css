@@ -1,0 +1,28 @@
+/* .chat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  height: 200px;
+  border-bottom: 1px solid #fafafa;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.chat__details {
+  flex: 1;
+}
+
+.chat__details p {
+  color: gray;
+}
+
+.chat__image {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  margin-right: 20px;
+} */

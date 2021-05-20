@@ -19,6 +19,38 @@ const CompanyProfileSchema = new mongoose.Schema({
   website: {
     type: String,
   },
+  likes: [
+    {
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+      },
+    },
+  ],
+  dislikes: [
+    {
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+      },
+    },
+  ],
+  likedby: [
+    {
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+      },
+    },
+  ],
+  dislikedby: [
+    {
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+      },
+    },
+  ],
   openPositions: [
     {
       title: {
@@ -31,8 +63,8 @@ const CompanyProfileSchema = new mongoose.Schema({
       description: {
         type: String,
       },
-      minExperience:{
-          type: Number,
+      minExperience: {
+        type: Number,
       },
       skills: {
         type: [String],
@@ -44,6 +76,10 @@ const CompanyProfileSchema = new mongoose.Schema({
       },
     },
   ],
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 module.exports = CompanyProfile = mongoose.model('companyProfile', CompanyProfileSchema);

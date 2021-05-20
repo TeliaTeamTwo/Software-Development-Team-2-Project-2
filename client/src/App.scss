@@ -1,0 +1,35 @@
+@import "variables";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.edit-employee-profile-page,
+.edit-company-profile-page,
+.create-employee-profile-page,
+.create-company-profile-page,
+.add-position,
+.add-experience,
+.add-school,
+.employee-profile,
+.company-profile,
+.lonely,
+.match {
+  padding-bottom: 4rem; // so footer doesnt overlap
+}
+
+.alert-danger {
+  color: red;
+}
+
+h4.current-chat,
+p.current-chat {
+  font-family: $secondary-font;
+  color: $light-color;
+  font-size: 64px;
+  font-weight: lighter;
+  text-align: center;
+  padding-top: 2rem;
+}

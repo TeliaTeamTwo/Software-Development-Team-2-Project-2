@@ -1,0 +1,25 @@
+@import '../variables';
+
+@media (max-width: 576px) {
+  footer {
+    z-index:2000;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: $light-color;
+    ul {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      li {
+        display: inline-block;
+        padding: 10px;
+        i {
+          font-size: 44px;
+          color: $secondary-color;
+        }
+      }
+    }
+  }
+}
