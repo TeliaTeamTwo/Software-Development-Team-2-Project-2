@@ -10,8 +10,6 @@ connectDB();
 app.use(express.json({ limit: "30mb", extended: true }));
 
 
-app.get('/', (req, res)=> res.send('API is running'));
-
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/companyprofile', require('./routes/api/companyprofile'));
