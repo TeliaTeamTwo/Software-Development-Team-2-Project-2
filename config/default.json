@@ -1,4 +1,0 @@
-{
-    "mongoURI": "mongodb+srv://BCH_SDP-2:BCH123456@cluster0.psmpy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-    "jwtSecret": "secrettoken"
-}
